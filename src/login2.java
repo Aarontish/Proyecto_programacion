@@ -155,26 +155,28 @@ public class login2 {
 		botonLogin2.setBounds(482, 492, 200, 50);
 		panel.add(botonLogin2);
 		
-		JLabel textoUsuario = new JLabel("Usuario:");
+		JLabel textoUsuario = new JLabel("Usuario:"); //Texto superior para el campo del usuario
 		textoUsuario.setFont(new Font("Jost*", Font.BOLD, 24));
 		textoUsuario.setBounds(382, 152, 94, 30);
 		panel.add(textoUsuario);
 		
 		textField = new JTextField();
+		textField.setBackground(new Color(233, 236, 239));
 		textField.setBounds(382, 193, 400, 30);
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		JLabel textoContraseña = new JLabel("Contraseña:");
+		JLabel textoContraseña = new JLabel("Contraseña:"); //Texto superior para el campo de la contraseña
 		textoContraseña.setFont(new Font("Jost*", Font.BOLD, 24));
 		textoContraseña.setBounds(382, 272, 136, 30);
 		panel.add(textoContraseña);
 		
 		passwordField = new JPasswordField();
+		passwordField.setBackground(new Color(233, 236, 239));
 		passwordField.setBounds(382, 313, 400, 30);
 		panel.add(passwordField);
 		
-		JButton botonVerContraseña = new JButton("Ver contraseña");
+		JButton botonVerContraseña = new JButton("Ver contraseña"); // Boton para ver contraseña
 		botonVerContraseña.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		botonVerContraseña.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		botonVerContraseña.addActionListener(new ActionListener() {
@@ -183,6 +185,22 @@ public class login2 {
 		});
 		botonVerContraseña.setBounds(382, 354, 120, 23);
 		panel.add(botonVerContraseña);
+		
+		JLabel userIcon = new JLabel(""); //Icono que esta junto al campo de texto de usuario
+		userIcon.setBounds(346, 193, 30, 30);
+		ImageIcon g1 =new ImageIcon("images/icon.png");
+        Image g2= g1.getImage();
+        Image g3=g2.getScaledInstance(30, 30,Image.SCALE_SMOOTH);
+        userIcon.setIcon(new ImageIcon(g3));
+		panel.add(userIcon);
+		
+		JLabel candadoIcon = new JLabel(""); //Icono junto al campo de contraseña
+		candadoIcon.setBounds(346, 313, 30, 30);
+		ImageIcon h1 =new ImageIcon("images/candado.png");
+        Image h2= h1.getImage();
+        Image h3=h2.getScaledInstance(30, 30,Image.SCALE_SMOOTH);
+        candadoIcon.setIcon(new ImageIcon(h3));
+		panel.add(candadoIcon);
 		
 	}
 }

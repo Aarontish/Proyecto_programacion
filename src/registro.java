@@ -162,6 +162,7 @@ public class registro {
 		panel.add(textoUsuario);
 		
 		textField = new JTextField();
+		textField.setBackground(new Color(233, 236, 239));
 		textField.setBounds(382, 193, 400, 30);
 		panel.add(textField);
 		textField.setColumns(10);
@@ -172,6 +173,7 @@ public class registro {
 		panel.add(textoContraseña);
 		
 		passwordField = new JPasswordField();
+		passwordField.setBackground(new Color(233, 236, 239));
 		passwordField.setBounds(382, 275, 400, 30);
 		panel.add(passwordField);
 		
@@ -191,6 +193,7 @@ public class registro {
 		panel.add(textoConfirmarContraseña);
 		
 		passwordField_1 = new JPasswordField();
+		passwordField_1.setBackground(new Color(233, 236, 239));
 		passwordField_1.setBounds(382, 391, 400, 30);
 		panel.add(passwordField_1);
 		
