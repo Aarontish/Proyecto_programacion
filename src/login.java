@@ -59,7 +59,7 @@ public class login {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1180, 620);
+		frame.setBounds(100, 100, 1180, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -166,7 +166,7 @@ public class login {
 		textoIniciarSesion.setBounds(188, 466, 188, 50);
 		panel.add(textoIniciarSesion);
 		
-		JLabel textoRegistro = new JLabel("Registrarse"); //Texto registrarse 
+		JLabel textoRegistro = new JLabel("Registrarse"); // Texto registrarse
 		textoRegistro.setFont(new Font("Jost*", Font.BOLD, 30));
 		textoRegistro.setBounds(805, 466, 157, 50);
 		panel.add(textoRegistro);

@@ -58,7 +58,7 @@ public class menu {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1180, 620);
+		frame.setBounds(100, 100, 1180, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -78,7 +78,7 @@ public class menu {
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JButton btnTiposDeRentas = new JButton("<html>Tipos de rentas &#8594;</html>");
+		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
 		btnTiposDeRentas.setBackground(new Color(56, 54, 41));
@@ -87,13 +87,17 @@ public class menu {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnTiposDeRentas.setBounds(1037, 0, 120, 23);
+		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
 		btnTiposDeRentas.setBorderPainted(false);
         btnTiposDeRentas.setFocusPainted(false);
         btnTiposDeRentas.setContentAreaFilled(true);
 		panel_2.add(btnTiposDeRentas);
 		
-		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>");
+		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
+		btnrentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnrentas.setForeground(Color.WHITE);
 		btnrentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnrentas.setFocusPainted(false);
@@ -101,10 +105,10 @@ public class menu {
 		btnrentas.setBorderPainted(false);
 		btnrentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnrentas.setBackground(new Color(56, 54, 41));
-		btnrentas.setBounds(946, 0, 81, 23);
+		btnrentas.setBounds(932, 0, 81, 23);
 		panel_2.add(btnrentas);
 		
-		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>");
+		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -112,10 +116,10 @@ public class menu {
 		btnclientes.setBorderPainted(false);
 		btnclientes.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnclientes.setBackground(new Color(56, 54, 41));
-		btnclientes.setBounds(855, 0, 81, 23);
+		btnclientes.setBounds(841, 0, 81, 23);
 		panel_2.add(btnclientes);
 		
-		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>");
+		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -123,10 +127,14 @@ public class menu {
 		btnhabitaciones.setBorderPainted(false);
 		btnhabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnhabitaciones.setBackground(new Color(56, 54, 41));
-		btnhabitaciones.setBounds(745, 0, 100, 23);
+		btnhabitaciones.setBounds(731, 0, 100, 23);
 		panel_2.add(btnhabitaciones);
 		
-		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>");
+		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
+		btntarifas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btntarifas.setForeground(Color.WHITE);
 		btntarifas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btntarifas.setFocusPainted(false);
@@ -134,7 +142,7 @@ public class menu {
 		btntarifas.setBorderPainted(false);
 		btntarifas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btntarifas.setBackground(new Color(56, 54, 41));
-		btntarifas.setBounds(663, 0, 72, 23);
+		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
 		
 		JLabel logo = new JLabel(""); //Logo
@@ -153,7 +161,7 @@ public class menu {
 		
 		JLabel menuTitulo = new JLabel("Menú:"); //Texto menú
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
-		menuTitulo.setBounds(60, 121, 112, 56);
+		menuTitulo.setBounds(60, 131, 112, 56);
 		panel.add(menuTitulo);
 		
 		JPanel panel_3 = new JPanel(); //Recuadro al fondo de los botones
@@ -196,9 +204,9 @@ public class menu {
 		botonClientes.setHorizontalAlignment(SwingConstants.CENTER);
 		botonClientes.setVerticalAlignment(SwingConstants.CENTER);
 		botonClientes.setIconTextGap(1);
-		ImageIcon s1 = new ImageIcon("images/cama_individual.png");
+		ImageIcon s1 = new ImageIcon("images/clientes.png");
 		Image s2 = s1.getImage();
-		Image s3 = s2.getScaledInstance(55, 60, Image.SCALE_SMOOTH); 
+		Image s3 = s2.getScaledInstance(65, 60, Image.SCALE_SMOOTH); 
 		botonClientes.setIcon(new ImageIcon(s3));
 		botonClientes.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		panel_3.add(botonClientes);
