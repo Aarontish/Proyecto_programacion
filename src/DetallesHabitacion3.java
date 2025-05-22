@@ -15,12 +15,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class PanelDeHabitaciones4 {
+public class DetallesHabitacion3 {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -32,7 +31,7 @@ public class PanelDeHabitaciones4 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PanelDeHabitaciones4 window = new PanelDeHabitaciones4();
+					DetallesHabitacion3 window = new DetallesHabitacion3();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +43,7 @@ public class PanelDeHabitaciones4 {
 	/**
 	 * Create the application.
 	 */
-	public PanelDeHabitaciones4() {
+	public DetallesHabitacion3() {
 		
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -96,9 +95,9 @@ public class PanelDeHabitaciones4 {
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
 		
-		JLabel menuTitulo = new JLabel("Habitaciones:"); //Texto menú
+		JLabel menuTitulo = new JLabel("Detalles de la habitación:"); //Texto menú
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
-		menuTitulo.setBounds(131, 126, 245, 56);
+		menuTitulo.setBounds(131, 126, 441, 56);
 		panel.add(menuTitulo);
 		
 		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
@@ -257,49 +256,162 @@ public class PanelDeHabitaciones4 {
                 }
             }
         });
-		panel.add(textField);	
+		panel.add(textField);
 		
-		JButton btnEliminarCliente = new JButton("Eliminar Habitación"); //Botón prinicipal eliminar cliente
-		btnEliminarCliente.setBackground(new Color(239, 35, 60));
-		btnEliminarCliente.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
-		btnEliminarCliente.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarCliente.setForeground(Color.WHITE);
-		btnEliminarCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnEliminarCliente.setBounds(131, 193, 245, 40);
-		panel.add(btnEliminarCliente);
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(0, 187, 249));
+		panel_3.setBounds(131, 193, 300, 440);
+		panel.add(panel_3);
+		panel_3.setLayout(null);
 		
-
-		JButton btnCuartoB3 = new JButton("Cuarto B3"); //Botón Cuarto B3
-		btnCuartoB3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoB3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCuartoB3.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoB3.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoB3.setIconTextGap(1);
-		btnCuartoB3.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoB3.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB3.setBackground(new Color(0, 187, 249));
-		btnCuartoB3.setBounds(131, 257, 150, 150);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(45, 11, 200, 200);
 		ImageIcon v1 = new ImageIcon("images/cama_matrimonial2.png");
 		Image v2 = v1.getImage();
-		Image v3 = v2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB3.setIcon(new ImageIcon(v3));
-		panel.add(btnCuartoB3);
+		Image v3 = v2.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		lblNewLabel.setIcon(new ImageIcon(v3));
+		panel_3.add(lblNewLabel);
 		
-		JButton btnEliminarHabitacionB3 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B3
-		btnEliminarHabitacionB3.setForeground(Color.WHITE);
-		btnEliminarHabitacionB3.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionB3.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionB3.setBounds(131, 418, 150, 23);
-		panel.add(btnEliminarHabitacionB3);
-
+		JLabel lblNewLabel_1 = new JLabel("Cuarto B3");
+		lblNewLabel_1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 20));
+		lblNewLabel_1.setBounds(100, 222, 100, 20);
+		panel_3.add(lblNewLabel_1);
+		
+		JLabel textoHabitacion = new JLabel("Tipo de habitación:");
+		textoHabitacion.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		textoHabitacion.setBounds(80, 253, 145, 20);
+		panel_3.add(textoHabitacion);
+		
+		JLabel lblNewLabel_2 = new JLabel("Suit");
+		lblNewLabel_2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setBounds(133, 284, 35, 20);
+		panel_3.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Camas:");
+		lblNewLabel_3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_3.setBounds(120, 315, 60, 20);
+		panel_3.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("4 Camas individuales");
+		lblNewLabel_4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_4.setForeground(Color.WHITE);
+		lblNewLabel_4.setBounds(68, 340, 168, 20);
+		panel_3.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Ocupante:");
+		lblNewLabel_5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_5.setBounds(110, 365, 80, 20);
+		panel_3.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("Diego Ontiveros");
+		lblNewLabel_6.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_6.setForeground(Color.WHITE);
+		lblNewLabel_6.setBounds(90, 396, 125, 20);
+		panel_3.add(lblNewLabel_6);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(0, 187, 249));
+		panel_4.setBounds(441, 193, 340, 140);
+		panel.add(panel_4);
+		panel_4.setLayout(null);
+		
+		JLabel lblNewLabel_7 = new JLabel("Historial de rentas:");
+		lblNewLabel_7.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
+		lblNewLabel_7.setBounds(10, 11, 320, 30);
+		panel_4.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_8 = new JLabel("rentado del 14 al 15 de mayo 2024");
+		lblNewLabel_8.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_8.setForeground(Color.WHITE);
+		lblNewLabel_8.setBounds(10, 52, 320, 20);
+		panel_4.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("rentanado del 13 al 23 de agosto 2018");
+		lblNewLabel_9.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_9.setForeground(Color.WHITE);
+		lblNewLabel_9.setBounds(10, 83, 320, 20);
+		panel_4.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_10 = new JLabel("rentado del  4 al 7 de abril 2016");
+		lblNewLabel_10.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_10.setForeground(Color.WHITE);
+		lblNewLabel_10.setBounds(10, 114, 320, 20);
+		panel_4.add(lblNewLabel_10);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(new Color(0, 187, 249));
+		panel_5.setBounds(441, 344, 340, 140);
+		panel.add(panel_5);
+		panel_5.setLayout(null);
+		
+		JLabel lblNewLabel_11 = new JLabel("Tarifas:");
+		lblNewLabel_11.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
+		lblNewLabel_11.setBounds(10, 11, 320, 30);
+		panel_5.add(lblNewLabel_11);
+		
+		JLabel lblNewLabel_12 = new JLabel("$700 pesos por noche");
+		lblNewLabel_12.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_12.setForeground(Color.WHITE);
+		lblNewLabel_12.setBounds(10, 52, 320, 20);
+		panel_5.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_13 = new JLabel("descuento los dias primero de cada mes");
+		lblNewLabel_13.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_13.setForeground(Color.WHITE);
+		lblNewLabel_13.setBounds(10, 83, 320, 20);
+		panel_5.add(lblNewLabel_13);
+		
+		JLabel lblNewLabel_14 = new JLabel("costo $400 pesos");
+		lblNewLabel_14.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_14.setForeground(Color.WHITE);
+		lblNewLabel_14.setBounds(10, 114, 320, 14);
+		panel_5.add(lblNewLabel_14);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(new Color(0, 187, 249));
+		panel_6.setBounds(441, 495, 340, 138);
+		panel.add(panel_6);
+		panel_6.setLayout(null);
+		
+		JLabel lblNewLabel_15 = new JLabel("Servicios extras:");
+		lblNewLabel_15.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
+		lblNewLabel_15.setBounds(10, 11, 320, 30);
+		panel_6.add(lblNewLabel_15);
+		
+		JLabel lblNewLabel_16 = new JLabel("desayuno/comida/cena $500 pesos");
+		lblNewLabel_16.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_16.setForeground(Color.WHITE);
+		lblNewLabel_16.setBounds(10, 52, 320, 20);
+		panel_6.add(lblNewLabel_16);
+		
+		JLabel lblNewLabel_17 = new JLabel("renta de consola: $450 pesos");
+		lblNewLabel_17.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_17.setForeground(Color.WHITE);
+		lblNewLabel_17.setBounds(10, 83, 320, 20);
+		panel_6.add(lblNewLabel_17);
+		
+		JButton btnOcupado = new JButton("OCUPADO");
+		btnOcupado.setBackground(new Color(239, 35, 60));
+		btnOcupado.setForeground(Color.WHITE);
+		btnOcupado.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
+		btnOcupado.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnOcupado.setBounds(845, 200, 270, 60);
+		panel.add(btnOcupado);
+		
+		JButton btnHistorial = new JButton("Descargar historial");
+		btnHistorial.setBackground(new Color(255, 214, 10));
+		btnHistorial.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
+		btnHistorial.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnHistorial.setBounds(845, 495, 270, 60);
+		panel.add(btnHistorial);
+		
+		JButton btnEditarHabitacion = new JButton("Editar habitación");
+		btnEditarHabitacion.setBackground(new Color(50, 186, 124));
+		btnEditarHabitacion.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
+		btnEditarHabitacion.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEditarHabitacion.setBounds(845, 566, 270, 60);
+		panel.add(btnEditarHabitacion);
 	}
 
 }

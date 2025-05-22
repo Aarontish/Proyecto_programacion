@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class menu {
+public class Menu {
 
 	private JFrame frame;
 
@@ -28,7 +28,7 @@ public class menu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menu window = new menu();
+					Menu window = new Menu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class menu {
 	/**
 	 * Create the application.
 	 */
-	public menu() {
+	public Menu() {
 		
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());

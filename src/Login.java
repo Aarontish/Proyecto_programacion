@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
 
-public class login {
+public class Login {
 
 	private JFrame frame;
 
@@ -29,7 +29,7 @@ public class login {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					login window = new login();
+					Login window = new Login();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class login {
 	/**
 	 * Create the application.
 	 */
-	public login() {
+	public Login() {
 		
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());

@@ -19,7 +19,7 @@ import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class DetallesDeLaHabitacion {
+public class DetallesHabitacion2 {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -31,7 +31,7 @@ public class DetallesDeLaHabitacion {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DetallesDeLaHabitacion window = new DetallesDeLaHabitacion();
+					DetallesHabitacion2 window = new DetallesHabitacion2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class DetallesDeLaHabitacion {
 	/**
 	 * Create the application.
 	 */
-	public DetallesDeLaHabitacion() {
+	public DetallesHabitacion2() {
 		
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -299,17 +299,6 @@ public class DetallesDeLaHabitacion {
 		lblNewLabel_4.setBounds(68, 340, 168, 20);
 		panel_3.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Ocupante:");
-		lblNewLabel_5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_5.setBounds(110, 365, 80, 20);
-		panel_3.add(lblNewLabel_5);
-		
-		JLabel lblNewLabel_6 = new JLabel("Diego Ontiveros");
-		lblNewLabel_6.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_6.setForeground(Color.WHITE);
-		lblNewLabel_6.setBounds(90, 396, 125, 20);
-		panel_3.add(lblNewLabel_6);
-		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(0, 187, 249));
 		panel_4.setBounds(441, 193, 340, 140);
@@ -413,4 +402,5 @@ public class DetallesDeLaHabitacion {
 		btnEditarHabitacion.setBounds(845, 566, 270, 60);
 		panel.add(btnEditarHabitacion);
 	}
+
 }

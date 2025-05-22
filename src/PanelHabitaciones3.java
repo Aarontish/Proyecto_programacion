@@ -20,7 +20,7 @@ import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class PanelDeHabitaciones3 {
+public class PanelHabitaciones3 {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -32,7 +32,7 @@ public class PanelDeHabitaciones3 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PanelDeHabitaciones3 window = new PanelDeHabitaciones3();
+					PanelHabitaciones3 window = new PanelHabitaciones3();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class PanelDeHabitaciones3 {
 	/**
 	 * Create the application.
 	 */
-	public PanelDeHabitaciones3() {
+	public PanelHabitaciones3() {
 		
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());

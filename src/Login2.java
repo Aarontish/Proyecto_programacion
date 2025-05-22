@@ -18,7 +18,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
-public class login2 {
+public class Login2 {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -31,7 +31,7 @@ public class login2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					login2 window = new login2();
+					Login2 window = new Login2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class login2 {
 	/**
 	 * Create the application.
 	 */
-	public login2() {
+	public Login2() {
 	
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
