@@ -195,7 +195,9 @@ public class Login {
         doLoginButton.setContentAreaFilled(true);
         doLoginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                performLogin(); // Llama a tu método de lógica de login
+                frame.dispose(); // Cierra la ventana actual del menú
+				Menu conexion = new Menu();
+				conexion.frame.setVisible(true); 	
             }
         });
         loginPanel.add(doLoginButton);

@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -17,13 +18,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 
-import com.formdev.flatlaf.FlatLightLaf;
+public class Datos_de_renta2 {
 
-public class DetallesHabitacion1 {
-
-	public JFrame frame; // <--- ¡CAMBIO AQUÍ! DEBE SER PUBLIC
+	JFrame frame;
 	private JTextField textField;
 
 	/**
@@ -33,11 +31,7 @@ public class DetallesHabitacion1 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					// Set the look and feel here as well, if you want it applied to the main method launch
-					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90);
-
-					DetallesHabitacion1 window = new DetallesHabitacion1();
+					Datos_de_renta2 window = new Datos_de_renta2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,15 +43,7 @@ public class DetallesHabitacion1 {
 	/**
 	 * Create the application.
 	 */
-	public DetallesHabitacion1() {
-
-		try {
-            UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90); // Esquinas redondas
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
+	public Datos_de_renta2() {
 		initialize();
 	}
 
@@ -89,14 +75,14 @@ public class DetallesHabitacion1 {
 
 		JLabel logo = new JLabel(""); //Logo
 		logo.setBounds(0, 0, 170, 95);
-		// Corrected image path
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/logo.png"));
 		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
 	    Image portada2 = portada1.getImage();
 	    Image portada3 = portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
 	    logo.setIcon(new ImageIcon(portada3));
 		panel_1.add(logo);
 
-		JLabel Titulo = new JLabel("Panel de Habitaciones"); //Titulo
+		JLabel Titulo = new JLabel("Rentas\r\n"); //Titulo
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
@@ -117,7 +103,7 @@ public class DetallesHabitacion1 {
 			}
 		});
 		botonSuperior1.setBounds(1098, 11, 56, 56);
-		// Corrected image path
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/usuario.png"));
 		ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
 		Image c2 = c1.getImage();
 		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
@@ -135,7 +121,7 @@ public class DetallesHabitacion1 {
 			}
 		});
 		botonSuperior2.setBounds(1032, 11, 56, 56);
-		// Corrected image path
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/informacion.png"));
 		ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
 		Image e2 = e1.getImage();
 		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
@@ -150,21 +136,17 @@ public class DetallesHabitacion1 {
 		botonVolver.setContentAreaFilled(true);
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 	
 			}
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
-		// Corrected image path
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
 		ImageIcon f1 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
 		Image f2 = f1.getImage();
 		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(f3));
-		botonVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose(); // Cierra la ventana actual del menú
-				PanelHabitaciones1 conexion = new PanelHabitaciones1();
-				conexion.frame.setVisible(true); 	
-			}
-		});
 		panel.add(botonVolver);
 
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
@@ -174,7 +156,6 @@ public class DetallesHabitacion1 {
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -241,7 +222,7 @@ public class DetallesHabitacion1 {
 			}
 		});
 		btnBuscar.setBounds(720, 140, 40, 40);
-		// Corrected image path
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/busqueda.png"));
 		ImageIcon u1 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
 		Image u2 = u1.getImage();
 		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
@@ -279,13 +260,13 @@ public class DetallesHabitacion1 {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(0, 187, 249));
-		panel_3.setBounds(131, 193, 300, 440);
+		panel_3.setBounds(77, 248, 300, 405);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(45, 11, 200, 200);
-		// Corrected image path
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
 		ImageIcon v1 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
 		Image v2 = v1.getImage();
 		Image v3 = v2.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -298,14 +279,14 @@ public class DetallesHabitacion1 {
 		panel_3.add(lblNewLabel_1);
 
 		JLabel textoHabitacion = new JLabel("Tipo de habitación:");
-		textoHabitacion.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		textoHabitacion.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		textoHabitacion.setBounds(80, 253, 145, 20);
 		panel_3.add(textoHabitacion);
 
-		JLabel lblNewLabel_2 = new JLabel("Estándar");
+		JLabel lblNewLabel_2 = new JLabel("Suit");
 		lblNewLabel_2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(115, 284, 70, 20);
+		lblNewLabel_2.setBounds(133, 284, 35, 20);
 		panel_3.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Camas:");
@@ -313,7 +294,7 @@ public class DetallesHabitacion1 {
 		lblNewLabel_3.setBounds(120, 315, 60, 20);
 		panel_3.add(lblNewLabel_3);
 
-		JLabel lblNewLabel_4 = new JLabel("2 Camas individuales");
+		JLabel lblNewLabel_4 = new JLabel("4 Camas individuales");
 		lblNewLabel_4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setBounds(68, 340, 168, 20);
@@ -330,114 +311,56 @@ public class DetallesHabitacion1 {
 		lblNewLabel_6.setBounds(90, 396, 125, 20);
 		panel_3.add(lblNewLabel_6);
 
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(0, 187, 249));
-		panel_4.setBounds(441, 193, 340, 140);
-		panel.add(panel_4);
-		panel_4.setLayout(null);
-
-		JLabel lblNewLabel_7 = new JLabel("Historial de rentas:");
-		lblNewLabel_7.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
-		lblNewLabel_7.setBounds(10, 11, 320, 30);
-		panel_4.add(lblNewLabel_7);
-
-		JLabel lblNewLabel_8 = new JLabel("rentado del 14 al 15 de mayo 2024");
-		lblNewLabel_8.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_8.setForeground(Color.WHITE);
-		lblNewLabel_8.setBounds(10, 52, 320, 20);
-		panel_4.add(lblNewLabel_8);
-
-		JLabel lblNewLabel_9 = new JLabel("rentanado del 13 al 23 de agosto 2018");
-		lblNewLabel_9.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_9.setForeground(Color.WHITE);
-		lblNewLabel_9.setBounds(10, 83, 320, 20);
-		panel_4.add(lblNewLabel_9);
-
-		JLabel lblNewLabel_10 = new JLabel("rentado del  4 al 7 de abril 2016");
-		lblNewLabel_10.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_10.setForeground(Color.WHITE);
-		lblNewLabel_10.setBounds(10, 114, 320, 20);
-		panel_4.add(lblNewLabel_10);
-
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(new Color(0, 187, 249));
-		panel_5.setBounds(441, 344, 340, 140);
-		panel.add(panel_5);
-		panel_5.setLayout(null);
-
-		JLabel lblNewLabel_11 = new JLabel("Tarifas:");
-		lblNewLabel_11.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
-		lblNewLabel_11.setBounds(10, 11, 320, 30);
-		panel_5.add(lblNewLabel_11);
-
-		JLabel lblNewLabel_12 = new JLabel("$650 pesos por noche");
-		lblNewLabel_12.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_12.setForeground(Color.WHITE);
-		lblNewLabel_12.setBounds(10, 52, 320, 20);
-		panel_5.add(lblNewLabel_12);
-
-		JLabel lblNewLabel_13 = new JLabel("descuento los dias primero de cada mes");
-		lblNewLabel_13.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_13.setForeground(Color.WHITE);
-		lblNewLabel_13.setBounds(10, 83, 320, 20);
-		panel_5.add(lblNewLabel_13);
-
-		JLabel lblNewLabel_14 = new JLabel("costo $350 pesos");
-		lblNewLabel_14.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_14.setForeground(Color.WHITE);
-		lblNewLabel_14.setBounds(10, 114, 320, 14);
-		panel_5.add(lblNewLabel_14);
-
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(0, 187, 249));
-		panel_6.setBounds(441, 495, 340, 138);
-		panel.add(panel_6);
-		panel_6.setLayout(null);
-
-		JLabel lblNewLabel_15 = new JLabel("Servicios extras:");
-		lblNewLabel_15.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
-		lblNewLabel_15.setBounds(10, 11, 320, 30);
-		panel_6.add(lblNewLabel_15);
-
-		JLabel lblNewLabel_16 = new JLabel("desayuno/comida/cena $500 pesos");
-		lblNewLabel_16.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_16.setForeground(Color.WHITE);
-		lblNewLabel_16.setBounds(10, 52, 320, 20);
-		panel_6.add(lblNewLabel_16);
-
-		JLabel lblNewLabel_17 = new JLabel("renta de consola: $450 pesos");
-		lblNewLabel_17.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_17.setForeground(Color.WHITE);
-		lblNewLabel_17.setBounds(10, 83, 320, 20);
-		panel_6.add(lblNewLabel_17);
-
-		JButton btnOcupado = new JButton("OCUPADO");
-		btnOcupado.setBackground(new Color(239, 35, 60));
+		JButton btnOcupado = new JButton("LIBRE");
+		btnOcupado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnOcupado.setBackground(new Color(50, 186, 124));
 		btnOcupado.setForeground(Color.WHITE);
 		btnOcupado.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnOcupado.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnOcupado.setBounds(845, 200, 270, 60);
+		btnOcupado.setBounds(100, 178, 270, 60);
 		panel.add(btnOcupado);
 
-		JButton btnHistorial = new JButton("Descargar historial");
+		JButton btnHistorial = new JButton("Check out \r\n");
 		btnHistorial.setBackground(new Color(255, 214, 10));
 		btnHistorial.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnHistorial.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnHistorial.setBounds(845, 495, 270, 60);
+		btnHistorial.setBounds(387, 566, 270, 60);
 		panel.add(btnHistorial);
 
-		JButton btnEditarHabitacion = new JButton("Editar habitación");
+		JButton btnEditarHabitacion = new JButton("Liberar habitacion");
+		btnEditarHabitacion.setForeground(new Color(255, 255, 255));
+		btnEditarHabitacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnEditarHabitacion.setBackground(new Color(50, 186, 124));
 		btnEditarHabitacion.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnEditarHabitacion.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEditarHabitacion.setBounds(845, 566, 270, 60);
-		btnEditarHabitacion.addActionListener(new ActionListener() {
+		btnEditarHabitacion.setBounds(387, 261, 270, 60);
+		panel.add(btnEditarHabitacion);
+		
+		JButton btnModificarReserva = new JButton("Modificar reserva\r\n");
+		btnModificarReserva.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
+		btnModificarReserva.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnModificarReserva.setBackground(new Color(255, 214, 10));
+		btnModificarReserva.setBounds(387, 348, 270, 60);
+		btnModificarReserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
-				Editar_datos_de_cliente conexion = new Editar_datos_de_cliente();
+				Rentas_modificar_reserva conexion = new Rentas_modificar_reserva();
 				conexion.frame.setVisible(true); 	
 			}
 		});
-		panel.add(btnEditarHabitacion);
+		panel.add(btnModificarReserva);
+		
+		JButton btnEditarHabitacion_1_1 = new JButton("Bloquear por mantemiento \r\n");
+		btnEditarHabitacion_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
+		btnEditarHabitacion_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEditarHabitacion_1_1.setBackground(SystemColor.activeCaptionBorder);
+		btnEditarHabitacion_1_1.setBounds(387, 450, 270, 60);
+		panel.add(btnEditarHabitacion_1_1);
 	}
 }

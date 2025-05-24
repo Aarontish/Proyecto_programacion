@@ -21,7 +21,7 @@ import javax.swing.JButton;
 
 public class Menu {
 
-	private JFrame frame; // El frame es privado, pero su visibilidad se controla con el método setVisible(boolean b)
+	JFrame frame; // El frame es privado, pero su visibilidad se controla con el método setVisible(boolean b)
 
 	/**
 	 * Launch the application.
@@ -91,10 +91,9 @@ public class Menu {
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de TiposDeHabitaciones
-				// frame.dispose(); // Opcional: cierra la ventana actual del menú
-				// TiposDeHabitaciones window = new TiposDeHabitaciones();
-				// window.getFrame().setVisible(true); // Asumiendo que TiposDeHabitaciones tiene un método getFrame()
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tipos_de_habitacion conexion = new Tipos_de_habitacion();
+				conexion.frame.setVisible(true); 	
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -107,6 +106,9 @@ public class Menu {
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Aquí podrías abrir la ventana de Rentas
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 	
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -129,7 +131,16 @@ public class Menu {
 		btnclientes.setBackground(new Color(56, 54, 41));
 		btnclientes.setBounds(841, 0, 81, 23);
 		panel_2.add(btnclientes);
-
+		
+		JButton btnClientes = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Aquí podrías abrir la ventana de Rentas
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 	
+			}
+		});
 		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
@@ -140,11 +151,22 @@ public class Menu {
 		btnhabitaciones.setBackground(new Color(56, 54, 41));
 		btnhabitaciones.setBounds(731, 0, 100, 23);
 		panel_2.add(btnhabitaciones);
+		
+		JButton btnHabitaciones = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
+		btnhabitaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Aquí podrías abrir la ventana de Rentas
+				frame.dispose(); // Cierra la ventana actual del menú
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 	
+			}
+		});
 
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Aquí podrías abrir la ventana de Tarifas
+				
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -160,10 +182,9 @@ public class Menu {
 		JLabel logo = new JLabel(""); //Logo
 		logo.setBounds(0, 0, 170, 95);
 		// CORRECCIÓN: Usar getResource para cargar la imagen
-		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
-	    Image portada2 = portada1.getImage();
-	    Image portada3 = portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
-	    logo.setIcon(new ImageIcon(portada3));
+		ImageIcon icon2 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image imagen2 = icon2.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(imagen2));
 		panel_1.add(logo);
 
 		JLabel Titulo = new JLabel("Bienvenidos"); //Titulo
@@ -189,8 +210,8 @@ public class Menu {
 			public void actionPerformed(ActionEvent e) {
 				// Ejemplo de cómo abrir otra ventana (DetallesHabitacion1)
 				frame.dispose(); // Cierra la ventana actual del menú
-				DetallesHabitacion1 detallesHabitacion1 = new DetallesHabitacion1();
-				detallesHabitacion1.frame.setVisible(true); // Abre la ventana DetallesHabitacion1
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 	
 			}
 		});
 		botonPanelDeHabitaciones.setBackground(new Color(255, 214, 10));
@@ -201,10 +222,9 @@ public class Menu {
         botonPanelDeHabitaciones.setVerticalAlignment(SwingConstants.CENTER);
         botonPanelDeHabitaciones.setIconTextGap(1);
 		// CORRECCIÓN: Usar getResource para cargar la imagen
-		ImageIcon p1 = new ImageIcon(getClass().getResource("/images/cama_individual.png"));
-		Image p2 = p1.getImage();
-		Image p3 = p2.getScaledInstance(55, 60, Image.SCALE_SMOOTH);
-		botonPanelDeHabitaciones.setIcon(new ImageIcon(p3));
+        ImageIcon icon121 = new ImageIcon(getClass().getResource("/images/cama_individual.png"));
+        Image imagen121 = icon121.getImage().getScaledInstance(70, 80, Image.SCALE_SMOOTH);
+        botonPanelDeHabitaciones.setIcon(new ImageIcon(imagen121));
 		botonPanelDeHabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		panel_3.add(botonPanelDeHabitaciones);
 
@@ -213,6 +233,9 @@ public class Menu {
 		botonClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Aquí podrías abrir la ventana de Clientes
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 	
 			}
 		});
 		botonClientes.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -236,6 +259,9 @@ public class Menu {
 		botonRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Aquí podrías abrir la ventana de Rentas
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas renta = new Rentas();
+				renta.frame.setVisible(true); 				
 			}
 		});
 		botonRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -247,19 +273,22 @@ public class Menu {
         botonRentas.setVerticalAlignment(SwingConstants.CENTER);
         botonRentas.setIconTextGap(1);
 		// CORRECCIÓN: Usar getResource para cargar la imagen
-		ImageIcon d1 = new ImageIcon(getClass().getResource("/images/renta.png"));
-		Image d2 = d1.getImage();
-		Image d3 = d2.getScaledInstance(55, 60, Image.SCALE_SMOOTH);
-		botonRentas.setIcon(new ImageIcon(d3));
+        ImageIcon icon112 = new ImageIcon(getClass().getResource("/images/renta.png"));
+        Image imagen112 = icon112.getImage().getScaledInstance(55, 60, Image.SCALE_SMOOTH);
+        botonRentas.setIcon(new ImageIcon(imagen112));
 		panel_3.add(botonRentas);
 
 		JButton botonTiposDeHabitaciones = new JButton("<html><div style='text-align:center;'>Tipos de Habitaciones<br><br></div></html>"); //Botón tipos de habitación
 		botonTiposDeHabitaciones.setFont(new Font("Jost*", Font.BOLD, 16));
-		botonTiposDeHabitaciones.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de TiposDeHabitaciones
-			}
-		});
+		botonPanelDeHabitaciones.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            
+            	frame.dispose(); // Cierra la ventana actual del menú
+				Tipos_de_habitacion conexion = new Tipos_de_habitacion();
+				conexion.frame.setVisible(true); 	
+            }
+        });
 		botonTiposDeHabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		botonTiposDeHabitaciones.setBackground(new Color(255, 214, 10));
 		botonTiposDeHabitaciones.setBounds(512, 10, 125, 150);
@@ -269,10 +298,9 @@ public class Menu {
 		botonTiposDeHabitaciones.setVerticalAlignment(SwingConstants.CENTER);
 		botonTiposDeHabitaciones.setIconTextGap(1);
 		// CORRECCIÓN: Usar getResource para cargar la imagen
-		ImageIcon c1_th = new ImageIcon(getClass().getResource("/images/cama_doble.png"));
-		Image c2_th = c1_th.getImage();
-		Image c3_th = c2_th.getScaledInstance(75, 80, Image.SCALE_SMOOTH);
-		botonTiposDeHabitaciones.setIcon(new ImageIcon(c3_th));
+		ImageIcon icon11 = new ImageIcon(getClass().getResource("/images/cama_doble.png"));
+        Image imagen11 = icon11.getImage().getScaledInstance(70, 80, Image.SCALE_SMOOTH);
+        botonPanelDeHabitaciones.setIcon(new ImageIcon(imagen11));
 		botonTiposDeHabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		panel_3.add(botonTiposDeHabitaciones);
 
@@ -281,6 +309,7 @@ public class Menu {
 		botonTarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Aquí podrías abrir la ventana de Tarifas
+				
 			}
 		});
 		botonTarifas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -292,20 +321,23 @@ public class Menu {
 		botonTarifas.setVerticalAlignment(SwingConstants.CENTER);
 		botonTarifas.setIconTextGap(1);
 		// CORRECCIÓN: Usar getResource para cargar la imagen
-		ImageIcon e1_t = new ImageIcon(getClass().getResource("/images/tarifa_por_hora.png"));
-		Image e2_t = e1_t.getImage();
-		Image e3_t = e2_t.getScaledInstance(55, 60, Image.SCALE_SMOOTH);
-		botonTarifas.setIcon(new ImageIcon(e3_t));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/images/tarifa_por_hora.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(50, 60, Image.SCALE_SMOOTH);
+        botonTarifas.setIcon(new ImageIcon(imagen1));
 		panel_3.add(botonTarifas);
 
 		JLabel decoracion = new JLabel(""); //imagen junto al menú
 		decoracion.setBounds(730, 150, 424, 400);
 		// CORRECCIÓN: Usar getResource para cargar la imagen
-		ImageIcon v1 = new ImageIcon(getClass().getResource("/images/decoracion.png"));
-		Image v2 = v1.getImage();
-		Image v3 = v2.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
-		decoracion.setIcon(new ImageIcon(v3));
+		ImageIcon icon12 = new ImageIcon(getClass().getResource("/images/decoracion.png"));
+        Image imagen12 = icon12.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH);
+        decoracion.setIcon(new ImageIcon(imagen12));
 		panel.add(decoracion);
+	}
+
+	protected void dispose() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	// Este método debe hacer visible el JFrame interno 'frame'
