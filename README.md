@@ -1,4 +1,4 @@
-Hotel
+
 Este repositorio contiene el código fuente del proyecto Proyecto_programacion_Hotel, desarrollado en Java.
 
 
