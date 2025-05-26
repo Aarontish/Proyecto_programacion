@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -19,11 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 
-import com.formdev.flatlaf.FlatLightLaf;
-
-public class PanelHabitaciones2 {
+public class Clientes_eliminar {
 
 	JFrame frame;
 	private JTextField textField;
@@ -35,7 +31,7 @@ public class PanelHabitaciones2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PanelHabitaciones2 window = new PanelHabitaciones2();
+					Clientes_eliminar window = new Clientes_eliminar();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,15 +43,7 @@ public class PanelHabitaciones2 {
 	/**
 	 * Create the application.
 	 */
-	public PanelHabitaciones2() {
-		
-		try {
-            UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90); // Esquinas redondas
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-		
+	public Clientes_eliminar() {
 		initialize();
 	}
 
@@ -93,15 +81,15 @@ public class PanelHabitaciones2 {
 	        logo.setIcon(new ImageIcon(portada3));
 		panel_1.add(logo);
 		
-		JLabel Titulo = new JLabel("Panel de Habitaciones"); //Titulo 
+		JLabel Titulo = new JLabel("Panel de clientes\r\n"); //Titulo 
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
 		
-		JLabel menuTitulo = new JLabel("Seleccione la habitación que desea eliminar"); //Texto menú
-		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 26));
-		menuTitulo.setBounds(131, 126, 550, 56);
+		JLabel menuTitulo = new JLabel("Clientes:"); //Texto menú
+		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
+		menuTitulo.setBounds(131, 126, 245, 56);
 		panel.add(menuTitulo);
 		
 		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
@@ -146,7 +134,7 @@ public class PanelHabitaciones2 {
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
-				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				Clientes conexion = new Clientes();
 				conexion.frame.setVisible(true); 	
 			}
 		});
@@ -265,16 +253,16 @@ public class PanelHabitaciones2 {
         });
 		panel.add(textField);	
 		
-		JButton btnEliminarCliente = new JButton("Eliminar Habitación"); //Botón prinicipal eliminar cliente
+		JButton btnEliminarCliente = new JButton("Eliminar Cliente"); //Botón prinicipal eliminar cliente
 		btnEliminarCliente.setBackground(new Color(239, 35, 60));
-		btnEliminarCliente.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
+		btnEliminarCliente.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnEliminarCliente.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnEliminarCliente.setForeground(Color.WHITE);
 		btnEliminarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnEliminarCliente.setBounds(131, 193, 245, 40);
+		btnEliminarCliente.setBounds(131, 417, 150, 26);
 		panel.add(btnEliminarCliente);
 		
 		JButton btnCuartoA1 = new JButton("Cuarto A1"); //Botón Cuarto A1
@@ -291,26 +279,24 @@ public class PanelHabitaciones2 {
 		btnCuartoA1.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoA1.setIconTextGap(1);
 		btnCuartoA1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		ImageIcon p1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image p2 = p1.getImage();
-		Image p3 = p2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA1.setIcon(new ImageIcon(p3));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoA1.setIcon(new ImageIcon(imagen1));
 		panel.add(btnCuartoA1);
 		
 		JButton btnCuartoB1 = new JButton("Cuarto B1"); //Botón Cuarto B1
 		btnCuartoB1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoB1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB1.setBackground(new Color(0, 187, 249));
-		btnCuartoB1.setBounds(131, 455, 150, 150);
+		btnCuartoB1.setBounds(131, 453, 150, 150);
 		btnCuartoB1.setVerticalTextPosition(SwingConstants.BOTTOM); //Para poner texto debajo de la imagen dentro del botón
 		btnCuartoB1.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoB1.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB1.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoB1.setIconTextGap(1);
-		ImageIcon b1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image b2 = b1.getImage();
-		Image b3 = b2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB1.setIcon(new ImageIcon(b3));
+		ImageIcon icon2= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen2= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB1.setIcon(new ImageIcon(imagen1));
 		panel.add(btnCuartoB1);
 		
 		JButton btnCuartoA2 = new JButton("Cuarto A2"); //Botón Cuarto A2
@@ -327,10 +313,9 @@ public class PanelHabitaciones2 {
 		btnCuartoA2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoA2.setBackground(new Color(0, 187, 249));
 		btnCuartoA2.setBounds(331, 257, 150, 150);
-		ImageIcon g1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image g2 = g1.getImage();
-		Image g3 = g2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA2.setIcon(new ImageIcon(g3));
+		ImageIcon icon3= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen3= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoA2.setIcon(new ImageIcon(imagen3));
 		panel.add(btnCuartoA2);
 		
 		JButton btnCuartoB2 = new JButton("Cuarto B2"); //Botón Cuarto B2
@@ -342,11 +327,10 @@ public class PanelHabitaciones2 {
 		btnCuartoB2.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB2.setBackground(new Color(0, 187, 249));
-		btnCuartoB2.setBounds(331, 455, 150, 150);
-		ImageIcon q1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image q2 = q1.getImage();
-		Image q3 = q2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB2.setIcon(new ImageIcon(q3));
+		btnCuartoB2.setBounds(331, 453, 150, 150);
+		ImageIcon icon4= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen4= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB2.setIcon(new ImageIcon(imagen4));
 		panel.add(btnCuartoB2);
 		
 		JButton btnCuartoA3 = new JButton("Cuarto A3"); //Botón Cuarto A3
@@ -363,10 +347,9 @@ public class PanelHabitaciones2 {
 		btnCuartoA3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoA3.setBackground(new Color(0, 187, 249));
 		btnCuartoA3.setBounds(531, 257, 150, 150);
-		ImageIcon h1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image h2 = h1.getImage();
-		Image h3 = h2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA3.setIcon(new ImageIcon(h3));
+		ImageIcon icon5 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen5 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoA3.setIcon(new ImageIcon(imagen3));
 		panel.add(btnCuartoA3);
 		
 		JButton btnCuartoA4 = new JButton("Cuarto A4"); //Botón Cuarto A4
@@ -383,10 +366,9 @@ public class PanelHabitaciones2 {
 		btnCuartoA4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoA4.setBackground(new Color(0, 187, 249));
 		btnCuartoA4.setBounds(731, 257, 150, 150);
-		ImageIcon j1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image j2 = j1.getImage();
-		Image j3 = j2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA4.setIcon(new ImageIcon(j3));
+		ImageIcon icon6= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen6= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoA4.setIcon(new ImageIcon(imagen6));
 		panel.add(btnCuartoA4);
 		
 		JButton btnCuartoA5 = new JButton("Cuarto A5"); //Botón Cuarto A5
@@ -403,10 +385,9 @@ public class PanelHabitaciones2 {
 		btnCuartoA5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoA5.setBackground(new Color(0, 187, 249));
 		btnCuartoA5.setBounds(931, 257, 150, 150);
-		ImageIcon d1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image d2 = d1.getImage();
-		Image d3 = d2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA5.setIcon(new ImageIcon(d3));
+		ImageIcon icon7= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen7= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoA5.setIcon(new ImageIcon(imagen7));
 		panel.add(btnCuartoA5);
 		
 		JButton btnCuartoB3 = new JButton("Cuarto B3"); //Botón Cuarto B3
@@ -422,11 +403,10 @@ public class PanelHabitaciones2 {
 		btnCuartoB3.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB3.setBackground(new Color(0, 187, 249));
-		btnCuartoB3.setBounds(531, 455, 150, 150);
-		ImageIcon v1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image v2 = v1.getImage();
-		Image v3 = v2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB3.setIcon(new ImageIcon(v3));
+		btnCuartoB3.setBounds(531, 453, 150, 150);
+		ImageIcon icon8= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen8 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB3.setIcon(new ImageIcon(imagen8));
 		panel.add(btnCuartoB3);
 		
 		JButton btnCuartoB4 = new JButton("Cuarto B4"); //Botón Cuarto B4
@@ -442,14 +422,17 @@ public class PanelHabitaciones2 {
 		btnCuartoB4.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB4.setBackground(new Color(0, 187, 249));
-		btnCuartoB4.setBounds(731, 455, 150, 150);
-		ImageIcon k1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image k2 = k1.getImage();
-		Image k3 = k2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB4.setIcon(new ImageIcon(k3));
+		btnCuartoB4.setBounds(731, 453, 150, 150);
+		ImageIcon icon10= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen10 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB4.setIcon(new ImageIcon(imagen10));
 		panel.add(btnCuartoB4);
 		
 		JButton btnCuartoB5 = new JButton("Cuarto B5"); //Botón Cuarto B5
+		btnCuartoB5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnCuartoB5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoB5.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCuartoB5.setVerticalAlignment(SwingConstants.CENTER);
@@ -458,95 +441,95 @@ public class PanelHabitaciones2 {
 		btnCuartoB5.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB5.setBackground(new Color(0, 187, 249));
-		btnCuartoB5.setBounds(931, 455, 150, 150);
-		ImageIcon w1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image w2 = w1.getImage();
-		Image w3 = w2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB5.setIcon(new ImageIcon(w3));
+		btnCuartoB5.setBounds(931, 453, 150, 150);
+		ImageIcon icon11= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen11= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB5.setIcon(new ImageIcon(imagen10));
 		panel.add(btnCuartoB5);
 		
-		JButton btnEliminarHabitacionA1 = new JButton("Eliminar Habitación"); //Botón eliminar cuarto A1
-		btnEliminarHabitacionA1.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionA1.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionA1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionA1.setForeground(Color.WHITE);
-		btnEliminarHabitacionA1.setBounds(131, 418, 150, 23);
-		panel.add(btnEliminarHabitacionA1);
+		JButton btnEliminarCliente_1 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_1.setForeground(Color.WHITE);
+		btnEliminarCliente_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_1.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_1.setBounds(331, 417, 150, 26);
+		panel.add(btnEliminarCliente_1);
 		
-		JButton btnEliminarHabitacionA2 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto A2
-		btnEliminarHabitacionA2.setForeground(Color.WHITE);
-		btnEliminarHabitacionA2.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionA2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionA2.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionA2.setBounds(331, 418, 150, 23);
-		panel.add(btnEliminarHabitacionA2);
+		JButton btnEliminarCliente_1_1 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_1_1.setForeground(Color.WHITE);
+		btnEliminarCliente_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_1_1.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_1_1.setBounds(531, 417, 150, 26);
+		panel.add(btnEliminarCliente_1_1);
 		
-		JButton btnEliminarHabitacionA3 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto A3
-		btnEliminarHabitacionA3.setForeground(Color.WHITE);
-		btnEliminarHabitacionA3.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionA3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionA3.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionA3.setBounds(531, 418, 150, 23);
-		panel.add(btnEliminarHabitacionA3);
+		JButton btnEliminarCliente_1_1_1 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_1_1_1.setForeground(Color.WHITE);
+		btnEliminarCliente_1_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_1_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_1_1_1.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_1_1_1.setBounds(731, 417, 150, 26);
+		panel.add(btnEliminarCliente_1_1_1);
 		
-		JButton btnEliminarHabitacionA4 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto A4
-		btnEliminarHabitacionA4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnEliminarHabitacionA4.setForeground(Color.WHITE);
-		btnEliminarHabitacionA4.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionA4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionA4.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionA4.setBounds(731, 418, 150, 23);
-		panel.add(btnEliminarHabitacionA4);
+		JButton btnEliminarCliente_1_1_1_1 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_1_1_1_1.setForeground(Color.WHITE);
+		btnEliminarCliente_1_1_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_1_1_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_1_1_1_1.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_1_1_1_1.setBounds(931, 417, 150, 26);
+		panel.add(btnEliminarCliente_1_1_1_1);
 		
-		JButton btnEliminarHabitacionA5 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto A5
-		btnEliminarHabitacionA5.setForeground(Color.WHITE);
-		btnEliminarHabitacionA5.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionA5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionA5.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionA5.setBounds(931, 418, 150, 23);
-		panel.add(btnEliminarHabitacionA5);
+		JButton btnEliminarCliente_2 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_2.setForeground(Color.WHITE);
+		btnEliminarCliente_2.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_2.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_2.setBounds(131, 613, 150, 26);
+		panel.add(btnEliminarCliente_2);
 		
-		JButton btnEliminarHabitacionB1 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B1
-		btnEliminarHabitacionB1.setForeground(Color.WHITE);
-		btnEliminarHabitacionB1.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionB1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionB1.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionB1.setBounds(131, 616, 150, 23);
-		panel.add(btnEliminarHabitacionB1);
+		JButton btnEliminarCliente_2_1 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_2_1.setForeground(Color.WHITE);
+		btnEliminarCliente_2_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_2_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_2_1.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_2_1.setBounds(331, 613, 150, 26);
+		panel.add(btnEliminarCliente_2_1);
 		
-		JButton btnEliminarHabitacionB2 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B2
-		btnEliminarHabitacionB2.setForeground(Color.WHITE);
-		btnEliminarHabitacionB2.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionB2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionB2.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionB2.setBounds(331, 616, 150, 23);
-		panel.add(btnEliminarHabitacionB2);
+		JButton btnEliminarCliente_2_1_1 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_2_1_1.setForeground(Color.WHITE);
+		btnEliminarCliente_2_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_2_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_2_1_1.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_2_1_1.setBounds(531, 613, 150, 26);
+		panel.add(btnEliminarCliente_2_1_1);
 		
-		JButton btnEliminarHabitacionB3 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B3
-		btnEliminarHabitacionB3.setForeground(Color.WHITE);
-		btnEliminarHabitacionB3.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionB3.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionB3.setBounds(531, 616, 150, 23);
-		panel.add(btnEliminarHabitacionB3);
+		JButton btnEliminarCliente_2_1_1_1 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_2_1_1_1.setForeground(Color.WHITE);
+		btnEliminarCliente_2_1_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_2_1_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_2_1_1_1.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_2_1_1_1.setBounds(731, 613, 150, 26);
+		panel.add(btnEliminarCliente_2_1_1_1);
 		
-		JButton btnEliminarHabitacionB4 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B4
-		btnEliminarHabitacionB4.setForeground(Color.WHITE);
-		btnEliminarHabitacionB4.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionB4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionB4.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionB4.setBounds(731, 616, 150, 23);
-		panel.add(btnEliminarHabitacionB4);
+		JButton btnEliminarCliente_2_1_1_1_1 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_2_1_1_1_1.setForeground(Color.WHITE);
+		btnEliminarCliente_2_1_1_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnEliminarCliente_2_1_1_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_2_1_1_1_1.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_2_1_1_1_1.setBounds(931, 613, 150, 26);
+		panel.add(btnEliminarCliente_2_1_1_1_1);
 		
-		JButton btnEliminarHabitacionB5 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B5
-		btnEliminarHabitacionB5.setForeground(Color.WHITE);
-		btnEliminarHabitacionB5.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
-		btnEliminarHabitacionB5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEliminarHabitacionB5.setBackground(new Color(239, 35, 60));
-		btnEliminarHabitacionB5.setBounds(931, 616, 150, 23);
-		panel.add(btnEliminarHabitacionB5);
+		JButton btnEliminarCliente_3 = new JButton("Eliminar Cliente");
+		btnEliminarCliente_3.setForeground(Color.WHITE);
+		btnEliminarCliente_3.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
+		btnEliminarCliente_3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnEliminarCliente_3.setBackground(new Color(239, 35, 60));
+		btnEliminarCliente_3.setBounds(131, 192, 216, 40);
+		panel.add(btnEliminarCliente_3);
+	}
+
+	private void btnCuartoA1(ImageIcon imageIcon) {
+		// TODO Auto-generated method stub
+		
 	}
 }
