@@ -10,6 +10,5 @@
 	<classpathentry kind="lib" path="lib/flatlaf-3.2.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-j-9.3.0.jar"/>
 	<classpathentry kind="lib" path="lib/jbcrypt-0.4.jar"/>
-	<classpathentry kind="lib" path="Librerias/flatlaf-3.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

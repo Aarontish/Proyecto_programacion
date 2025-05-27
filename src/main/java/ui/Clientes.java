@@ -18,6 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
+import com.formdev.flatlaf.FlatLightLaf;
 
 public class Clientes {
 
@@ -44,6 +47,14 @@ public class Clientes {
 	 * Create the application.
 	 */
 	public Clientes() {
+		
+		try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+            UIManager.put("Button.arc", 90); // Esquinas redondas
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+		
 		initialize();
 	}
 
@@ -75,10 +86,10 @@ public class Clientes {
 		
 		JLabel logo = new JLabel(""); //Logo
 		logo.setBounds(0, 0, 170, 95);
-		 ImageIcon portada1 =new ImageIcon("images/logo.png");
-	        Image portada2= portada1.getImage();
-	        Image portada3=portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
-	        logo.setIcon(new ImageIcon(portada3));
+		
+		ImageIcon icon12 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image imagen12 = icon12.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(imagen12));   
 		panel_1.add(logo);
 		
 		JLabel Titulo = new JLabel("Panel de clientes\r\n"); //Titulo 
