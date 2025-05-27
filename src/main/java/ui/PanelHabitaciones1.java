@@ -271,7 +271,7 @@ public class PanelHabitaciones1 {
         });
 		panel.add(textField);	
 		
-		JButton btnEliminarCliente = new JButton("Eliminar Cliente"); //Botón prinicipal eliminar cliente
+		JButton btnEliminarCliente = new JButton("Eliminar habitacion"); //Botón prinicipal eliminar cliente
 		btnEliminarCliente.setBackground(new Color(239, 35, 60));
 		btnEliminarCliente.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnEliminarCliente.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
