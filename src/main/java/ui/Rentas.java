@@ -140,10 +140,9 @@ public class Rentas {
 			}
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
-		ImageIcon f1 = new ImageIcon("images/flecha_izquierda.png");
-		Image f2 = f1.getImage();
-		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonVolver.setIcon(new ImageIcon(f3));
+		ImageIcon icon10 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+        Image imagen10 = icon10.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		botonVolver.setIcon(new ImageIcon(imagen10));
 		panel.add(botonVolver);
 		
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
@@ -219,10 +218,9 @@ public class Rentas {
 			}
 		});
 		btnBuscar.setBounds(720, 140, 40, 40);
-		ImageIcon u1 = new ImageIcon("images/busqueda.png");
-		Image u2 = u1.getImage();
-		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		btnBuscar.setIcon(new ImageIcon(u3));
+		ImageIcon icon11 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
+        Image imagen11 = icon11.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH); 
+		btnBuscar.setIcon(new ImageIcon(imagen11));
 		btnBuscar.setBorderPainted(false);
 		btnBuscar.setFocusPainted(false);
 		btnBuscar.setContentAreaFilled(true);
@@ -271,10 +269,9 @@ public class Rentas {
 		btnCuartoA1.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoA1.setIconTextGap(1);
 		btnCuartoA1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		ImageIcon p1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image p2 = p1.getImage();
-		Image p3 = p2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA1.setIcon(new ImageIcon(p3));
+		ImageIcon icon6 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen6 = icon6.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+		btnCuartoA1.setIcon(new ImageIcon(imagen6));
 		panel.add(btnCuartoA1);
 		
 		JButton btnCuartoB1 = new JButton("Cuarto B1"); //Botón Cuarto B1
@@ -287,10 +284,9 @@ public class Rentas {
 		btnCuartoB1.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB1.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoB1.setIconTextGap(1);
-		ImageIcon b1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image b2 = b1.getImage();
-		Image b3 = b2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB1.setIcon(new ImageIcon(b3));
+		ImageIcon icon5 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen5 = icon5.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+		btnCuartoB1.setIcon(new ImageIcon(imagen5));
 		panel.add(btnCuartoB1);
 		
 		JButton btnCuartoA2 = new JButton("Cuarto A2"); //Botón Cuarto A2
@@ -307,13 +303,16 @@ public class Rentas {
 		btnCuartoA2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoA2.setBackground(new Color(50, 186, 124));
 		btnCuartoA2.setBounds(331, 257, 150, 150);
-		ImageIcon g1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image g2 = g1.getImage();
-		Image g3 = g2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA2.setIcon(new ImageIcon(g3));
+		ImageIcon icon4 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen4 = icon4.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+		btnCuartoA2.setIcon(new ImageIcon(imagen4));
 		panel.add(btnCuartoA2);
 		
 		JButton btnCuartoB2 = new JButton("Cuarto B2"); //Botón Cuarto B2
+		btnCuartoB2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnCuartoB2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoB2.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCuartoB2.setVerticalAlignment(SwingConstants.CENTER);
@@ -323,10 +322,9 @@ public class Rentas {
 		btnCuartoB2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB2.setBackground(new Color(50, 186, 124));
 		btnCuartoB2.setBounds(331, 455, 150, 150);
-		ImageIcon q1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image q2 = q1.getImage();
-		Image q3 = q2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB2.setIcon(new ImageIcon(q3));
+		ImageIcon icon7 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen7 = icon7.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
+		btnCuartoB2.setIcon(new ImageIcon(imagen7));
 		panel.add(btnCuartoB2);
 		
 		JButton btnCuartoA3 = new JButton("Cuarto A3"); //Botón Cuarto A3
@@ -343,10 +341,9 @@ public class Rentas {
 		btnCuartoA3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoA3.setBackground(new Color(239, 35, 60));
 		btnCuartoA3.setBounds(531, 257, 150, 150);
-		ImageIcon h1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image h2 = h1.getImage();
-		Image h3 = h2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA3.setIcon(new ImageIcon(h3));
+		ImageIcon icon8 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen8= icon8.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+		btnCuartoA3.setIcon(new ImageIcon(imagen8));
 		panel.add(btnCuartoA3);
 		
 		JButton btnCuartoA4 = new JButton("Cuarto A4"); //Botón Cuarto A4
@@ -363,10 +360,9 @@ public class Rentas {
 		btnCuartoA4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoA4.setBackground(SystemColor.activeCaptionBorder);
 		btnCuartoA4.setBounds(731, 257, 150, 150);
-		ImageIcon j1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image j2 = j1.getImage();
-		Image j3 = j2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA4.setIcon(new ImageIcon(j3));
+		ImageIcon icon23 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen23 = icon23.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoA4.setIcon(new ImageIcon(imagen23));
 		panel.add(btnCuartoA4);
 		
 		JButton btnCuartoA5 = new JButton("Cuarto A5"); //Botón Cuarto A5
@@ -383,10 +379,9 @@ public class Rentas {
 		btnCuartoA5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoA5.setBackground(new Color(50, 186, 124));
 		btnCuartoA5.setBounds(931, 257, 150, 150);
-		ImageIcon d1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image d2 = d1.getImage();
-		Image d3 = d2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoA5.setIcon(new ImageIcon(d3));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoA5.setIcon(new ImageIcon(imagen1));
 		panel.add(btnCuartoA5);
 		
 		JButton btnCuartoB3 = new JButton("Cuarto B3"); //Botón Cuarto B3
@@ -403,10 +398,9 @@ public class Rentas {
 		btnCuartoB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB3.setBackground(new Color(239, 35, 60));
 		btnCuartoB3.setBounds(531, 455, 150, 150);
-		ImageIcon v1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image v2 = v1.getImage();
-		Image v3 = v2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB3.setIcon(new ImageIcon(v3));
+		ImageIcon icon42 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen42 = icon42.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB3.setIcon(new ImageIcon(imagen42));
 		panel.add(btnCuartoB3);
 		
 		JButton btnCuartoB4 = new JButton("Cuarto B4"); //Botón Cuarto B4
@@ -423,10 +417,9 @@ public class Rentas {
 		btnCuartoB4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB4.setBackground(new Color(50, 186, 124));
 		btnCuartoB4.setBounds(731, 455, 150, 150);
-		ImageIcon k1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image k2 = k1.getImage();
-		Image k3 = k2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB4.setIcon(new ImageIcon(k3));
+		ImageIcon icon44 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen44 = icon44.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB4.setIcon(new ImageIcon(imagen44));
 		panel.add(btnCuartoB4);
 		
 		JButton btnCuartoB5 = new JButton("Cuarto B5"); //Botón Cuarto B5
@@ -439,10 +432,9 @@ public class Rentas {
 		btnCuartoB5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB5.setBackground(new Color(239, 35, 60));
 		btnCuartoB5.setBounds(931, 455, 150, 150);
-		ImageIcon w1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image w2 = w1.getImage();
-		Image w3 = w2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB5.setIcon(new ImageIcon(w3));
+		ImageIcon icon3 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen3 = icon3.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB5.setIcon(new ImageIcon(imagen3));
 		panel.add(btnCuartoB5);
 	}
 

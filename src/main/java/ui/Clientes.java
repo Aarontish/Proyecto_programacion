@@ -150,10 +150,9 @@ public class Clientes {
 			}
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
-		ImageIcon f1 = new ImageIcon("images/flecha_izquierda.png");
-		Image f2 = f1.getImage();
-		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonVolver.setIcon(new ImageIcon(f3));
+		ImageIcon icon69 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+        Image imagen69 = icon69.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		botonVolver.setIcon(new ImageIcon(imagen69));
 		panel.add(botonVolver);
 		
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
@@ -229,10 +228,9 @@ public class Clientes {
 			}
 		});
 		btnBuscar.setBounds(720, 140, 40, 40);
-		ImageIcon u1 = new ImageIcon("images/busqueda.png");
-		Image u2 = u1.getImage();
-		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		btnBuscar.setIcon(new ImageIcon(u3));
+		ImageIcon icon9 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
+        Image imagen9 = icon9.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH); 
+		btnBuscar.setIcon(new ImageIcon(imagen9));
 		btnBuscar.setBorderPainted(false);
 		btnBuscar.setFocusPainted(false);
 		btnBuscar.setContentAreaFilled(true);

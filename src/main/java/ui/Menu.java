@@ -195,7 +195,7 @@ public class Menu {
 
 		JLabel menuTitulo = new JLabel("Menú:"); //Texto menú
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
-		menuTitulo.setBounds(60, 131, 112, 56);
+		menuTitulo.setBounds(60, 131, 144, 56);
 		panel.add(menuTitulo);
 
 		JPanel panel_3 = new JPanel(); //Recuadro al fondo de los botones
@@ -274,35 +274,35 @@ public class Menu {
         botonRentas.setIconTextGap(1);
 		// CORRECCIÓN: Usar getResource para cargar la imagen
         ImageIcon icon112 = new ImageIcon(getClass().getResource("/images/renta.png"));
-        Image imagen112 = icon112.getImage().getScaledInstance(55, 60, Image.SCALE_SMOOTH);
+        Image imagen112 = icon112.getImage().getScaledInstance(70, 80, Image.SCALE_SMOOTH);
         botonRentas.setIcon(new ImageIcon(imagen112));
 		panel_3.add(botonRentas);
 
-		JButton botonTiposDeHabitaciones = new JButton("<html><div style='text-align:center;'>Tipos de Habitaciones<br><br></div></html>"); //Botón tipos de habitación
+		JButton botonTiposDeHabitaciones = new JButton("<html><div style='text-align:center;'>Tipos de Habitaciones<br><br></div></html>"); // Botón tipos de habitación
+		botonTiposDeHabitaciones.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        frame.dispose(); // Cierra la ventana actual del menú
+		        Tipos_de_habitacion conexion = new Tipos_de_habitacion();
+		        conexion.frame.setVisible(true); 
+		    }
+		});
 		botonTiposDeHabitaciones.setFont(new Font("Jost*", Font.BOLD, 16));
-		botonPanelDeHabitaciones.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            
-            	frame.dispose(); // Cierra la ventana actual del menú
-				Tipos_de_habitacion conexion = new Tipos_de_habitacion();
-				conexion.frame.setVisible(true); 	
-            }
-        });
-		botonTiposDeHabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		botonTiposDeHabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 		botonTiposDeHabitaciones.setBackground(new Color(255, 214, 10));
 		botonTiposDeHabitaciones.setBounds(512, 10, 125, 150);
-		botonTiposDeHabitaciones.setVerticalTextPosition(SwingConstants.BOTTOM); //Para poner texto debajo de la imagen dentro del botón
+		botonTiposDeHabitaciones.setVerticalTextPosition(SwingConstants.BOTTOM); // Para poner texto debajo de la imagen dentro del botón
 		botonTiposDeHabitaciones.setHorizontalTextPosition(SwingConstants.CENTER);
 		botonTiposDeHabitaciones.setHorizontalAlignment(SwingConstants.CENTER);
 		botonTiposDeHabitaciones.setVerticalAlignment(SwingConstants.CENTER);
 		botonTiposDeHabitaciones.setIconTextGap(1);
-		// CORRECCIÓN: Usar getResource para cargar la imagen
-		ImageIcon icon11 = new ImageIcon(getClass().getResource("/images/cama_doble.png"));
-        Image imagen11 = icon11.getImage().getScaledInstance(70, 80, Image.SCALE_SMOOTH);
-        botonPanelDeHabitaciones.setIcon(new ImageIcon(imagen11));
-		botonTiposDeHabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+
+		// Asigna un ícono exclusivo a botonTiposDeHabitaciones
+		ImageIcon iconTiposHabitaciones = new ImageIcon(getClass().getResource("/images/cama_doble.png"));
+		Image imagenTiposHabitaciones = iconTiposHabitaciones.getImage().getScaledInstance(70, 80, Image.SCALE_SMOOTH);
+		botonTiposDeHabitaciones.setIcon(new ImageIcon(imagenTiposHabitaciones));
+
 		panel_3.add(botonTiposDeHabitaciones);
+
 
 		JButton botonTarifas = new JButton("Tarifas"); //Botón de tarifas
 		botonTarifas.setFont(new Font("Jost*", Font.BOLD, 16));

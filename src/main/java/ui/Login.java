@@ -217,7 +217,7 @@ public class Login {
         registerLinkButton.setBorderPainted(false);
         registerLinkButton.setContentAreaFilled(false);
         registerLinkButton.setForeground(Color.BLUE);
-        registerLinkButton.setBounds(100, 320, 200, 20); // Posición debajo del mensaje
+        registerLinkButton.setBounds(77, 320, 250, 20); // Posición debajo del mensaje
         registerLinkButton.addActionListener(e -> {
 
             JOptionPane.showMessageDialog(frame, "Funcionalidad de registro pendiente. Abre la ventana de registro.");

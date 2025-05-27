@@ -164,7 +164,7 @@ public class Login2 {
 
 		JLabel textoUsuario = new JLabel("Usuario:"); // Texto para el campo del usuario
 		textoUsuario.setFont(new Font("Jost*", Font.BOLD, 24));
-		textoUsuario.setBounds(382, 152, 94, 30);
+		textoUsuario.setBounds(382, 152, 120, 30);
 		panel.add(textoUsuario);
 
 		usernameField = new JTextField(); // Campo de usuario
@@ -184,7 +184,7 @@ public class Login2 {
 
 		JLabel textoContraseña = new JLabel("Contraseña:"); // Texto para el campo de la contraseña
 		textoContraseña.setFont(new Font("Jost*", Font.BOLD, 24));
-		textoContraseña.setBounds(382, 272, 136, 30);
+		textoContraseña.setBounds(382, 272, 170, 30);
 		panel.add(textoContraseña);
 
 		passwordField = new JPasswordField(); // Campo de contraseña

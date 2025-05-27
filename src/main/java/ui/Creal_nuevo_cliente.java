@@ -78,10 +78,9 @@ public class Creal_nuevo_cliente {
 		JLabel logo = new JLabel(""); //Logo
 		logo.setBounds(0, 0, 170, 95);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/logo.png"));
-		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
-	    Image portada2 = portada1.getImage();
-	    Image portada3 = portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
-	    logo.setIcon(new ImageIcon(portada3));
+		ImageIcon icon11= new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image imagen11= icon11.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+	    logo.setIcon(new ImageIcon(imagen11));
 		panel_1.add(logo);
 
 		JLabel Titulo = new JLabel("Panel de clientes:"); //Titulo
@@ -106,10 +105,9 @@ public class Creal_nuevo_cliente {
 		});
 		botonSuperior1.setBounds(1098, 11, 56, 56);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/usuario.png"));
-		ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
-		Image c2 = c1.getImage();
-		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonSuperior1.setIcon(new ImageIcon(c3));
+		ImageIcon icon121= new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen121= icon121.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
+		botonSuperior1.setIcon(new ImageIcon(imagen121));
 		panel_1.add(botonSuperior1);
 
 
@@ -127,10 +125,9 @@ public class Creal_nuevo_cliente {
 		});
 		botonSuperior2.setBounds(1032, 11, 56, 56);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/informacion.png"));
-		ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
-		Image e2 = e1.getImage();
-		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonSuperior2.setIcon(new ImageIcon(e3));
+		ImageIcon icon111= new ImageIcon(getClass().getResource("/images/informacion.png"));
+        Image imagen111= icon111.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
+		botonSuperior2.setIcon(new ImageIcon(imagen111));
 		panel_1.add(botonSuperior2);
 
 		JButton botonVolver = new JButton(""); // Boton para volver atrás
@@ -148,10 +145,9 @@ public class Creal_nuevo_cliente {
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-		ImageIcon f1 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-		Image f2 = f1.getImage();
-		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonVolver.setIcon(new ImageIcon(f3));
+		ImageIcon icon33= new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+        Image imagen33= icon33.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		botonVolver.setIcon(new ImageIcon(imagen33));
 		panel.add(botonVolver);
 
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
@@ -221,9 +217,8 @@ public class Creal_nuevo_cliente {
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/busqueda.png"));
-		ImageIcon u1 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
-		Image u2 = u1.getImage();
-		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		ImageIcon icon14= new ImageIcon(getClass().getResource("/images/busqueda.png"));
+        Image imagen14= icon14.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         final String placeholder = "BUSCAR";
 
 		JPanel panel_3 = new JPanel();
