@@ -83,7 +83,7 @@ public class CrearNuevoCliente {
 	    logo.setIcon(new ImageIcon(imagen11));
 		panel_1.add(logo);
 
-		JLabel Titulo = new JLabel("Panel de clientes:"); //Titulo
+		JLabel Titulo = new JLabel("Clientes"); //Titulo
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
@@ -91,7 +91,7 @@ public class CrearNuevoCliente {
 
 		JLabel menuTitulo = new JLabel("Crear nuevo cliente:"); //Texto menú
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
-		menuTitulo.setBounds(131, 126, 441, 56);
+		menuTitulo.setBounds(131, 126, 480, 56);
 		panel.add(menuTitulo);
 
 		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
@@ -106,7 +106,7 @@ public class CrearNuevoCliente {
 		botonSuperior1.setBounds(1098, 11, 56, 56);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/usuario.png"));
 		ImageIcon icon121= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen121= icon121.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
+        Image imagen121= icon121.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonSuperior1.setIcon(new ImageIcon(imagen121));
 		panel_1.add(botonSuperior1);
 
@@ -126,7 +126,7 @@ public class CrearNuevoCliente {
 		botonSuperior2.setBounds(1032, 11, 56, 56);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/informacion.png"));
 		ImageIcon icon111= new ImageIcon(getClass().getResource("/images/informacion.png"));
-        Image imagen111= icon111.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
+        Image imagen111= icon111.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonSuperior2.setIcon(new ImageIcon(imagen111));
 		panel_1.add(botonSuperior2);
 
@@ -146,7 +146,7 @@ public class CrearNuevoCliente {
 		botonVolver.setBounds(60, 132, 50, 50);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
 		ImageIcon icon33= new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-        Image imagen33= icon33.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        Image imagen33= icon33.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(imagen33));
 		panel.add(botonVolver);
 
@@ -222,7 +222,7 @@ public class CrearNuevoCliente {
         final String placeholder = "BUSCAR";
 
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(0, 187, 249));
+		panel_3.setBackground(new Color(0, 175, 185));
 		panel_3.setBounds(131, 193, 300, 440);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
@@ -264,46 +264,46 @@ public class CrearNuevoCliente {
 		
 		JLabel menuTitulo_1 = new JLabel("ID del cliente:");
 		menuTitulo_1.setFont(new Font("Dialog", Font.BOLD, 24));
-		menuTitulo_1.setBounds(441, 192, 239, 56);
+		menuTitulo_1.setBounds(441, 193, 239, 40);
 		panel.add(menuTitulo_1);
 		
 		textField_1 = new JTextField();
 		textField_1.setBackground(Color.LIGHT_GRAY);
-		textField_1.setBounds(441, 258, 218, 40);
+		textField_1.setBounds(441, 244, 400, 40);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel menuTitulo_1_1 = new JLabel("Nombre del cliente:");
 		menuTitulo_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
-		menuTitulo_1_1.setBounds(441, 308, 239, 56);
+		menuTitulo_1_1.setBounds(441, 295, 300, 40);
 		panel.add(menuTitulo_1_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBackground(Color.LIGHT_GRAY);
-		textField_2.setBounds(441, 358, 218, 40);
+		textField_2.setBounds(441, 346, 400, 40);
 		panel.add(textField_2);
 		
 		JLabel menuTitulo_1_1_1 = new JLabel("Numero del cliente:");
 		menuTitulo_1_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
-		menuTitulo_1_1_1.setBounds(441, 408, 239, 56);
+		menuTitulo_1_1_1.setBounds(441, 397, 300, 40);
 		panel.add(menuTitulo_1_1_1);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		textField_3.setBackground(Color.LIGHT_GRAY);
-		textField_3.setBounds(441, 455, 218, 40);
+		textField_3.setBounds(441, 448, 400, 40);
 		panel.add(textField_3);
 		
 		JLabel menuTitulo_1_1_1_1 = new JLabel("Correo electronico:");
 		menuTitulo_1_1_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
-		menuTitulo_1_1_1_1.setBounds(441, 505, 239, 56);
+		menuTitulo_1_1_1_1.setBounds(441, 499, 300, 40);
 		panel.add(menuTitulo_1_1_1_1);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
 		textField_4.setBackground(Color.LIGHT_GRAY);
-		textField_4.setBounds(441, 555, 218, 40);
+		textField_4.setBounds(441, 550, 400, 40);
 		panel.add(textField_4);
 	}
 }

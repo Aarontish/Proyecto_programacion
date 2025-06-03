@@ -88,10 +88,9 @@ public class PanelHabitaciones3 {
 		
 		JLabel logo = new JLabel(""); //Logo
 		logo.setBounds(0, 0, 170, 95);
-		 ImageIcon portada1 =new ImageIcon("images/logo.png");
-	        Image portada2= portada1.getImage();
-	        Image portada3=portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
-	        logo.setIcon(new ImageIcon(portada3));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(imagen1));
 		panel_1.add(logo);
 		
 		JLabel Titulo = new JLabel("Panel de Habitaciones"); //Titulo 
@@ -115,10 +114,9 @@ public class PanelHabitaciones3 {
 			}
 		});
 		botonSuperior1.setBounds(1098, 11, 56, 56);
-		ImageIcon c1 = new ImageIcon("images/usuario.png");
-		Image c2 = c1.getImage();
-		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior1.setIcon(new ImageIcon(c3));
+		ImageIcon icon4 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen4 = icon4.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior1.setIcon(new ImageIcon(imagen4));
 		panel_1.add(botonSuperior1);
 		
 		
@@ -132,10 +130,9 @@ public class PanelHabitaciones3 {
 			}
 		});
 		botonSuperior2.setBounds(1032, 11, 56, 56);
-		ImageIcon e1 = new ImageIcon("images/informacion.png");
-		Image e2 = e1.getImage();
-		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior2.setIcon(new ImageIcon(e3));
+		ImageIcon icon3 = new ImageIcon(getClass().getResource("/images/informacion.png"));
+        Image imagen3 = icon3.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior2.setIcon(new ImageIcon(imagen3));
 		panel_1.add(botonSuperior2);
 		
 		JButton botonVolver = new JButton(""); // Boton para volver atrás
@@ -149,10 +146,9 @@ public class PanelHabitaciones3 {
 			}
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
-		ImageIcon f1 = new ImageIcon("images/flecha_izquierda.png");
-		Image f2 = f1.getImage();
-		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonVolver.setIcon(new ImageIcon(f3));
+		ImageIcon icon2 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+        Image imagen2 = icon2.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonVolver.setIcon(new ImageIcon(imagen2));
 		panel.add(botonVolver);
 		
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
@@ -228,10 +224,9 @@ public class PanelHabitaciones3 {
 			}
 		});
 		btnBuscar.setBounds(720, 140, 40, 40);
-		ImageIcon u1 = new ImageIcon("images/busqueda.png");
-		Image u2 = u1.getImage();
-		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		btnBuscar.setIcon(new ImageIcon(u3));
+		ImageIcon icon5 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
+        Image imagen5 = icon5.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        btnBuscar.setIcon(new ImageIcon(imagen5));
 		btnBuscar.setBorderPainted(false);
 		btnBuscar.setFocusPainted(false);
 		btnBuscar.setContentAreaFilled(true);
@@ -277,10 +272,9 @@ public class PanelHabitaciones3 {
 		btnCuartoB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB3.setBackground(new Color(0, 187, 249));
 		btnCuartoB3.setBounds(131, 257, 150, 150);
-		ImageIcon v1 = new ImageIcon("images/cama_matrimonial2.png");
-		Image v2 = v1.getImage();
-		Image v3 = v2.getScaledInstance(120, 120, Image.SCALE_SMOOTH); 
-		btnCuartoB3.setIcon(new ImageIcon(v3));
+		ImageIcon icon13 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+        Image imagen13 = icon13.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        btnCuartoB3.setIcon(new ImageIcon(imagen13));
 		panel.add(btnCuartoB3);
 
 	}

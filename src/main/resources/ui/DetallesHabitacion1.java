@@ -434,7 +434,7 @@ public class DetallesHabitacion1 {
 		btnEditarHabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
-				Editar_datos_de_cliente conexion = new Editar_datos_de_cliente();
+				EditarDatosCliente conexion = new EditarDatosCliente();
 				conexion.frame.setVisible(true); 	
 			}
 		});

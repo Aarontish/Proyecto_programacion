@@ -79,15 +79,15 @@ public class DatosUsuario {
 	    logo.setIcon(new ImageIcon(portada3));
 		panel_1.add(logo);
 
-		JLabel Titulo = new JLabel("Panel de clientes:"); //Titulo
+		JLabel Titulo = new JLabel("Clientes"); //Titulo
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
 
-		JLabel menuTitulo = new JLabel("Datos de usuario:\r\n"); //Texto menú
+		JLabel menuTitulo = new JLabel("Detalles del cliente"); //Texto menú
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
-		menuTitulo.setBounds(131, 126, 441, 56);
+		menuTitulo.setBounds(131, 126, 460, 56);
 		panel.add(menuTitulo);
 
 		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
@@ -219,7 +219,7 @@ public class DatosUsuario {
         final String placeholder = "BUSCAR";
 
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(0, 187, 249));
+		panel_3.setBackground(new Color(0, 175, 185));
 		panel_3.setBounds(131, 193, 300, 440);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
@@ -280,7 +280,7 @@ public class DatosUsuario {
 		btnHistorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
-				Editar_datos_de_cliente conexion = new Editar_datos_de_cliente();
+				EditarDatosCliente conexion = new EditarDatosCliente();
 				conexion.frame.setVisible(true); 	
 			}
 		});
@@ -290,63 +290,10 @@ public class DatosUsuario {
 		btnHistorial.setBounds(856, 573, 270, 60);
 		panel.add(btnHistorial);
 		
-		JLabel menuTitulo_1 = new JLabel("Historial de rentas:\r\n");
-		menuTitulo_1.setFont(new Font("Dialog", Font.BOLD, 28));
-		menuTitulo_1.setBounds(441, 192, 277, 56);
-		panel.add(menuTitulo_1);
-		
-		JLabel menuTitulo_1_1_1 = new JLabel("Habitaciones rentadas:\r\n");
-		menuTitulo_1_1_1.setFont(new Font("Dialog", Font.BOLD, 28));
-		menuTitulo_1_1_1.setBounds(441, 408, 335, 56);
-		panel.add(menuTitulo_1_1_1);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(441, 258, 308, 38);
-		panel.add(panel_4);
-		
-		JLabel lblNewLabel_2 = new JLabel("Renta 14: dia 15 mayo 2024");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 20));
-		panel_4.add(lblNewLabel_2);
-		
-		JButton panel_4_1 = new JButton();
-		panel_4_1.setBounds(441, 312, 308, 38);
-		panel.add(panel_4_1);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Renta 14: dia 15 mayo 2024");
-		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		panel_4_1.add(lblNewLabel_2_1);
-		
-		JPanel panel_4_1_1 = new JPanel();
-		panel_4_1_1.setBounds(441, 360, 308, 38);
-		panel.add(panel_4_1_1);
-		
-		JLabel lblNewLabel_2_1_1 = new JLabel("Renta 14: dia 15 mayo 2024");
-		lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		panel_4_1_1.add(lblNewLabel_2_1_1);
-		
-		JPanel panel_4_1_1_1 = new JPanel();
-		panel_4_1_1_1.setBounds(441, 474, 308, 38);
-		panel.add(panel_4_1_1_1);
-		
-		JLabel lblNewLabel_2_1_1_1 = new JLabel("Renta 14: habitacion normal\r\n");
-		lblNewLabel_2_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		panel_4_1_1_1.add(lblNewLabel_2_1_1_1);
-		
-		JPanel panel_4_1_1_1_1 = new JPanel();
-		panel_4_1_1_1_1.setBounds(441, 529, 308, 38);
-		panel.add(panel_4_1_1_1_1);
-		
-		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("Renta 13: habitacion suit");
-		lblNewLabel_2_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		panel_4_1_1_1_1.add(lblNewLabel_2_1_1_1_1);
-		
-		JPanel panel_4_1_1_1_1_1 = new JPanel();
-		panel_4_1_1_1_1_1.setBounds(441, 583, 308, 38);
-		panel.add(panel_4_1_1_1_1_1);
-		
-		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("Renta 12: habitacion suit");
-		lblNewLabel_2_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		panel_4_1_1_1_1_1.add(lblNewLabel_2_1_1_1_1_1);
+		JLabel HistorialRentas = new JLabel("Historial de rentas:\r\n");
+		HistorialRentas.setFont(new Font("Jost*", Font.BOLD, 32));
+		HistorialRentas.setBounds(441, 193, 370, 40);
+		panel.add(HistorialRentas);
 		
 		JButton btnDescargarHistorial = new JButton("Descargar historial ");
 		btnDescargarHistorial.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
@@ -354,5 +301,46 @@ public class DatosUsuario {
 		btnDescargarHistorial.setBackground(new Color(255, 214, 10));
 		btnDescargarHistorial.setBounds(856, 474, 270, 60);
 		panel.add(btnDescargarHistorial);
+		
+		JLabel FechaRenta1 = new JLabel("Renta 14: día 15 de mayo 2024\r\n");
+		FechaRenta1.setBackground(new Color(255, 255, 255));
+		FechaRenta1.setFont(new Font("Jost*", Font.BOLD, 16));
+		FechaRenta1.setBounds(441, 244, 370, 40);
+		panel.add(FechaRenta1);
+		
+		JLabel FechaRenta2 = new JLabel("Renta 13: día 23 de agosto 2018\r\n");
+		FechaRenta2.setFont(new Font("Jost*", Font.BOLD, 16));
+		FechaRenta2.setBackground(Color.WHITE);
+		FechaRenta2.setBounds(441, 295, 370, 40);
+		panel.add(FechaRenta2);
+		
+		JLabel FechaRenta3 = new JLabel("Renta 12: día 2 de abril 2016\r\n");
+		FechaRenta3.setFont(new Font("Jost*", Font.BOLD, 16));
+		FechaRenta3.setBackground(Color.WHITE);
+		FechaRenta3.setBounds(441, 346, 370, 40);
+		panel.add(FechaRenta3);
+		
+		JLabel lblHabitacionesRentadas = new JLabel("Habitaciones rentadas:");
+		lblHabitacionesRentadas.setFont(new Font("Jost*", Font.BOLD, 32));
+		lblHabitacionesRentadas.setBounds(441, 397, 370, 40);
+		panel.add(lblHabitacionesRentadas);
+		
+		JLabel lblRentaHabitacin = new JLabel("Renta 14: Habitación normal\r\n");
+		lblRentaHabitacin.setFont(new Font("Jost*", Font.BOLD, 16));
+		lblRentaHabitacin.setBackground(Color.WHITE);
+		lblRentaHabitacin.setBounds(441, 448, 370, 40);
+		panel.add(lblRentaHabitacin);
+		
+		JLabel lblRentaHabitacin_3 = new JLabel("Renta 13: Habitación de lujo\r\n");
+		lblRentaHabitacin_3.setFont(new Font("Jost*", Font.BOLD, 16));
+		lblRentaHabitacin_3.setBackground(Color.WHITE);
+		lblRentaHabitacin_3.setBounds(441, 502, 370, 40);
+		panel.add(lblRentaHabitacin_3);
+		
+		JLabel lblRenta = new JLabel("Renta 12: 2 Habitaciones de lujo\r\n");
+		lblRenta.setFont(new Font("Jost*", Font.BOLD, 16));
+		lblRenta.setBackground(Color.WHITE);
+		lblRenta.setBounds(441, 553, 370, 40);
+		panel.add(lblRenta);
 	}
 }

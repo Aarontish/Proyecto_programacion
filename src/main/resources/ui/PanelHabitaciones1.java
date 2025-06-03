@@ -147,7 +147,7 @@ public class PanelHabitaciones1 {
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
 		ImageIcon icon42 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-        Image imagen42 = icon42.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        Image imagen42 = icon42.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(imagen42));
 		panel.add(botonVolver);
 		JButton btnHabitaciones = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
@@ -279,7 +279,7 @@ public class PanelHabitaciones1 {
 				conexion.frame.setVisible(true); 	
 			}
 		});
-		btnEliminarCliente.setBounds(131, 193, 245, 40);
+		btnEliminarCliente.setBounds(131, 193, 280, 40);
 		panel.add(btnEliminarCliente);
 		
 		JButton btnCuartoA1 = new JButton("Cuarto A1"); //Botón Cuarto A1

@@ -7,8 +7,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -17,12 +15,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.SystemColor;
 
-public class DatosRenta {
+public class EditarDatosCliente {
 
 	JFrame frame;
-	private JTextField textField;
+	private JTextField textField_4;
+	private JTextField textField_3;
+	private JTextField textField_2;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -31,7 +31,7 @@ public class DatosRenta {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DatosRenta window = new DatosRenta();
+					EditarDatosCliente window = new EditarDatosCliente();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class DatosRenta {
 	/**
 	 * Create the application.
 	 */
-	public DatosRenta() {
+	public EditarDatosCliente() {
 		initialize();
 	}
 
@@ -82,15 +82,15 @@ public class DatosRenta {
 	    logo.setIcon(new ImageIcon(portada3));
 		panel_1.add(logo);
 
-		JLabel Titulo = new JLabel("Rentas\r\n"); //Titulo
+		JLabel Titulo = new JLabel("Clientes"); //Titulo
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
 
-		JLabel menuTitulo = new JLabel("Detalles de la habitación:"); //Texto menú
+		JLabel menuTitulo = new JLabel("Editar datos"); //Texto menú
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
-		menuTitulo.setBounds(131, 126, 475, 56);
+		menuTitulo.setBounds(131, 126, 441, 56);
 		panel.add(menuTitulo);
 
 		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
@@ -137,7 +137,7 @@ public class DatosRenta {
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
-				Rentas conexion = new Rentas();
+				DatosUsuario conexion = new DatosUsuario();
 				conexion.frame.setVisible(true); 	
 			}
 		});
@@ -215,152 +215,95 @@ public class DatosRenta {
 		btntarifas.setBackground(new Color(56, 54, 41));
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
-
-		JButton btnBuscar = new JButton(""); //Boton para la barra de busqueda
-		btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBuscar.setBounds(720, 140, 40, 40);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/busqueda.png"));
 		ImageIcon u1 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
 		Image u2 = u1.getImage();
 		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		btnBuscar.setIcon(new ImageIcon(u3));
-		btnBuscar.setBorderPainted(false);
-		btnBuscar.setFocusPainted(false);
-		btnBuscar.setContentAreaFilled(true);
-		panel.add(btnBuscar);
-
-		textField = new JTextField("BUSCAR"); //Texto de ejemplo
-		textField.setToolTipText("");
-		textField.setBounds(770, 140, 290, 40);
-		textField.setColumns(10);
-		textField.setBackground(new Color(217, 217, 217));
-        textField.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
-        textField.setForeground(Color.GRAY);
-        final String placeholder = "BUSCAR"; //Borra el texto de ejemplo al escribir en el campo
-        textField.addFocusListener(new FocusAdapter() {
-
-            public void focusGained(FocusEvent e) {
-                if (textField.getText().equals(placeholder)) {
-                    textField.setText("");
-                    textField.setForeground(Color.BLACK);
-                }
-            }
-
-            public void focusLost(FocusEvent e) {
-                if (textField.getText().isEmpty()) {
-                    textField.setText(placeholder);
-                    textField.setForeground(Color.GRAY);
-                }
-            }
-        });
-		panel.add(textField);
+        final String placeholder = "BUSCAR";
 
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(0, 187, 249));
-		panel_3.setBounds(103, 228, 313, 422);
+		panel_3.setBackground(new Color(0, 175, 185));
+		panel_3.setBounds(131, 193, 300, 440);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(57, 11, 200, 170);
+		lblNewLabel.setBounds(45, 11, 200, 200);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
-		ImageIcon v1 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
-		Image v2 = v1.getImage();
-		Image v3 = v2.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-		lblNewLabel.setIcon(new ImageIcon(v3));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/Images/usuario.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        lblNewLabel.setIcon(new ImageIcon(imagen1));
 		panel_3.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Cuarto B3");
+		JLabel lblNewLabel_1 = new JLabel("ID del cliente:\r\n");
 		lblNewLabel_1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_1.setBounds(110, 192, 100, 20);
+		lblNewLabel_1.setBounds(90, 222, 135, 20);
 		panel_3.add(lblNewLabel_1);
 
-		JLabel textoHabitacion = new JLabel("Tipo de habitación:");
-		textoHabitacion.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
-		textoHabitacion.setBounds(90, 223, 167, 20);
+		JLabel textoHabitacion = new JLabel("Nombre:");
+		textoHabitacion.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		textoHabitacion.setBounds(120, 272, 145, 20);
 		panel_3.add(textoHabitacion);
 
-		JLabel lblNewLabel_2 = new JLabel("Suit");
-		lblNewLabel_2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(142, 254, 35, 20);
-		panel_3.add(lblNewLabel_2);
-
-		JLabel lblNewLabel_3 = new JLabel("Camas:");
+		JLabel lblNewLabel_3 = new JLabel("Correo:\r\n");
 		lblNewLabel_3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_3.setBounds(131, 285, 60, 20);
+		lblNewLabel_3.setBounds(120, 326, 60, 20);
 		panel_3.add(lblNewLabel_3);
 
-		JLabel lblNewLabel_4 = new JLabel("4 Camas individuales");
-		lblNewLabel_4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_4.setForeground(Color.WHITE);
-		lblNewLabel_4.setBounds(76, 316, 168, 20);
-		panel_3.add(lblNewLabel_4);
-
-		JLabel lblNewLabel_5 = new JLabel("Ocupante:");
+		JLabel lblNewLabel_5 = new JLabel("Telefono\r\n:");
 		lblNewLabel_5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_5.setBounds(120, 347, 80, 20);
+		lblNewLabel_5.setBounds(120, 368, 80, 20);
 		panel_3.add(lblNewLabel_5);
 
-		JLabel lblNewLabel_6 = new JLabel("Diego Ontiveros");
-		lblNewLabel_6.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_6.setForeground(Color.WHITE);
-		lblNewLabel_6.setBounds(90, 378, 154, 20);
-		panel_3.add(lblNewLabel_6);
-
-		JButton btnOcupado = new JButton("OCUPADO");
-		btnOcupado.setBackground(new Color(239, 35, 60));
-		btnOcupado.setForeground(Color.WHITE);
-		btnOcupado.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
-		btnOcupado.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnOcupado.setBounds(120, 177, 296, 40);
-		panel.add(btnOcupado);
-
-		JButton btnHistorial = new JButton("Check out \r\n");
+		JButton btnHistorial = new JButton("Editar datos");
 		btnHistorial.setBackground(new Color(255, 214, 10));
 		btnHistorial.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnHistorial.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnHistorial.setBounds(426, 441, 270, 60);
+		btnHistorial.setBounds(856, 573, 270, 60);
 		panel.add(btnHistorial);
-
-		JButton btnEditarHabitacion = new JButton("Liberar habitacion");
-		btnEditarHabitacion.setForeground(new Color(255, 255, 255));
-		btnEditarHabitacion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose(); // Cierra la ventana actual del menú
-				DatosRenta2 conexion = new DatosRenta2();
-				conexion.frame.setVisible(true); 	
-			}
-		});
-	
-		btnEditarHabitacion.setBackground(new Color(50, 186, 124));
-		btnEditarHabitacion.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
-		btnEditarHabitacion.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEditarHabitacion.setBounds(426, 228, 270, 60);
-		panel.add(btnEditarHabitacion);
 		
-		JButton btnModificarReserva = new JButton("Modificar reserva\r\n");
-		btnModificarReserva.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
-		btnModificarReserva.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnModificarReserva.setBackground(new Color(255, 214, 10));
-		btnModificarReserva.setBounds(426, 299, 270, 60);
-		btnModificarReserva.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose(); // Cierra la ventana actual del menú
-				RentasModificarReserva conexion = new RentasModificarReserva();
-				conexion.frame.setVisible(true); 	
-			}
-		});
-		panel.add(btnModificarReserva);
+		JLabel menuTitulo_1 = new JLabel("ID del cliente:");
+		menuTitulo_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		menuTitulo_1.setBounds(441, 193, 239, 40);
+		panel.add(menuTitulo_1);
 		
-		JButton btnEditarHabitacion_1_1 = new JButton("Bloquear por mantemiento \r\n");
-		btnEditarHabitacion_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
-		btnEditarHabitacion_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEditarHabitacion_1_1.setBackground(SystemColor.activeCaptionBorder);
-		btnEditarHabitacion_1_1.setBounds(426, 370, 270, 60);
-		panel.add(btnEditarHabitacion_1_1);
+		textField_1 = new JTextField();
+		textField_1.setBackground(Color.LIGHT_GRAY);
+		textField_1.setBounds(441, 244, 400, 40);
+		panel.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel menuTitulo_1_1 = new JLabel("Nombre del cliente:");
+		menuTitulo_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		menuTitulo_1_1.setBounds(441, 295, 300, 40);
+		panel.add(menuTitulo_1_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBackground(Color.LIGHT_GRAY);
+		textField_2.setBounds(441, 346, 400, 40);
+		panel.add(textField_2);
+		
+		JLabel menuTitulo_1_1_1 = new JLabel("Numero del cliente:");
+		menuTitulo_1_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		menuTitulo_1_1_1.setBounds(441, 397, 300, 40);
+		panel.add(menuTitulo_1_1_1);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBackground(Color.LIGHT_GRAY);
+		textField_3.setBounds(441, 448, 400, 40);
+		panel.add(textField_3);
+		
+		JLabel menuTitulo_1_1_1_1 = new JLabel("Correo electronico:");
+		menuTitulo_1_1_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		menuTitulo_1_1_1_1.setBounds(441, 499, 300, 40);
+		panel.add(menuTitulo_1_1_1_1);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBackground(Color.LIGHT_GRAY);
+		textField_4.setBounds(441, 550, 400, 40);
+		panel.add(textField_4);
 	}
 }

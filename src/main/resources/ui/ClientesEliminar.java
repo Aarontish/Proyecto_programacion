@@ -92,7 +92,7 @@ public class ClientesEliminar {
         logo.setIcon(new ImageIcon(imagen13));   
 		panel_1.add(logo);
 		
-		JLabel Titulo = new JLabel("Panel de clientes\r\n"); //Titulo 
+		JLabel Titulo = new JLabel("Clientes\r\n"); //Titulo 
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
@@ -276,222 +276,222 @@ public class ClientesEliminar {
 		btnEliminarCliente.setBounds(131, 417, 150, 26);
 		panel.add(btnEliminarCliente);
 		
-		JButton btnCuartoA1 = new JButton("Cuarto A1"); //Botón Cuarto A1
-		btnCuartoA1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoA1.setBackground(new Color(0, 187, 249));
-		btnCuartoA1.addActionListener(new ActionListener() {
+		JButton btnCliente1 = new JButton("Usuario#123"); //Botón Cuarto A1
+		btnCliente1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente1.setBackground(new Color(0, 175, 185));
+		btnCliente1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoA1.setBounds(131, 257, 150, 150);
-		btnCuartoA1.setVerticalTextPosition(SwingConstants.BOTTOM); //Para poner texto debajo de la imagen dentro del botón
-		btnCuartoA1.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoA1.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoA1.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoA1.setIconTextGap(1);
-		btnCuartoA1.setFocusPainted(false);
-		btnCuartoA1.setContentAreaFilled(true);
-		btnCuartoA1.setBorderPainted(false);
-		btnCuartoA1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente1.setBounds(131, 257, 150, 150);
+		btnCliente1.setVerticalTextPosition(SwingConstants.BOTTOM); //Para poner texto debajo de la imagen dentro del botón
+		btnCliente1.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente1.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente1.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente1.setIconTextGap(1);
+		btnCliente1.setFocusPainted(false);
+		btnCliente1.setContentAreaFilled(true);
+		btnCliente1.setBorderPainted(false);
+		btnCliente1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		ImageIcon icon1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen1 = icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoA1.setIcon(new ImageIcon(imagen1));
-		panel.add(btnCuartoA1);
+        btnCliente1.setIcon(new ImageIcon(imagen1));
+		panel.add(btnCliente1);
 		
-		JButton btnCuartoB1 = new JButton("Cuarto B1"); //Botón Cuarto B1
-		btnCuartoB1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoB1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB1.setBackground(new Color(0, 187, 249));
-		btnCuartoB1.setBounds(131, 453, 150, 150);
-		btnCuartoB1.setVerticalTextPosition(SwingConstants.BOTTOM); //Para poner texto debajo de la imagen dentro del botón
-		btnCuartoB1.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoB1.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoB1.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoB1.setIconTextGap(1);
-		btnCuartoB1.setFocusPainted(false);
-		btnCuartoB1.setContentAreaFilled(true);
-		btnCuartoB1.setBorderPainted(false);
+		JButton btnCliente6 = new JButton("Usuario#123"); //Botón Cuarto B1
+		btnCliente6.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente6.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente6.setBackground(new Color(0, 175, 185));
+		btnCliente6.setBounds(131, 453, 150, 150);
+		btnCliente6.setVerticalTextPosition(SwingConstants.BOTTOM); //Para poner texto debajo de la imagen dentro del botón
+		btnCliente6.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente6.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente6.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente6.setIconTextGap(1);
+		btnCliente6.setFocusPainted(false);
+		btnCliente6.setContentAreaFilled(true);
+		btnCliente6.setBorderPainted(false);
 		
 		ImageIcon icon2= new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen2= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoB1.setIcon(new ImageIcon(imagen1));
-		panel.add(btnCuartoB1);
+        btnCliente6.setIcon(new ImageIcon(imagen1));
+		panel.add(btnCliente6);
 		
-		JButton btnCuartoA2 = new JButton("Cuarto A2"); //Botón Cuarto A2
-		btnCuartoA2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoA2.addActionListener(new ActionListener() {
+		JButton btnCliente2 = new JButton("Usuario#123"); //Botón Cuarto A2
+		btnCliente2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoA2.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoA2.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoA2.setIconTextGap(1);
-		btnCuartoA2.setFocusPainted(false);
-		btnCuartoA2.setContentAreaFilled(true);
-		btnCuartoA2.setBorderPainted(false);
-		btnCuartoA2.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoA2.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoA2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoA2.setBackground(new Color(0, 187, 249));
-		btnCuartoA2.setBounds(331, 257, 150, 150);
+		btnCliente2.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCliente2.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente2.setIconTextGap(1);
+		btnCliente2.setFocusPainted(false);
+		btnCliente2.setContentAreaFilled(true);
+		btnCliente2.setBorderPainted(false);
+		btnCliente2.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente2.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente2.setBackground(new Color(0, 175, 185));
+		btnCliente2.setBounds(331, 257, 150, 150);
 		ImageIcon icon3= new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen3= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoA2.setIcon(new ImageIcon(imagen3));
-		panel.add(btnCuartoA2);
+        btnCliente2.setIcon(new ImageIcon(imagen3));
+		panel.add(btnCliente2);
 		
-		JButton btnCuartoB2 = new JButton("Cuarto B2"); //Botón Cuarto B2
-		btnCuartoB2.addActionListener(new ActionListener() {
+		JButton btnCliente7 = new JButton("Usuario#123"); //Botón Cuarto B2
+		btnCliente7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoB2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoB2.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoB2.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoB2.setIconTextGap(1);
-		btnCuartoB2.setFocusPainted(false);
-		btnCuartoB2.setContentAreaFilled(true);
-		btnCuartoB2.setBorderPainted(false);
-		btnCuartoB2.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoB2.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoB2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB2.setBackground(new Color(0, 187, 249));
-		btnCuartoB2.setBounds(331, 453, 150, 150);
+		btnCliente7.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente7.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCliente7.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente7.setIconTextGap(1);
+		btnCliente7.setFocusPainted(false);
+		btnCliente7.setContentAreaFilled(true);
+		btnCliente7.setBorderPainted(false);
+		btnCliente7.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente7.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente7.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente7.setBackground(new Color(0, 175, 185));
+		btnCliente7.setBounds(331, 453, 150, 150);
 		ImageIcon icon4= new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen4= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoB2.setIcon(new ImageIcon(imagen4));
-		panel.add(btnCuartoB2);
+        btnCliente7.setIcon(new ImageIcon(imagen4));
+		panel.add(btnCliente7);
 		
-		JButton btnCuartoA3 = new JButton("Cuarto A3"); //Botón Cuarto A3
-		btnCuartoA3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoA3.addActionListener(new ActionListener() {
+		JButton btnCliente3 = new JButton("Usuario#123"); //Botón Cuarto A3
+		btnCliente3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoA3.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoA3.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoA3.setIconTextGap(1);
-		btnCuartoA3.setFocusPainted(false);
-		btnCuartoA3.setContentAreaFilled(true);
-		btnCuartoA3.setBorderPainted(false);
-		btnCuartoA3.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoA3.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoA3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoA3.setBackground(new Color(0, 187, 249));
-		btnCuartoA3.setBounds(531, 257, 150, 150);
+		btnCliente3.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCliente3.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente3.setIconTextGap(1);
+		btnCliente3.setFocusPainted(false);
+		btnCliente3.setContentAreaFilled(true);
+		btnCliente3.setBorderPainted(false);
+		btnCliente3.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente3.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente3.setBackground(new Color(0, 175, 185));
+		btnCliente3.setBounds(531, 257, 150, 150);
 		ImageIcon icon5 = new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen5 = icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoA3.setIcon(new ImageIcon(imagen3));
-		panel.add(btnCuartoA3);
+        btnCliente3.setIcon(new ImageIcon(imagen3));
+		panel.add(btnCliente3);
 		
-		JButton btnCuartoA4 = new JButton("Cuarto A4"); //Botón Cuarto A4
-		btnCuartoA4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoA4.addActionListener(new ActionListener() {
+		JButton btnCliente4 = new JButton("Usuario#123"); //Botón Cuarto A4
+		btnCliente4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoA4.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoA4.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoA4.setIconTextGap(1);
-		btnCuartoA4.setFocusPainted(false);
-		btnCuartoA4.setContentAreaFilled(true);
-		btnCuartoA4.setBorderPainted(false);
-		btnCuartoA4.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoA4.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoA4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoA4.setBackground(new Color(0, 187, 249));
-		btnCuartoA4.setBounds(731, 257, 150, 150);
+		btnCliente4.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCliente4.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente4.setIconTextGap(1);
+		btnCliente4.setFocusPainted(false);
+		btnCliente4.setContentAreaFilled(true);
+		btnCliente4.setBorderPainted(false);
+		btnCliente4.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente4.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente4.setBackground(new Color(0, 175, 185));
+		btnCliente4.setBounds(731, 257, 150, 150);
 		ImageIcon icon6= new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen6= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoA4.setIcon(new ImageIcon(imagen6));
-		panel.add(btnCuartoA4);
+        btnCliente4.setIcon(new ImageIcon(imagen6));
+		panel.add(btnCliente4);
 		
-		JButton btnCuartoA5 = new JButton("Cuarto A5"); //Botón Cuarto A5
-		btnCuartoA5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoA5.addActionListener(new ActionListener() {
+		JButton btnCliente5 = new JButton("Usuario#123"); //Botón Cuarto A5
+		btnCliente5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoA5.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoA5.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoA5.setIconTextGap(1);
-		btnCuartoA5.setFocusPainted(false);
-		btnCuartoA5.setContentAreaFilled(true);
-		btnCuartoA5.setBorderPainted(false);
-		btnCuartoA5.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoA5.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoA5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoA5.setBackground(new Color(0, 187, 249));
-		btnCuartoA5.setBounds(931, 257, 150, 150);
+		btnCliente5.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCliente5.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente5.setIconTextGap(1);
+		btnCliente5.setFocusPainted(false);
+		btnCliente5.setContentAreaFilled(true);
+		btnCliente5.setBorderPainted(false);
+		btnCliente5.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente5.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente5.setBackground(new Color(0, 175, 185));
+		btnCliente5.setBounds(931, 257, 150, 150);
 		ImageIcon icon7= new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen7= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoA5.setIcon(new ImageIcon(imagen7));
-		panel.add(btnCuartoA5);
+        btnCliente5.setIcon(new ImageIcon(imagen7));
+		panel.add(btnCliente5);
 		
-		JButton btnCuartoB3 = new JButton("Cuarto B3"); //Botón Cuarto B3
-		btnCuartoB3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoB3.addActionListener(new ActionListener() {
+		JButton btnCliente8 = new JButton("Usuario#123"); //Botón Cuarto B3
+		btnCliente8.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoB3.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoB3.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoB3.setIconTextGap(1);
-		btnCuartoB3.setFocusPainted(false);
-		btnCuartoB3.setContentAreaFilled(true);
-		btnCuartoB3.setBorderPainted(false);
-		btnCuartoB3.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoB3.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB3.setBackground(new Color(0, 187, 249));
-		btnCuartoB3.setBounds(531, 453, 150, 150);
+		btnCliente8.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCliente8.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente8.setIconTextGap(1);
+		btnCliente8.setFocusPainted(false);
+		btnCliente8.setContentAreaFilled(true);
+		btnCliente8.setBorderPainted(false);
+		btnCliente8.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente8.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente8.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente8.setBackground(new Color(0, 175, 185));
+		btnCliente8.setBounds(531, 453, 150, 150);
 		ImageIcon icon8= new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen8 = icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoB3.setIcon(new ImageIcon(imagen8));
-		panel.add(btnCuartoB3);
+        btnCliente8.setIcon(new ImageIcon(imagen8));
+		panel.add(btnCliente8);
 		
-		JButton btnCuartoB4 = new JButton("Cuarto B4"); //Botón Cuarto B4
-		btnCuartoB4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoB4.addActionListener(new ActionListener() {
+		JButton btnCliente9 = new JButton("Usuario#123"); //Botón Cuarto B4
+		btnCliente9.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoB4.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoB4.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoB4.setIconTextGap(1);
-		btnCuartoB4.setFocusPainted(false);
-		btnCuartoB4.setContentAreaFilled(true);
-		btnCuartoB4.setBorderPainted(false);
-		btnCuartoB4.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoB4.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoB4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB4.setBackground(new Color(0, 187, 249));
-		btnCuartoB4.setBounds(731, 453, 150, 150);
+		btnCliente9.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCliente9.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente9.setIconTextGap(1);
+		btnCliente9.setFocusPainted(false);
+		btnCliente9.setContentAreaFilled(true);
+		btnCliente9.setBorderPainted(false);
+		btnCliente9.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente9.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente9.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente9.setBackground(new Color(0, 175, 185));
+		btnCliente9.setBounds(731, 453, 150, 150);
 		ImageIcon icon10= new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen10 = icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoB4.setIcon(new ImageIcon(imagen10));
-		panel.add(btnCuartoB4);
+        btnCliente9.setIcon(new ImageIcon(imagen10));
+		panel.add(btnCliente9);
 		
-		JButton btnCuartoB5 = new JButton("Cuarto B5"); //Botón Cuarto B5
-		btnCuartoB5.addActionListener(new ActionListener() {
+		JButton btnCliente10 = new JButton("Usuario#123"); //Botón Cuarto B5
+		btnCliente10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCuartoB5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoB5.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCuartoB5.setVerticalAlignment(SwingConstants.CENTER);
-		btnCuartoB5.setIconTextGap(1);
-		btnCuartoB5.setFocusPainted(false);
-		btnCuartoB5.setContentAreaFilled(true);
-		btnCuartoB5.setBorderPainted(false);
-		btnCuartoB5.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCuartoB5.setHorizontalAlignment(SwingConstants.CENTER);
-		btnCuartoB5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB5.setBackground(new Color(0, 187, 249));
-		btnCuartoB5.setBounds(931, 453, 150, 150);
+		btnCliente10.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
+		btnCliente10.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCliente10.setVerticalAlignment(SwingConstants.CENTER);
+		btnCliente10.setIconTextGap(1);
+		btnCliente10.setFocusPainted(false);
+		btnCliente10.setContentAreaFilled(true);
+		btnCliente10.setBorderPainted(false);
+		btnCliente10.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCliente10.setHorizontalAlignment(SwingConstants.CENTER);
+		btnCliente10.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCliente10.setBackground(new Color(0, 175, 185));
+		btnCliente10.setBounds(931, 453, 150, 150);
 		ImageIcon icon11= new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen11= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        btnCuartoB5.setIcon(new ImageIcon(imagen10));
-		panel.add(btnCuartoB5);
+        btnCliente10.setIcon(new ImageIcon(imagen10));
+		panel.add(btnCliente10);
 		
 		JButton btnEliminarCliente2 = new JButton("Eliminar Cliente");
 		btnEliminarCliente2.addActionListener(new ActionListener() {

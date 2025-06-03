@@ -26,6 +26,10 @@ public class DetallesHabitacion2 {
 
 	JFrame frame;
 	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 	/**
 	 * Launch the application.
@@ -308,108 +312,56 @@ public class DetallesHabitacion2 {
 		lblNewLabel_4.setBounds(68, 340, 168, 20);
 		panel_3.add(lblNewLabel_4);
 
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(0, 187, 249));
-		panel_4.setBounds(441, 193, 340, 140);
-		panel.add(panel_4);
-		panel_4.setLayout(null);
-
-		JLabel lblNewLabel_7 = new JLabel("Historial de rentas:");
-		lblNewLabel_7.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
-		lblNewLabel_7.setBounds(10, 11, 320, 30);
-		panel_4.add(lblNewLabel_7);
-
-		JLabel lblNewLabel_8 = new JLabel("rentado del 14 al 15 de mayo 2024");
-		lblNewLabel_8.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_8.setForeground(Color.WHITE);
-		lblNewLabel_8.setBounds(10, 52, 320, 20);
-		panel_4.add(lblNewLabel_8);
-
-		JLabel lblNewLabel_9 = new JLabel("rentanado del 13 al 23 de agosto 2018");
-		lblNewLabel_9.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_9.setForeground(Color.WHITE);
-		lblNewLabel_9.setBounds(10, 83, 320, 20);
-		panel_4.add(lblNewLabel_9);
-
-		JLabel lblNewLabel_10 = new JLabel("rentado del  4 al 7 de abril 2016");
-		lblNewLabel_10.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_10.setForeground(Color.WHITE);
-		lblNewLabel_10.setBounds(10, 114, 320, 20);
-		panel_4.add(lblNewLabel_10);
-
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(new Color(0, 187, 249));
-		panel_5.setBounds(441, 344, 340, 140);
-		panel.add(panel_5);
-		panel_5.setLayout(null);
-
-		JLabel lblNewLabel_11 = new JLabel("Tarifas:");
-		lblNewLabel_11.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
-		lblNewLabel_11.setBounds(10, 11, 320, 30);
-		panel_5.add(lblNewLabel_11);
-
-		JLabel lblNewLabel_12 = new JLabel("$650 pesos por noche");
-		lblNewLabel_12.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_12.setForeground(Color.WHITE);
-		lblNewLabel_12.setBounds(10, 52, 320, 20);
-		panel_5.add(lblNewLabel_12);
-
-		JLabel lblNewLabel_13 = new JLabel("descuento los dias primero de cada mes");
-		lblNewLabel_13.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_13.setForeground(Color.WHITE);
-		lblNewLabel_13.setBounds(10, 83, 320, 20);
-		panel_5.add(lblNewLabel_13);
-
-		JLabel lblNewLabel_14 = new JLabel("costo $350 pesos");
-		lblNewLabel_14.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_14.setForeground(Color.WHITE);
-		lblNewLabel_14.setBounds(10, 114, 320, 14);
-		panel_5.add(lblNewLabel_14);
-
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(0, 187, 249));
-		panel_6.setBounds(441, 495, 340, 138);
-		panel.add(panel_6);
-		panel_6.setLayout(null);
-
-		JLabel lblNewLabel_15 = new JLabel("Servicios extras:");
-		lblNewLabel_15.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 32));
-		lblNewLabel_15.setBounds(10, 11, 320, 30);
-		panel_6.add(lblNewLabel_15);
-
-		JLabel lblNewLabel_16 = new JLabel("desayuno/comida/cena $500 pesos");
-		lblNewLabel_16.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_16.setForeground(Color.WHITE);
-		lblNewLabel_16.setBounds(10, 52, 320, 20);
-		panel_6.add(lblNewLabel_16);
-
-		JLabel lblNewLabel_17 = new JLabel("renta de consola: $450 pesos");
-		lblNewLabel_17.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_17.setForeground(Color.WHITE);
-		lblNewLabel_17.setBounds(10, 83, 320, 20);
-		panel_6.add(lblNewLabel_17);
-
-		JButton btnOcupado = new JButton("OCUPADO");
-		btnOcupado.setBackground(new Color(239, 35, 60));
-		btnOcupado.setForeground(Color.WHITE);
-		btnOcupado.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
-		btnOcupado.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnOcupado.setBounds(845, 200, 270, 60);
-		panel.add(btnOcupado);
-
-		JButton btnHistorial = new JButton("Descargar historial");
-		btnHistorial.setBackground(new Color(255, 214, 10));
-		btnHistorial.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
-		btnHistorial.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnHistorial.setBounds(845, 495, 270, 60);
-		panel.add(btnHistorial);
-
 		JButton btnEditarHabitacion = new JButton("Editar habitación");
 		btnEditarHabitacion.setBackground(new Color(50, 186, 124));
 		btnEditarHabitacion.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnEditarHabitacion.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnEditarHabitacion.setBounds(845, 566, 270, 60);
 		panel.add(btnEditarHabitacion);
+		
+		JLabel lblNewLabel_5 = new JLabel("Tipo de habitación:");
+		lblNewLabel_5.setBackground(new Color(255, 255, 255));
+		lblNewLabel_5.setFont(new Font("Jost*", Font.BOLD, 22));
+		lblNewLabel_5.setBounds(441, 193, 270, 40);
+		panel.add(lblNewLabel_5);
+		
+		textField_1 = new JTextField();
+		textField_1.setBackground(new Color(192, 192, 192));
+		textField_1.setBounds(441, 244, 300, 40);
+		panel.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("Camas:");
+		lblNewLabel_6.setFont(new Font("Jost*", Font.BOLD, 22));
+		lblNewLabel_6.setBounds(441, 295, 270, 40);
+		panel.add(lblNewLabel_6);
+		
+		textField_2 = new JTextField();
+		textField_2.setBackground(new Color(192, 192, 192));
+		textField_2.setBounds(441, 346, 300, 40);
+		panel.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNewLabel_7 = new JLabel("Tarifa:");
+		lblNewLabel_7.setFont(new Font("Jost*", Font.BOLD, 22));
+		lblNewLabel_7.setBounds(441, 397, 270, 40);
+		panel.add(lblNewLabel_7);
+		
+		textField_3 = new JTextField();
+		textField_3.setBackground(new Color(192, 192, 192));
+		textField_3.setBounds(441, 448, 300, 40);
+		panel.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel_8 = new JLabel("Extras:");
+		lblNewLabel_8.setFont(new Font("Jost*", Font.BOLD, 22));
+		lblNewLabel_8.setBounds(441, 499, 270, 40);
+		panel.add(lblNewLabel_8);
+		
+		textField_4 = new JTextField();
+		textField_4.setBackground(new Color(192, 192, 192));
+		textField_4.setBounds(441, 550, 300, 40);
+		panel.add(textField_4);
+		textField_4.setColumns(10);
 	}
-
 }

@@ -260,12 +260,12 @@ public class DatosRenta2 {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(0, 187, 249));
-		panel_3.setBounds(77, 248, 300, 405);
+		panel_3.setBounds(103, 228, 313, 422);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(45, 11, 200, 200);
+		lblNewLabel.setBounds(57, 11, 200, 170);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
 		ImageIcon v1 = new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
 		Image v2 = v1.getImage();
@@ -275,40 +275,40 @@ public class DatosRenta2 {
 
 		JLabel lblNewLabel_1 = new JLabel("Cuarto B3");
 		lblNewLabel_1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_1.setBounds(100, 222, 100, 20);
+		lblNewLabel_1.setBounds(110, 192, 100, 20);
 		panel_3.add(lblNewLabel_1);
 
 		JLabel textoHabitacion = new JLabel("Tipo de habitación:");
 		textoHabitacion.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
-		textoHabitacion.setBounds(80, 253, 145, 20);
+		textoHabitacion.setBounds(90, 223, 167, 20);
 		panel_3.add(textoHabitacion);
 
 		JLabel lblNewLabel_2 = new JLabel("Suit");
 		lblNewLabel_2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(133, 284, 35, 20);
+		lblNewLabel_2.setBounds(142, 254, 35, 20);
 		panel_3.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Camas:");
 		lblNewLabel_3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_3.setBounds(120, 315, 60, 20);
+		lblNewLabel_3.setBounds(131, 285, 60, 20);
 		panel_3.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("4 Camas individuales");
 		lblNewLabel_4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_4.setForeground(Color.WHITE);
-		lblNewLabel_4.setBounds(68, 340, 168, 20);
+		lblNewLabel_4.setBounds(76, 316, 168, 20);
 		panel_3.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_5 = new JLabel("Ocupante:");
 		lblNewLabel_5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_5.setBounds(110, 365, 80, 20);
+		lblNewLabel_5.setBounds(120, 347, 80, 20);
 		panel_3.add(lblNewLabel_5);
 
 		JLabel lblNewLabel_6 = new JLabel("Diego Ontiveros");
 		lblNewLabel_6.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_6.setForeground(Color.WHITE);
-		lblNewLabel_6.setBounds(90, 396, 125, 20);
+		lblNewLabel_6.setBounds(90, 378, 154, 20);
 		panel_3.add(lblNewLabel_6);
 
 		JButton btnOcupado = new JButton("LIBRE");
@@ -320,14 +320,14 @@ public class DatosRenta2 {
 		btnOcupado.setForeground(Color.WHITE);
 		btnOcupado.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnOcupado.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnOcupado.setBounds(100, 178, 270, 60);
+		btnOcupado.setBounds(120, 177, 296, 40);
 		panel.add(btnOcupado);
 
 		JButton btnHistorial = new JButton("Check out \r\n");
 		btnHistorial.setBackground(new Color(255, 214, 10));
 		btnHistorial.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnHistorial.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnHistorial.setBounds(387, 566, 270, 60);
+		btnHistorial.setBounds(426, 441, 270, 60);
 		panel.add(btnHistorial);
 
 		JButton btnEditarHabitacion = new JButton("Liberar habitacion");
@@ -339,14 +339,14 @@ public class DatosRenta2 {
 		btnEditarHabitacion.setBackground(new Color(50, 186, 124));
 		btnEditarHabitacion.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnEditarHabitacion.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnEditarHabitacion.setBounds(387, 261, 270, 60);
+		btnEditarHabitacion.setBounds(426, 228, 270, 60);
 		panel.add(btnEditarHabitacion);
 		
 		JButton btnModificarReserva = new JButton("Modificar reserva\r\n");
 		btnModificarReserva.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
 		btnModificarReserva.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnModificarReserva.setBackground(new Color(255, 214, 10));
-		btnModificarReserva.setBounds(387, 348, 270, 60);
+		btnModificarReserva.setBounds(426, 299, 270, 60);
 		btnModificarReserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
@@ -360,7 +360,7 @@ public class DatosRenta2 {
 		btnEditarHabitacion_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		btnEditarHabitacion_1_1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnEditarHabitacion_1_1.setBackground(SystemColor.activeCaptionBorder);
-		btnEditarHabitacion_1_1.setBounds(387, 450, 270, 60);
+		btnEditarHabitacion_1_1.setBounds(426, 370, 270, 60);
 		panel.add(btnEditarHabitacion_1_1);
 	}
 }

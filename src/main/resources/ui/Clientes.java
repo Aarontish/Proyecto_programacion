@@ -92,7 +92,7 @@ public class Clientes {
         logo.setIcon(new ImageIcon(imagen12));   
 		panel_1.add(logo);
 		
-		JLabel Titulo = new JLabel("Panel de clientes\r\n"); //Titulo 
+		JLabel Titulo = new JLabel("Clientes\r\n"); //Titulo 
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
@@ -113,10 +113,9 @@ public class Clientes {
 			}
 		});
 		botonSuperior1.setBounds(1098, 11, 56, 56);
-		ImageIcon c1 = new ImageIcon("images/usuario.png");
-		Image c2 = c1.getImage();
-		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior1.setIcon(new ImageIcon(c3));
+		ImageIcon icon14 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen14 = icon14.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior1.setIcon(new ImageIcon(imagen14)); 
 		panel_1.add(botonSuperior1);
 		
 		
@@ -130,10 +129,10 @@ public class Clientes {
 			}
 		});
 		botonSuperior2.setBounds(1032, 11, 56, 56);
-		ImageIcon e1 = new ImageIcon("images/informacion.png");
-		Image e2 = e1.getImage();
-		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior2.setIcon(new ImageIcon(e3));
+		ImageIcon icon13 = new ImageIcon(getClass().getResource("/images/informacion.png"));
+        Image imagen13 = icon13.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior2.setIcon(new ImageIcon(imagen13)); 
+        
 		panel_1.add(botonSuperior2);
 		
 		JButton botonVolver = new JButton(""); // Boton para volver atrás
@@ -149,9 +148,9 @@ public class Clientes {
 				conexion.frame.setVisible(true); 	
 			}
 		});
-		botonVolver.setBounds(60, 132, 50, 50);
+		botonVolver.setBounds(60, 132, 36, 36);
 		ImageIcon icon69 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-        Image imagen69 = icon69.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        Image imagen69 = icon69.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(imagen69));
 		panel.add(botonVolver);
 		
@@ -279,7 +278,7 @@ public class Clientes {
 		
 		JButton btnCuartoA1 = new JButton("usuario#123"); //Botón Cuarto A1
 		btnCuartoA1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
-		btnCuartoA1.setBackground(new Color(0, 187, 249));
+		btnCuartoA1.setBackground(new Color(0, 175, 185));
 		btnCuartoA1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
@@ -293,16 +292,19 @@ public class Clientes {
 		btnCuartoA1.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoA1.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoA1.setIconTextGap(1);
+		btnCuartoA1.setFocusPainted(false);
+		btnCuartoA1.setContentAreaFilled(true);
+		btnCuartoA1.setBorderPainted(false);
 		btnCuartoA1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		ImageIcon icon1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen1 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen1 = icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoA1.setIcon(new ImageIcon(imagen1));
 		panel.add(btnCuartoA1);
 		
 		JButton btnCuartoB1 = new JButton("usuario#234"); //Botón Cuarto B1
 		btnCuartoB1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoB1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB1.setBackground(new Color(0, 187, 249));
+		btnCuartoB1.setBackground(new Color(0, 175, 185));
 		btnCuartoB1.setBounds(131, 455, 150, 150);
 		btnCuartoB1.setVerticalTextPosition(SwingConstants.BOTTOM); //Para poner texto debajo de la imagen dentro del botón
 		btnCuartoB1.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -310,7 +312,7 @@ public class Clientes {
 		btnCuartoB1.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoB1.setIconTextGap(1);
 		ImageIcon icon2= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen2= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen2= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoB1.setIcon(new ImageIcon(imagen1));
 		panel.add(btnCuartoB1);
 		
@@ -323,13 +325,16 @@ public class Clientes {
 		btnCuartoA2.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCuartoA2.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoA2.setIconTextGap(1);
+		btnCuartoA2.setFocusPainted(false);
+		btnCuartoA2.setContentAreaFilled(true);
+		btnCuartoA2.setBorderPainted(false);
 		btnCuartoA2.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoA2.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoA2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoA2.setBackground(new Color(0, 187, 249));
+		btnCuartoA2.setBackground(new Color(0, 175, 185));
 		btnCuartoA2.setBounds(331, 257, 150, 150);
 		ImageIcon icon3= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen3= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen3= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoA2.setIcon(new ImageIcon(imagen3));
 		panel.add(btnCuartoA2);
 		
@@ -341,10 +346,10 @@ public class Clientes {
 		btnCuartoB2.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoB2.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB2.setBackground(new Color(0, 187, 249));
+		btnCuartoB2.setBackground(new Color(0, 175, 185));
 		btnCuartoB2.setBounds(331, 455, 150, 150);
 		ImageIcon icon4= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen4= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen4= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoB2.setIcon(new ImageIcon(imagen4));
 		panel.add(btnCuartoB2);
 		
@@ -357,13 +362,16 @@ public class Clientes {
 		btnCuartoA3.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCuartoA3.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoA3.setIconTextGap(1);
+		btnCuartoA3.setFocusPainted(false);
+		btnCuartoA3.setContentAreaFilled(true);
+		btnCuartoA3.setBorderPainted(false);
 		btnCuartoA3.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoA3.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoA3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoA3.setBackground(new Color(0, 187, 249));
+		btnCuartoA3.setBackground(new Color(0, 175, 185));
 		btnCuartoA3.setBounds(531, 257, 150, 150);
 		ImageIcon icon5 = new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen5 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen5 = icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoA3.setIcon(new ImageIcon(imagen3));
 		panel.add(btnCuartoA3);
 		
@@ -376,13 +384,16 @@ public class Clientes {
 		btnCuartoA4.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCuartoA4.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoA4.setIconTextGap(1);
+		btnCuartoA4.setFocusPainted(false);
+		btnCuartoA4.setContentAreaFilled(true);
+		btnCuartoA4.setBorderPainted(false);
 		btnCuartoA4.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoA4.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoA4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoA4.setBackground(new Color(0, 187, 249));
+		btnCuartoA4.setBackground(new Color(0, 175, 185));
 		btnCuartoA4.setBounds(731, 257, 150, 150);
 		ImageIcon icon6= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen6= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen6= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoA4.setIcon(new ImageIcon(imagen6));
 		panel.add(btnCuartoA4);
 		
@@ -395,13 +406,16 @@ public class Clientes {
 		btnCuartoA5.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCuartoA5.setVerticalAlignment(SwingConstants.CENTER);
 		btnCuartoA5.setIconTextGap(1);
+		btnCuartoA5.setFocusPainted(false);
+		btnCuartoA5.setContentAreaFilled(true);
+		btnCuartoA5.setBorderPainted(false);
 		btnCuartoA5.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoA5.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoA5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoA5.setBackground(new Color(0, 187, 249));
+		btnCuartoA5.setBackground(new Color(0, 175, 185));
 		btnCuartoA5.setBounds(931, 257, 150, 150);
 		ImageIcon icon7= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen7= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen7= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoA5.setIcon(new ImageIcon(imagen7));
 		panel.add(btnCuartoA5);
 		
@@ -417,10 +431,10 @@ public class Clientes {
 		btnCuartoB3.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoB3.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB3.setBackground(new Color(0, 187, 249));
+		btnCuartoB3.setBackground(new Color(0, 175, 185));
 		btnCuartoB3.setBounds(531, 455, 150, 150);
 		ImageIcon icon8= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen8 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen8 = icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoB3.setIcon(new ImageIcon(imagen8));
 		panel.add(btnCuartoB3);
 		
@@ -436,10 +450,10 @@ public class Clientes {
 		btnCuartoB4.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoB4.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB4.setBackground(new Color(0, 187, 249));
+		btnCuartoB4.setBackground(new Color(0, 175, 185));
 		btnCuartoB4.setBounds(731, 455, 150, 150);
 		ImageIcon icon10= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen10 = icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen10 = icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoB4.setIcon(new ImageIcon(imagen10));
 		panel.add(btnCuartoB4);
 		
@@ -451,10 +465,10 @@ public class Clientes {
 		btnCuartoB5.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnCuartoB5.setHorizontalAlignment(SwingConstants.CENTER);
 		btnCuartoB5.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnCuartoB5.setBackground(new Color(0, 187, 249));
+		btnCuartoB5.setBackground(new Color(0, 175, 185));
 		btnCuartoB5.setBounds(931, 455, 150, 150);
 		ImageIcon icon11= new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen11= icon1.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+        Image imagen11= icon1.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         btnCuartoB5.setIcon(new ImageIcon(imagen10));
 		panel.add(btnCuartoB5);
 		

@@ -77,10 +77,9 @@ public class RentasModificarReserva {
 		
 		JLabel logo = new JLabel(""); //Logo
 		logo.setBounds(0, 0, 170, 95);
-		 ImageIcon portada1 =new ImageIcon("images/logo.png");
-	        Image portada2= portada1.getImage();
-	        Image portada3=portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
-	        logo.setIcon(new ImageIcon(portada3));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(imagen1));
 		panel_1.add(logo);
 		
 		JLabel Titulo = new JLabel("Rentas:\r\n"); //Titulo 
@@ -89,7 +88,8 @@ public class RentasModificarReserva {
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
 		
-		JLabel menuTitulo = new JLabel("modificar reserva:\r\n");
+		JLabel menuTitulo = new JLabel("Modificar reserva:\r\n");
+		menuTitulo.setBackground(new Color(255, 255, 255));
 		menuTitulo.setBounds(131, 126, 335, 56);
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
 		panel.add(menuTitulo);
@@ -104,10 +104,9 @@ public class RentasModificarReserva {
 			}
 		});
 		botonSuperior1.setBounds(1098, 11, 56, 56);
-		ImageIcon c1 = new ImageIcon("images/usuario.png");
-		Image c2 = c1.getImage();
-		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior1.setIcon(new ImageIcon(c3));
+		ImageIcon icon4 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen4 = icon4.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior1.setIcon(new ImageIcon(imagen4));
 		panel_1.add(botonSuperior1);
 		
 		
@@ -121,10 +120,9 @@ public class RentasModificarReserva {
 			}
 		});
 		botonSuperior2.setBounds(1032, 11, 56, 56);
-		ImageIcon e1 = new ImageIcon("images/informacion.png");
-		Image e2 = e1.getImage();
-		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior2.setIcon(new ImageIcon(e3));
+		ImageIcon icon3 = new ImageIcon(getClass().getResource("/images/informacion.png"));
+        Image imagen3 = icon3.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior2.setIcon(new ImageIcon(imagen3));
 		panel_1.add(botonSuperior2);
 		
 		JButton botonVolver = new JButton("");
@@ -141,10 +139,9 @@ public class RentasModificarReserva {
 				conexion.frame.setVisible(true); 	
 			}
 		});
-		ImageIcon f1 = new ImageIcon("images/flecha_izquierda.png");
-		Image f2 = f1.getImage();
-		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonVolver.setIcon(new ImageIcon(f3));
+		ImageIcon icon2 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+        Image imagen2 = icon2.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonVolver.setIcon(new ImageIcon(imagen2));
 		panel.add(botonVolver);
 		
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
@@ -270,7 +267,7 @@ public class RentasModificarReserva {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBackground(Color.WHITE);
 		comboBox.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desayuno extra", "", "Comida extra", "", "Cena extra", "", "Renta de consola", ""}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desayuno extra", "Comida extra", "Cena extra", "Renta de consola"}));
 		comboBox.setBounds(21, 76, 200, 41);
 		panel_3_1.add(comboBox);
 		

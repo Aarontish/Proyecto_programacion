@@ -18,6 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
+import com.formdev.flatlaf.FlatLightLaf;
+
 import java.awt.SystemColor;
 
 public class Rentas {
@@ -45,6 +49,14 @@ public class Rentas {
 	 * Create the application.
 	 */
 	public Rentas() {
+		
+		try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+            UIManager.put("Button.arc", 90); // Esquinas redondas
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+		
 		initialize();
 	}
 
@@ -76,10 +88,9 @@ public class Rentas {
 		
 		JLabel logo = new JLabel(""); //Logo
 		logo.setBounds(0, 0, 170, 95);
-		 ImageIcon portada1 =new ImageIcon("images/logo.png");
-	        Image portada2= portada1.getImage();
-	        Image portada3=portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
-	        logo.setIcon(new ImageIcon(portada3));
+		ImageIcon icon01 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image imagen01 = icon01.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(imagen01));
 		panel_1.add(logo);
 		
 		JLabel Titulo = new JLabel("Rentas\r\n"); //Titulo 
@@ -88,9 +99,9 @@ public class Rentas {
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
 		
-		JLabel menuTitulo = new JLabel("Verde disponible/ Rojo ocupado / mantenimiento\r\n"); //Texto menú
-		menuTitulo.setFont(new Font("Dialog", Font.BOLD, 18));
-		menuTitulo.setBounds(131, 126, 457, 56);
+		JLabel menuTitulo = new JLabel("Verde disponible/Rojo ocupado/Mantenimiento\r\n"); //Texto menú
+		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 22));
+		menuTitulo.setBounds(131, 126, 579, 56);
 		panel.add(menuTitulo);
 		
 		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
@@ -103,10 +114,9 @@ public class Rentas {
 			}
 		});
 		botonSuperior1.setBounds(1098, 11, 56, 56);
-		ImageIcon c1 = new ImageIcon("images/usuario.png");
-		Image c2 = c1.getImage();
-		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior1.setIcon(new ImageIcon(c3));
+		ImageIcon icon03 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen03 = icon03.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior1.setIcon(new ImageIcon(imagen03));
 		panel_1.add(botonSuperior1);
 		
 		
@@ -120,10 +130,9 @@ public class Rentas {
 			}
 		});
 		botonSuperior2.setBounds(1032, 11, 56, 56);
-		ImageIcon e1 = new ImageIcon("images/informacion.png");
-		Image e2 = e1.getImage();
-		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior2.setIcon(new ImageIcon(e3));
+		ImageIcon icon02 = new ImageIcon(getClass().getResource("/images/informacion.png"));
+        Image imagen02 = icon02.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior2.setIcon(new ImageIcon(imagen02));
 		panel_1.add(botonSuperior2);
 		
 		JButton botonVolver = new JButton(""); // Boton para volver atrás
@@ -139,9 +148,9 @@ public class Rentas {
 				conexion.frame.setVisible(true); 	
 			}
 		});
-		botonVolver.setBounds(60, 132, 50, 50);
+		botonVolver.setBounds(60, 132, 36, 36);
 		ImageIcon icon10 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-        Image imagen10 = icon10.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        Image imagen10 = icon10.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(imagen10));
 		panel.add(botonVolver);
 		
