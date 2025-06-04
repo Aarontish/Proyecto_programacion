@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -458,7 +459,20 @@ public class PanelHabitaciones2 {
         btnCuartoB5.setIcon(new ImageIcon(imagen10));
 		panel.add(btnCuartoB5);
 		
-		JButton btnEliminarHabitacionA1 = new JButton("Eliminar Habitación"); //Botón eliminar cuarto A1
+		JButton btnEliminarHabitacionA1 = new JButton("Eliminar Habitación");
+		btnEliminarHabitacionA1.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        int respuesta = JOptionPane.showConfirmDialog(
+		                null, 
+		                "¿Estás seguro de que desea eliminar esta habitación?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+		        if (respuesta == JOptionPane.YES_OPTION) {
+		            JOptionPane.showMessageDialog(
+		                null,"Habitación eliminada.", "exito", JOptionPane.INFORMATION_MESSAGE);
+		        }
+		    }
+		});
+
 		btnEliminarHabitacionA1.setBackground(new Color(239, 35, 60));
 		btnEliminarHabitacionA1.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
 		btnEliminarHabitacionA1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -467,6 +481,18 @@ public class PanelHabitaciones2 {
 		panel.add(btnEliminarHabitacionA1);
 		
 		JButton btnEliminarHabitacionA2 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto A2
+		btnEliminarHabitacionA2.addActionListener(new ActionListener() {
+			  public void actionPerformed(ActionEvent e) {
+			        int respuesta = JOptionPane.showConfirmDialog(
+			                null, 
+			                "¿Estás seguro de que desea eliminar esta habitación?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+			        if (respuesta == JOptionPane.YES_OPTION) {
+			            JOptionPane.showMessageDialog(
+			                null,"Habitación eliminada.", "exito", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			    }
+			});
 		btnEliminarHabitacionA2.setForeground(Color.WHITE);
 		btnEliminarHabitacionA2.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
 		btnEliminarHabitacionA2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -475,6 +501,18 @@ public class PanelHabitaciones2 {
 		panel.add(btnEliminarHabitacionA2);
 		
 		JButton btnEliminarHabitacionA3 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto A3
+		btnEliminarHabitacionA3.addActionListener(new ActionListener() {
+			  public void actionPerformed(ActionEvent e) {
+			        int respuesta = JOptionPane.showConfirmDialog(
+			                null, 
+			                "¿Estás seguro de que desea eliminar esta habitación?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+			        if (respuesta == JOptionPane.YES_OPTION) {
+			            JOptionPane.showMessageDialog(
+			                null,"Habitación eliminada.", "exito", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			    }
+			});
 		btnEliminarHabitacionA3.setForeground(Color.WHITE);
 		btnEliminarHabitacionA3.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
 		btnEliminarHabitacionA3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -484,9 +522,17 @@ public class PanelHabitaciones2 {
 		
 		JButton btnEliminarHabitacionA4 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto A4
 		btnEliminarHabitacionA4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+			  public void actionPerformed(ActionEvent e) {
+			        int respuesta = JOptionPane.showConfirmDialog(
+			                null, 
+			                "¿Estás seguro de que desea eliminar esta habitación?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+			        if (respuesta == JOptionPane.YES_OPTION) {
+			            JOptionPane.showMessageDialog(
+			                null,"Habitación eliminada.", "exito", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			    }
+			});
 		btnEliminarHabitacionA4.setForeground(Color.WHITE);
 		btnEliminarHabitacionA4.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
 		btnEliminarHabitacionA4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -503,6 +549,18 @@ public class PanelHabitaciones2 {
 		panel.add(btnEliminarHabitacionA5);
 		
 		JButton btnEliminarHabitacionB1 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B1
+		btnEliminarHabitacionB1.addActionListener(new ActionListener() {
+			  public void actionPerformed(ActionEvent e) {
+			        int respuesta = JOptionPane.showConfirmDialog(
+			                null, 
+			                "¿Estás seguro de que desea eliminar esta habitación?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+			        if (respuesta == JOptionPane.YES_OPTION) {
+			            JOptionPane.showMessageDialog(
+			                null,"Habitación eliminada.", "exito", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			    }
+			});
 		btnEliminarHabitacionB1.setForeground(Color.WHITE);
 		btnEliminarHabitacionB1.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
 		btnEliminarHabitacionB1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -511,6 +569,18 @@ public class PanelHabitaciones2 {
 		panel.add(btnEliminarHabitacionB1);
 		
 		JButton btnEliminarHabitacionB2 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B2
+		btnEliminarHabitacionB2.addActionListener(new ActionListener() {
+			  public void actionPerformed(ActionEvent e) {
+			        int respuesta = JOptionPane.showConfirmDialog(
+			                null, 
+			                "¿Estás seguro de que desea eliminar esta habitación?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+			        if (respuesta == JOptionPane.YES_OPTION) {
+			            JOptionPane.showMessageDialog(
+			                null,"Habitación eliminada.", "exito", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			    }
+			});
 		btnEliminarHabitacionB2.setForeground(Color.WHITE);
 		btnEliminarHabitacionB2.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
 		btnEliminarHabitacionB2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -519,6 +589,18 @@ public class PanelHabitaciones2 {
 		panel.add(btnEliminarHabitacionB2);
 		
 		JButton btnEliminarHabitacionB3 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B3
+		btnEliminarHabitacionB3.addActionListener(new ActionListener() {
+			  public void actionPerformed(ActionEvent e) {
+			        int respuesta = JOptionPane.showConfirmDialog(
+			                null, 
+			                "¿Estás seguro de que desea eliminar esta habitación?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+			        if (respuesta == JOptionPane.YES_OPTION) {
+			            JOptionPane.showMessageDialog(
+			                null,"Habitación eliminada.", "exito", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			    }
+			});
 		btnEliminarHabitacionB3.setForeground(Color.WHITE);
 		btnEliminarHabitacionB3.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
 		btnEliminarHabitacionB3.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -527,6 +609,18 @@ public class PanelHabitaciones2 {
 		panel.add(btnEliminarHabitacionB3);
 		
 		JButton btnEliminarHabitacionB4 = new JButton("Eliminar Habitación"); //Botón eliminar Cuarto B4
+		btnEliminarHabitacionB4.addActionListener(new ActionListener() {
+			  public void actionPerformed(ActionEvent e) {
+			        int respuesta = JOptionPane.showConfirmDialog(
+			                null, 
+			                "¿Estás seguro de que desea eliminar esta habitación?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+			        if (respuesta == JOptionPane.YES_OPTION) {
+			            JOptionPane.showMessageDialog(
+			                null,"Habitación eliminada.", "exito", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			    }
+			});
 		btnEliminarHabitacionB4.setForeground(Color.WHITE);
 		btnEliminarHabitacionB4.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 12));
 		btnEliminarHabitacionB4.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));

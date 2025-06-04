@@ -103,7 +103,7 @@ public class DetallesHabitacion1 {
 
 		JLabel menuTitulo = new JLabel("Detalles de la habitación:"); //Texto menú
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
-		menuTitulo.setBounds(131, 126, 441, 56);
+		menuTitulo.setBounds(131, 126, 539, 56);
 		panel.add(menuTitulo);
 
 		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
@@ -166,6 +166,7 @@ public class DetallesHabitacion1 {
 		});
 		panel.add(botonVolver);
 
+
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
@@ -173,7 +174,9 @@ public class DetallesHabitacion1 {
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				frame.dispose(); // Cierra la ventana actual del menú
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -181,10 +184,13 @@ public class DetallesHabitacion1 {
         btnTiposDeRentas.setFocusPainted(false);
         btnTiposDeRentas.setContentAreaFilled(true);
 		panel_2.add(btnTiposDeRentas);
-
+		
 		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -196,8 +202,15 @@ public class DetallesHabitacion1 {
 		btnrentas.setBackground(new Color(56, 54, 41));
 		btnrentas.setBounds(932, 0, 81, 23);
 		panel_2.add(btnrentas);
-
+		
 		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -207,8 +220,15 @@ public class DetallesHabitacion1 {
 		btnclientes.setBackground(new Color(56, 54, 41));
 		btnclientes.setBounds(841, 0, 81, 23);
 		panel_2.add(btnclientes);
-
+		
 		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		btnhabitaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -218,10 +238,13 @@ public class DetallesHabitacion1 {
 		btnhabitaciones.setBackground(new Color(56, 54, 41));
 		btnhabitaciones.setBounds(731, 0, 100, 23);
 		panel_2.add(btnhabitaciones);
-
+		
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -396,7 +419,7 @@ public class DetallesHabitacion1 {
 		btnEditarHabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
-				EditarDatosCliente conexion = new EditarDatosCliente();
+				DetallesHabitacion2 conexion = new DetallesHabitacion2();
 				conexion.frame.setVisible(true); 	
 			}
 		});

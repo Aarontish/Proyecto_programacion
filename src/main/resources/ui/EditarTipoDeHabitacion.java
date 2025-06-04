@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -88,6 +89,7 @@ public class EditarTipoDeHabitacion {
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 
+
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
@@ -97,7 +99,7 @@ public class EditarTipoDeHabitacion {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
 				TiposHabitacion conexion = new TiposHabitacion();
-				conexion.frame.setVisible(true); 	
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -105,14 +107,13 @@ public class EditarTipoDeHabitacion {
         btnTiposDeRentas.setFocusPainted(false);
         btnTiposDeRentas.setContentAreaFilled(true);
 		panel_2.add(btnTiposDeRentas);
-
+		
 		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Rentas
 				frame.dispose(); // Cierra la ventana actual del menú
 				Rentas conexion = new Rentas();
-				conexion.frame.setVisible(true); 	
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -124,8 +125,15 @@ public class EditarTipoDeHabitacion {
 		btnrentas.setBackground(new Color(56, 54, 41));
 		btnrentas.setBounds(932, 0, 81, 23);
 		panel_2.add(btnrentas);
-
+		
 		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -136,16 +144,14 @@ public class EditarTipoDeHabitacion {
 		btnclientes.setBounds(841, 0, 81, 23);
 		panel_2.add(btnclientes);
 		
-		JButton btnClientes = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
-		btnclientes.addActionListener(new ActionListener() {
+		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		btnhabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Rentas
 				frame.dispose(); // Cierra la ventana actual del menú
-				Clientes conexion = new Clientes();
-				conexion.frame.setVisible(true); 	
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 
 			}
 		});
-		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -156,23 +162,12 @@ public class EditarTipoDeHabitacion {
 		btnhabitaciones.setBounds(731, 0, 100, 23);
 		panel_2.add(btnhabitaciones);
 		
-		JButton btnHabitaciones = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
-		btnhabitaciones.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Rentas
-				frame.dispose(); // Cierra la ventana actual del menú
-				PanelHabitaciones1 conexion = new PanelHabitaciones1();
-				conexion.frame.setVisible(true); 	
-			}
-		});
-
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Tarifas
 				frame.dispose(); // Cierra la ventana actual del menú
 				Tarifas conexion = new Tarifas();
-				conexion.frame.setVisible(true); 	
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -281,6 +276,26 @@ public class EditarTipoDeHabitacion {
 		panel.add(btnNewButton);
 		
 		JButton btnGuardarCambios = new JButton("Guardar cambios:\r\n");
+		btnGuardarCambios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		        int respuesta = JOptionPane.showConfirmDialog(
+		                null, 
+		                "¿Estás seguro de que desea editar esta habitacion?", 
+		                "Confirmación", 
+		                JOptionPane.YES_NO_OPTION, 
+		                JOptionPane.WARNING_MESSAGE
+		        );
+
+		        if (respuesta == JOptionPane.YES_OPTION) {
+		            JOptionPane.showMessageDialog(
+		                null, 
+		                "habitacion editada.", 
+		                "Información", 
+		                JOptionPane.INFORMATION_MESSAGE
+		            );
+		        }
+		    }
+		});		
 		btnGuardarCambios.setForeground(Color.WHITE);
 		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnGuardarCambios.setBackground(new Color(255, 214, 10));

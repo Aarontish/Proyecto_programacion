@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
@@ -144,6 +145,7 @@ public class RentasModificarReserva {
         botonVolver.setIcon(new ImageIcon(imagen2));
 		panel.add(botonVolver);
 		
+
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
@@ -151,6 +153,9 @@ public class RentasModificarReserva {
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -162,6 +167,9 @@ public class RentasModificarReserva {
 		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -175,6 +183,13 @@ public class RentasModificarReserva {
 		panel_2.add(btnrentas);
 		
 		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -186,6 +201,13 @@ public class RentasModificarReserva {
 		panel_2.add(btnclientes);
 		
 		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		btnhabitaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -199,6 +221,9 @@ public class RentasModificarReserva {
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -210,6 +235,8 @@ public class RentasModificarReserva {
 		btntarifas.setBackground(new Color(56, 54, 41));
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
+		
+		
 		ImageIcon u1 = new ImageIcon("images/busqueda.png");
 		Image u2 = u1.getImage();
 		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
@@ -316,6 +343,26 @@ public class RentasModificarReserva {
 		panel_3_2.add(btnNewButton_2_1);
 		
 		JButton btnNewButton_3 = new JButton("Guardar cambios\r\n");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		        int respuesta = JOptionPane.showConfirmDialog(
+		                null, 
+		                "¿Estás seguro de que desea editar esta reservacion?", 
+		                "Confirmación", 
+		                JOptionPane.YES_NO_OPTION, 
+		                JOptionPane.WARNING_MESSAGE
+		        );
+
+		        if (respuesta == JOptionPane.YES_OPTION) {
+		            JOptionPane.showMessageDialog(
+		                null, 
+		                "reserva editada.", 
+		                "Información", 
+		                JOptionPane.INFORMATION_MESSAGE
+		            );
+		        }
+		    }
+		});		
 		btnNewButton_3.setBackground(new Color(50, 186, 124));
 		btnNewButton_3.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		btnNewButton_3.setBounds(189, 608, 211, 45);

@@ -103,37 +103,10 @@ public class Rentas {
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 22));
 		menuTitulo.setBounds(131, 126, 579, 56);
 		panel.add(menuTitulo);
-		
-		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior1.setBounds(1098, 11, 56, 56);
 		ImageIcon icon03 = new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen03 = icon03.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        botonSuperior1.setIcon(new ImageIcon(imagen03));
-		panel_1.add(botonSuperior1);
-		
-		
-		JButton botonSuperior2 = new JButton(""); //Boton información esquina superior derecha
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior2.setBounds(1032, 11, 56, 56);
 		ImageIcon icon02 = new ImageIcon(getClass().getResource("/images/informacion.png"));
         Image imagen02 = icon02.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        botonSuperior2.setIcon(new ImageIcon(imagen02));
-		panel_1.add(botonSuperior2);
 		
 		JButton botonVolver = new JButton(""); // Boton para volver atrás
 		botonVolver.setForeground(new Color(255, 255, 255));
@@ -154,6 +127,7 @@ public class Rentas {
 		botonVolver.setIcon(new ImageIcon(imagen10));
 		panel.add(botonVolver);
 		
+
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
@@ -161,6 +135,9 @@ public class Rentas {
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -172,6 +149,9 @@ public class Rentas {
 		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -185,6 +165,13 @@ public class Rentas {
 		panel_2.add(btnrentas);
 		
 		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -196,6 +183,13 @@ public class Rentas {
 		panel_2.add(btnclientes);
 		
 		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		btnhabitaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -209,6 +203,9 @@ public class Rentas {
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -284,6 +281,13 @@ public class Rentas {
 		panel.add(btnCuartoA1);
 		
 		JButton btnCuartoB1 = new JButton("Cuarto B1"); //Botón Cuarto B1
+		btnCuartoB1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DatosRenta conexion = new DatosRenta();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnCuartoB1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoB1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCuartoB1.setBackground(new Color(239, 35, 60));
@@ -302,6 +306,9 @@ public class Rentas {
 		btnCuartoA2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoA2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DatosRenta conexion = new DatosRenta();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnCuartoA2.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -320,6 +327,9 @@ public class Rentas {
 		JButton btnCuartoB2 = new JButton("Cuarto B2"); //Botón Cuarto B2
 		btnCuartoB2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DatosRenta conexion = new DatosRenta();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnCuartoB2.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
@@ -359,6 +369,9 @@ public class Rentas {
 		btnCuartoA4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoA4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DatosRenta conexion = new DatosRenta();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnCuartoA4.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -378,6 +391,9 @@ public class Rentas {
 		btnCuartoA5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoA5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DatosRenta conexion = new DatosRenta();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnCuartoA5.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -397,6 +413,9 @@ public class Rentas {
 		btnCuartoB3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DatosRenta conexion = new DatosRenta();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnCuartoB3.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -416,6 +435,9 @@ public class Rentas {
 		btnCuartoB4.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoB4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DatosRenta conexion = new DatosRenta();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnCuartoB4.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -432,6 +454,13 @@ public class Rentas {
 		panel.add(btnCuartoB4);
 		
 		JButton btnCuartoB5 = new JButton("Cuarto B5"); //Botón Cuarto B5
+		btnCuartoB5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DatosRenta conexion = new DatosRenta();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnCuartoB5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 14));
 		btnCuartoB5.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCuartoB5.setVerticalAlignment(SwingConstants.CENTER);

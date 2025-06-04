@@ -104,66 +104,31 @@ public class EditarHabitacion {
 		menuTitulo1.setBounds(131, 126, 579, 56);
 		panel.add(menuTitulo1);
 
-        JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>");
-		btntarifas.addActionListener(new ActionListener() {
+
+		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
+		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
+		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
+		btnTiposDeRentas.setBackground(new Color(56, 54, 41));
+		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Tarifas tarifasWindow = new Tarifas();
-				tarifasWindow.frame.setVisible(true);
+				frame.dispose(); // Cierra la ventana actual del menú
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true); 
 			}
 		});
-		btntarifas.setForeground(Color.WHITE);
-		btntarifas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
-		btntarifas.setFocusPainted(false);
-		btntarifas.setContentAreaFilled(true);
-		btntarifas.setBorderPainted(false);
-		btntarifas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btntarifas.setBackground(new Color(56, 54, 41));
-		btntarifas.setBounds(649, 0, 72, 23);
-		panel_2.add(btntarifas);
-
-		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>");
-		btnhabitaciones.setForeground(Color.WHITE);
-		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
-		btnhabitaciones.setFocusPainted(false);
-		btnhabitaciones.setContentAreaFilled(true);
-		btnhabitaciones.setBorderPainted(false);
-		btnhabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnhabitaciones.setBackground(new Color(56, 54, 41));
-		btnhabitaciones.setBounds(731, 0, 100, 23);
-		btnhabitaciones.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				PanelHabitaciones1 habitacionesWindow = new PanelHabitaciones1();
-				habitacionesWindow.frame.setVisible(true);
-			}
-		});
-		panel_2.add(btnhabitaciones);
-
-		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>");
-		btnclientes.setForeground(Color.WHITE);
-		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
-		btnclientes.setFocusPainted(false);
-		btnclientes.setContentAreaFilled(true);
-		btnclientes.setBorderPainted(false);
-		btnclientes.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		btnclientes.setBackground(new Color(56, 54, 41));
-		btnclientes.setBounds(841, 0, 81, 23);
-		btnclientes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Clientes clientesWindow = new Clientes();
-				clientesWindow.frame.setVisible(true);
-			}
-		});
-		panel_2.add(btnclientes);
-
-		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>");
+		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
+		btnTiposDeRentas.setBorderPainted(false);
+        btnTiposDeRentas.setFocusPainted(false);
+        btnTiposDeRentas.setContentAreaFilled(true);
+		panel_2.add(btnTiposDeRentas);
+		
+		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Rentas rentasWindow = new Rentas();
-				rentasWindow.frame.setVisible(true);
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -175,56 +140,60 @@ public class EditarHabitacion {
 		btnrentas.setBackground(new Color(56, 54, 41));
 		btnrentas.setBounds(932, 0, 81, 23);
 		panel_2.add(btnrentas);
-
-		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>");
-		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
-		btnTiposDeRentas.setForeground(Color.WHITE);
-		btnTiposDeRentas.setBackground(new Color(56, 54, 41));
-		btnTiposDeRentas.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-		btnTiposDeRentas.setFocusPainted(false);
-		btnTiposDeRentas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnTiposDeRentas.addActionListener(new ActionListener() {
-		 	public void actionPerformed(ActionEvent e) {
-		 		frame.dispose();
-		 		TiposHabitacion tiposHabitacionWindow = new TiposHabitacion();
-		 		tiposHabitacionWindow.frame.setVisible(true);
-		 	}
-		});
-		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
-		btnTiposDeRentas.setBorderPainted(false);
-        btnTiposDeRentas.setFocusPainted(false);
-        btnTiposDeRentas.setContentAreaFilled(true);
-		panel_2.add(btnTiposDeRentas);
-
-		JButton botonSuperior1 = new JButton("");
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.addActionListener(new ActionListener() {
+		
+		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		btnclientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 
 			}
 		});
-		botonSuperior1.setBounds(1098, 11, 56, 56);
-		ImageIcon icon3 = new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagen3 = icon3.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        botonSuperior1.setIcon(new ImageIcon(imagen3));
-		panel_1.add(botonSuperior1);
-
-        JButton botonSuperior2 = new JButton("");
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.addActionListener(new ActionListener() {
+		btnclientes.setForeground(Color.WHITE);
+		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
+		btnclientes.setFocusPainted(false);
+		btnclientes.setContentAreaFilled(true);
+		btnclientes.setBorderPainted(false);
+		btnclientes.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnclientes.setBackground(new Color(56, 54, 41));
+		btnclientes.setBounds(841, 0, 81, 23);
+		panel_2.add(btnclientes);
+		
+		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		btnhabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 
 			}
 		});
-		botonSuperior2.setBounds(1032, 11, 56, 56);
-		ImageIcon icon2_info = new ImageIcon(getClass().getResource("/images/informacion.png"));
-        Image imagen2_info = icon2_info.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        botonSuperior2.setIcon(new ImageIcon(imagen2_info));
-		panel_1.add(botonSuperior2);
+		btnhabitaciones.setForeground(Color.WHITE);
+		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
+		btnhabitaciones.setFocusPainted(false);
+		btnhabitaciones.setContentAreaFilled(true);
+		btnhabitaciones.setBorderPainted(false);
+		btnhabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnhabitaciones.setBackground(new Color(56, 54, 41));
+		btnhabitaciones.setBounds(731, 0, 100, 23);
+		panel_2.add(btnhabitaciones);
+		
+		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
+		btntarifas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true); 
+			}
+		});
+		btntarifas.setForeground(Color.WHITE);
+		btntarifas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
+		btntarifas.setFocusPainted(false);
+		btntarifas.setContentAreaFilled(true);
+		btntarifas.setBorderPainted(false);
+		btntarifas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btntarifas.setBackground(new Color(56, 54, 41));
+		btntarifas.setBounds(649, 0, 72, 23);
+		panel_2.add(btntarifas);
 
 		JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));

@@ -13,12 +13,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class EditarDatosCliente {
 
-	JFrame frame;
+	public JFrame frame;
 	private JTextField textField_4;
 	private JTextField textField_3;
 	private JTextField textField_2;
@@ -156,6 +157,9 @@ public class EditarDatosCliente {
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -167,6 +171,9 @@ public class EditarDatosCliente {
 		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -180,6 +187,13 @@ public class EditarDatosCliente {
 		panel_2.add(btnrentas);
 
 		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -191,6 +205,13 @@ public class EditarDatosCliente {
 		panel_2.add(btnclientes);
 
 		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		btnhabitaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -204,6 +225,9 @@ public class EditarDatosCliente {
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -256,6 +280,18 @@ public class EditarDatosCliente {
 		panel_3.add(lblNewLabel_5);
 
 		JButton btnHistorial = new JButton("Editar datos");
+		btnHistorial.addActionListener(new ActionListener() {
+			  public void actionPerformed(ActionEvent e) {
+			        int respuesta = JOptionPane.showConfirmDialog(
+			                null, 
+			                "¿Estás seguro de que desea editar los datos del cliente?","Confirmación",JOptionPane.YES_NO_OPTION,   JOptionPane.WARNING_MESSAGE  );
+
+			        if (respuesta == JOptionPane.YES_OPTION) {
+			            JOptionPane.showMessageDialog(
+			                null,"Datos editados exitosamente.", "exito", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			    }
+			});
 		btnHistorial.setBackground(new Color(255, 214, 10));
 		btnHistorial.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnHistorial.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));

@@ -159,15 +159,31 @@ public class Detallesfamiliar {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
-		btnTiposDeRentas.setBorderPainted(false);
-        btnTiposDeRentas.setFocusPainted(false);
-        btnTiposDeRentas.setContentAreaFilled(true);
-		panel_2.add(btnTiposDeRentas);
+
+		JButton btnTiposDeRentas1 = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
+		btnTiposDeRentas1.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
+		btnTiposDeRentas1.setForeground(new Color(255, 255, 255));
+		btnTiposDeRentas1.setBackground(new Color(56, 54, 41));
+		btnTiposDeRentas1.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnTiposDeRentas1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true); 
+			}
+		});
+		btnTiposDeRentas1.setBounds(1023, 0, 134, 23);
+		btnTiposDeRentas1.setBorderPainted(false);
+        btnTiposDeRentas1.setFocusPainted(false);
+        btnTiposDeRentas1.setContentAreaFilled(true);
+		panel_2.add(btnTiposDeRentas1);
 		
 		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -181,6 +197,13 @@ public class Detallesfamiliar {
 		panel_2.add(btnrentas);
 		
 		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -192,6 +215,13 @@ public class Detallesfamiliar {
 		panel_2.add(btnclientes);
 		
 		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		btnhabitaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -205,6 +235,9 @@ public class Detallesfamiliar {
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -216,6 +249,8 @@ public class Detallesfamiliar {
 		btntarifas.setBackground(new Color(56, 54, 41));
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
+		
+		
 		ImageIcon icon5 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
         Image imagen5 = icon5.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
         final String placeholder = "BUSCAR";

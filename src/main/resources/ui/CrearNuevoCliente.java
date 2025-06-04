@@ -7,7 +7,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -17,38 +18,23 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-
-import com.formdev.flatlaf.FlatLightLaf;
-
-import Dao.ClienteDAO;
-import modelos.Cliente;
-
-
-import ui.TiposHabitacion;
-import ui.Rentas;
-import ui.Clientes; 
-import ui.PanelHabitaciones1;
-import ui.Tarifas;
-import ui.Menu;
 
 public class CrearNuevoCliente {
 
 	public JFrame frame;
-	private JTextField textFieldNombre;
-	private JTextField textFieldApellido;
-	private JTextField textFieldTelefono;
-	private JTextField textFieldEmail;
-	private ClienteDAO clienteDAO;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90);
-
-					CrearNuevoCliente window = new CrearNuevoCliente();
+					Creal_nuevo_cliente window = new Creal_nuevo_cliente();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,17 +43,17 @@ public class CrearNuevoCliente {
 		});
 	}
 
+	/**
+	 * Create the application.
+	 * @wbp.parser.entryPoint
+	 */
 	public CrearNuevoCliente() {
-		try {
-            UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        clienteDAO = new ClienteDAO();
 		initialize();
 	}
 
+	/**
+	 * Initialize the contents of the frame.
+	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -79,28 +65,107 @@ public class CrearNuevoCliente {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 1164, 95);
+		JPanel panel_1 = new JPanel(); //Borde negro
 		panel_1.setBackground(new Color(0, 0, 0));
+		panel_1.setBounds(0, 0, 1164, 95);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(0, 95, 1164, 26);
+		JPanel panel_2 = new JPanel(); //Borde gris
 		panel_2.setBackground(new Color(55, 54, 48));
+		panel_2.setBounds(0, 95, 1164, 26);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 
-		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>");
+		JLabel logo = new JLabel(""); //Logo
+		logo.setBounds(0, 0, 170, 95);
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/logo.png"));
+		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
+	    Image portada2 = portada1.getImage();
+	    Image portada3 = portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
+	    logo.setIcon(new ImageIcon(portada3));
+		panel_1.add(logo);
+
+		JLabel Titulo = new JLabel("Panel de clientes:"); //Titulo
+		Titulo.setForeground(new Color(255, 255, 255));
+		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
+		Titulo.setBounds(180, 11, 410, 73);
+		panel_1.add(Titulo);
+
+		JLabel menuTitulo = new JLabel("Crear nuevo cliente:"); //Texto menú
+		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
+		menuTitulo.setBounds(131, 126, 441, 56);
+		panel.add(menuTitulo);
+
+		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
+		botonSuperior1.setBackground(new Color(0, 0, 0));
+		botonSuperior1.setBorderPainted(false);
+		botonSuperior1.setFocusPainted(false);
+		botonSuperior1.setContentAreaFilled(true);
+		botonSuperior1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		botonSuperior1.setBounds(1098, 11, 56, 56);
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/usuario.png"));
+		ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+		Image c2 = c1.getImage();
+		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		botonSuperior1.setIcon(new ImageIcon(c3));
+		panel_1.add(botonSuperior1);
+
+
+		JButton botonSuperior2 = new JButton(""); //Boton información esquina superior derecha
+		botonSuperior2.setBackground(new Color(0, 0, 0));
+		botonSuperior2.setBorderPainted(false);
+		botonSuperior2.setFocusPainted(false);
+		botonSuperior2.setContentAreaFilled(true);
+		botonSuperior2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 	
+			}
+		});
+		botonSuperior2.setBounds(1032, 11, 56, 56);
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/informacion.png"));
+		ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
+		Image e2 = e1.getImage();
+		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		botonSuperior2.setIcon(new ImageIcon(e3));
+		panel_1.add(botonSuperior2);
+
+		JButton botonVolver = new JButton(""); // Boton para volver atrás
+		botonVolver.setForeground(new Color(255, 255, 255));
+		botonVolver.setBackground(new Color(255, 255, 255));
+		botonVolver.setBorderPainted(false);
+		botonVolver.setFocusPainted(false);
+		botonVolver.setContentAreaFilled(true);
+		botonVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 	
+			}
+		});
+		botonVolver.setBounds(60, 132, 50, 50);
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+		ImageIcon f1 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+		Image f2 = f1.getImage();
+		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		botonVolver.setIcon(new ImageIcon(f3));
+		panel.add(botonVolver);
+
+		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
 		btnTiposDeRentas.setBackground(new Color(56, 54, 41));
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				TiposHabitacion tiposHabitacionWindow = new TiposHabitacion();
-				tiposHabitacionWindow.frame.setVisible(true);
+				frame.dispose(); // Cierra la ventana actual del menú
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -108,13 +173,13 @@ public class CrearNuevoCliente {
         btnTiposDeRentas.setFocusPainted(false);
         btnTiposDeRentas.setContentAreaFilled(true);
 		panel_2.add(btnTiposDeRentas);
-
-		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>");
+		
+		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Rentas rentasWindow = new Rentas();
-				rentasWindow.frame.setVisible(true);
+				frame.dispose(); // Cierra la ventana actual del menú
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -126,8 +191,15 @@ public class CrearNuevoCliente {
 		btnrentas.setBackground(new Color(56, 54, 41));
 		btnrentas.setBounds(932, 0, 81, 23);
 		panel_2.add(btnrentas);
-
-		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>");
+		
+		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true); 
+			}
+		});
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -136,16 +208,17 @@ public class CrearNuevoCliente {
 		btnclientes.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnclientes.setBackground(new Color(56, 54, 41));
 		btnclientes.setBounds(841, 0, 81, 23);
-		btnclientes.addActionListener(new ActionListener() {
+		panel_2.add(btnclientes);
+		
+		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		btnhabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Clientes clientesWindow = new Clientes();
-				clientesWindow.frame.setVisible(true);
+				
+				frame.dispose(); // Cierra la ventana actual del menú
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true); 
 			}
 		});
-		panel_2.add(btnclientes);
-
-		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>");
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -154,21 +227,14 @@ public class CrearNuevoCliente {
 		btnhabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnhabitaciones.setBackground(new Color(56, 54, 41));
 		btnhabitaciones.setBounds(731, 0, 100, 23);
-		btnhabitaciones.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				PanelHabitaciones1 habitacionesWindow = new PanelHabitaciones1();
-				habitacionesWindow.frame.setVisible(true);
-			}
-		});
 		panel_2.add(btnhabitaciones);
-
-		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>");
+		
+		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Tarifas tarifasWindow = new Tarifas();
-				tarifasWindow.frame.setVisible(true);
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -180,156 +246,111 @@ public class CrearNuevoCliente {
 		btntarifas.setBackground(new Color(56, 54, 41));
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
+		
+		
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/busqueda.png"));
+		ImageIcon u1 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
+		Image u2 = u1.getImage();
+		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        final String placeholder = "BUSCAR";
 
-		JLabel logo = new JLabel("");
-		logo.setBounds(0, 0, 170, 95);
-		ImageIcon icon12 = new ImageIcon(getClass().getResource("/images/logo.png"));
-        Image imagen12 = icon12.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
-        logo.setIcon(new ImageIcon(imagen12));
-		panel_1.add(logo);
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(0, 187, 249));
+		panel_3.setBounds(131, 193, 300, 440);
+		panel.add(panel_3);
+		panel_3.setLayout(null);
 
-		JLabel Titulo = new JLabel("Crear Cliente");
-		Titulo.setForeground(new Color(255, 255, 255));
-		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
-		Titulo.setBounds(180, 11, 410, 73);
-		panel_1.add(Titulo);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(45, 11, 200, 200);
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/cama_matrimonial2.png"));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/Images/usuario.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        lblNewLabel.setIcon(new ImageIcon(imagen1));
+		panel_3.add(lblNewLabel);
 
-		JButton botonVolver = new JButton("");
-		botonVolver.setForeground(new Color(255, 255, 255));
-		botonVolver.setBackground(new Color(255, 255, 255));
-		botonVolver.setBorderPainted(false);
-		botonVolver.setFocusPainted(false);
-		botonVolver.setContentAreaFilled(true);
-		botonVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Clientes clientesWindow = new Clientes();
-				clientesWindow.frame.setVisible(true);
-			}
+		JLabel lblNewLabel_1 = new JLabel("ID del cliente:\r\n");
+		lblNewLabel_1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 20));
+		lblNewLabel_1.setBounds(90, 222, 135, 20);
+		panel_3.add(lblNewLabel_1);
+
+		JLabel textoHabitacion = new JLabel("Nombre:");
+		textoHabitacion.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		textoHabitacion.setBounds(120, 272, 145, 20);
+		panel_3.add(textoHabitacion);
+
+		JLabel lblNewLabel_3 = new JLabel("Correo:\r\n");
+		lblNewLabel_3.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_3.setBounds(120, 326, 60, 20);
+		panel_3.add(lblNewLabel_3);
+
+		JLabel lblNewLabel_5 = new JLabel("Telefono\r\n:");
+		lblNewLabel_5.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_5.setBounds(120, 368, 80, 20);
+		panel_3.add(lblNewLabel_5);
+
+		JButton btnHistorial = new JButton("Crear nuevo cliente");
+		btnHistorial.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JOptionPane.showMessageDialog(
+		                null, 
+		                "Cliente creado exitosamente.", 
+		                "Éxito", 
+		                JOptionPane.INFORMATION_MESSAGE
+		        );
+
+		        Clientes pantallaClientes = new Clientes();
+		        pantallaClientes.setVisible(true);
+		    }
 		});
-		botonVolver.setBounds(60, 132, 36, 36);
-		ImageIcon icon69 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-        Image imagen69 = icon69.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonVolver.setIcon(new ImageIcon(imagen69));
-		panel.add(botonVolver);
 
-		JLabel lblCrearCliente = new JLabel("Crear Nuevo Cliente:");
-		lblCrearCliente.setFont(new Font("Jost*", Font.BOLD, 38));
-		lblCrearCliente.setBounds(131, 126, 400, 56);
-		panel.add(lblCrearCliente);
-
-		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblNombre.setBounds(100, 200, 200, 30);
-		panel.add(lblNombre);
-
-		textFieldNombre = new JTextField();
-		textFieldNombre.setFont(new Font("Dialog", Font.PLAIN, 16));
-		textFieldNombre.setBounds(100, 240, 250, 35);
-		panel.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
-
-		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblApellido.setBounds(400, 200, 200, 30);
-		panel.add(lblApellido);
-
-		textFieldApellido = new JTextField();
-		textFieldApellido.setFont(new Font("Dialog", Font.PLAIN, 16));
-		textFieldApellido.setBounds(400, 240, 250, 35);
-		panel.add(textFieldApellido);
-		textFieldApellido.setColumns(10);
-
-		JLabel lblTelefono = new JLabel("Teléfono:");
-		lblTelefono.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblTelefono.setBounds(100, 300, 200, 30);
-		panel.add(lblTelefono);
-
-		textFieldTelefono = new JTextField();
-		textFieldTelefono.setFont(new Font("Dialog", Font.PLAIN, 16));
-		textFieldTelefono.setBounds(100, 340, 250, 35);
-		panel.add(textFieldTelefono);
-		textFieldTelefono.setColumns(10);
-
-		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblEmail.setBounds(400, 300, 200, 30);
-		panel.add(lblEmail);
-
-		textFieldEmail = new JTextField();
-		textFieldEmail.setFont(new Font("Dialog", Font.PLAIN, 16));
-		textFieldEmail.setBounds(400, 340, 250, 35);
-		panel.add(textFieldEmail);
-		textFieldEmail.setColumns(10);
-
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(Color.RED);
-		btnCancelar.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
-		btnCancelar.setForeground(new Color(255, 255, 255));
-		btnCancelar.setBounds(967, 517, 170, 50);
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Clientes clientesWindow = new Clientes();
-				clientesWindow.frame.setVisible(true);
-			}
-		});
-		panel.add(btnCancelar);
-
-		JButton btnGuardarCliente = new JButton("Guardar Cliente");
-		btnGuardarCliente.setForeground(Color.WHITE);
-		btnGuardarCliente.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
-		btnGuardarCliente.setBackground(new Color(255, 214, 10));
-		btnGuardarCliente.setBounds(967, 592, 170, 50);
-		btnGuardarCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String nombre = textFieldNombre.getText().trim();
-				String apellido = textFieldApellido.getText().trim();
-				String telefono = textFieldTelefono.getText().trim();
-				String email = textFieldEmail.getText().trim();
-				LocalDate fechaRegistro = LocalDate.now();
-
-				if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || email.isEmpty()) {
-					JOptionPane.showMessageDialog(frame, "Todos los campos son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-					return;
-				}
-				if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$")) {
-				    JOptionPane.showMessageDialog(frame, "Formato de email inválido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-				    return;
-				}
-				if (!telefono.matches("^\\d{10}$")) {
-				    JOptionPane.showMessageDialog(frame, "El teléfono debe contener 10 dígitos numéricos.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-				    return;
-				}
-
-				Cliente nuevoCliente = new Cliente(0, nombre, apellido, telefono, email, fechaRegistro);
-
-				if (clienteDAO.agregarCliente(nuevoCliente)) {
-					JOptionPane.showMessageDialog(frame, "Cliente creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-					frame.dispose();
-					Clientes clientesWindow = new Clientes();
-					clientesWindow.frame.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(frame, "Error al crear el cliente. Puede que el email ya exista.", "Error", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		});
-		panel.add(btnGuardarCliente);
-	}
-
-	public void dispose() {
-		if (frame != null) {
-			frame.dispose();
-		}
-	}
-
-	public void setVisible(boolean b) {
-		if (frame != null) {
-			frame.setVisible(b);
-		}
-	}
-
-	public JFrame getFrame() {
-		return frame;
+		btnHistorial.setBackground(new Color(255, 214, 10));
+		btnHistorial.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
+		btnHistorial.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnHistorial.setBounds(856, 573, 270, 60);
+		panel.add(btnHistorial);
+		
+		JLabel menuTitulo_1 = new JLabel("ID del cliente:");
+		menuTitulo_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		menuTitulo_1.setBounds(441, 192, 239, 56);
+		panel.add(menuTitulo_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setBackground(Color.LIGHT_GRAY);
+		textField_1.setBounds(441, 258, 218, 40);
+		panel.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel menuTitulo_1_1 = new JLabel("Nombre del cliente:");
+		menuTitulo_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		menuTitulo_1_1.setBounds(441, 308, 239, 56);
+		panel.add(menuTitulo_1_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBackground(Color.LIGHT_GRAY);
+		textField_2.setBounds(441, 358, 218, 40);
+		panel.add(textField_2);
+		
+		JLabel menuTitulo_1_1_1 = new JLabel("Numero del cliente:");
+		menuTitulo_1_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		menuTitulo_1_1_1.setBounds(441, 408, 239, 56);
+		panel.add(menuTitulo_1_1_1);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBackground(Color.LIGHT_GRAY);
+		textField_3.setBounds(441, 455, 218, 40);
+		panel.add(textField_3);
+		
+		JLabel menuTitulo_1_1_1_1 = new JLabel("Correo electronico:");
+		menuTitulo_1_1_1_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		menuTitulo_1_1_1_1.setBounds(441, 505, 239, 56);
+		panel.add(menuTitulo_1_1_1_1);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBackground(Color.LIGHT_GRAY);
+		textField_4.setBounds(441, 555, 218, 40);
+		panel.add(textField_4);
 	}
 }
