@@ -45,7 +45,7 @@ public class EliminarTarifas {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90);
+					UIManager.put("Button.arc", 0);
 
 					EliminarTarifas window = new EliminarTarifas();
 					window.frame.setVisible(true);
@@ -273,8 +273,7 @@ public class EliminarTarifas {
 				tarifa.getTipoHabitacion(),
 				tarifa.getPrecioBase(),
 				tarifa.getDescuentoPorcentaje(),
-				tarifa.getFechaInicioVigencia(),
-				tarifa.getFechaFinVigencia()
+
 			});
 		}
 	}

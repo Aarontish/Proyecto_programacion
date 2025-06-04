@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class TarifaDAO {
     }
 
     public boolean createTarifa(Tarifa tarifa) {
-        String sql = "INSERT INTO Tarifas (tipoHabitacion, precioBase, descuentoPorcentaje, fechaInicioVigencia, fechaFinVigencia) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Tarifas (tipoHabitacion, precioBase, descuentoPorcentaje) VALUES (?, ?, ?)";
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
@@ -34,8 +34,6 @@ public class TarifaDAO {
             pstmt.setString(1, tarifa.getTipoHabitacion());
             pstmt.setDouble(2, tarifa.getPrecioBase());
             pstmt.setDouble(3, tarifa.getDescuentoPorcentaje());
-            pstmt.setDate(4, tarifa.getFechaInicioVigencia() != null ? java.sql.Date.valueOf(tarifa.getFechaInicioVigencia()) : null);
-            pstmt.setDate(5, tarifa.getFechaFinVigencia() != null ? java.sql.Date.valueOf(tarifa.getFechaFinVigencia()) : null);
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
@@ -48,9 +46,8 @@ public class TarifaDAO {
         }
     }
 
-    // Método para obtener una tarifa por su ID (este era el que faltaba)
     public Tarifa getTarifaById(int idTarifa) {
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, fechaInicioVigencia, fechaFinVigencia FROM Tarifas WHERE idTarifa = ?";
+        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje FROM Tarifas WHERE idTarifa = ?";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -67,8 +64,6 @@ public class TarifaDAO {
                 tarifa.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 tarifa.setPrecioBase(rs.getDouble("precioBase"));
                 tarifa.setDescuentoPorcentaje(rs.getDouble("descuentoPorcentaje"));
-                tarifa.setFechaInicioVigencia(rs.getDate("fechaInicioVigencia") != null ? rs.getDate("fechaInicioVigencia").toLocalDate() : null);
-                tarifa.setFechaFinVigencia(rs.getDate("fechaFinVigencia") != null ? rs.getDate("fechaFinVigencia").toLocalDate() : null);
             }
         } catch (SQLException e) {
             System.err.println("Error al obtener tarifa por ID: " + e.getMessage());
@@ -80,7 +75,7 @@ public class TarifaDAO {
     }
 
     public List<Tarifa> getAllTarifas() {
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, fechaInicioVigencia, fechaFinVigencia FROM Tarifas";
+        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje FROM Tarifas";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -96,8 +91,6 @@ public class TarifaDAO {
                 tarifa.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 tarifa.setPrecioBase(rs.getDouble("precioBase"));
                 tarifa.setDescuentoPorcentaje(rs.getDouble("descuentoPorcentaje"));
-                tarifa.setFechaInicioVigencia(rs.getDate("fechaInicioVigencia") != null ? rs.getDate("fechaInicioVigencia").toLocalDate() : null);
-                tarifa.setFechaFinVigencia(rs.getDate("fechaFinVigencia") != null ? rs.getDate("fechaFinVigencia").toLocalDate() : null);
                 tarifas.add(tarifa);
             }
         } catch (SQLException e) {
@@ -110,7 +103,7 @@ public class TarifaDAO {
     }
 
     public List<Tarifa> getTarifasByTipoHabitacion(String tipo) {
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, fechaInicioVigencia, fechaFinVigencia FROM Tarifas WHERE tipoHabitacion LIKE ?";
+        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje FROM Tarifas WHERE tipoHabitacion LIKE ?";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -127,8 +120,6 @@ public class TarifaDAO {
                 tarifa.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 tarifa.setPrecioBase(rs.getDouble("precioBase"));
                 tarifa.setDescuentoPorcentaje(rs.getDouble("descuentoPorcentaje"));
-                tarifa.setFechaInicioVigencia(rs.getDate("fechaInicioVigencia") != null ? rs.getDate("fechaInicioVigencia").toLocalDate() : null);
-                tarifa.setFechaFinVigencia(rs.getDate("fechaFinVigencia") != null ? rs.getDate("fechaFinVigencia").toLocalDate() : null);
                 tarifas.add(tarifa);
             }
         } catch (SQLException e) {
@@ -141,7 +132,7 @@ public class TarifaDAO {
     }
 
     public boolean updateTarifa(Tarifa tarifa) {
-        String sql = "UPDATE Tarifas SET tipoHabitacion = ?, precioBase = ?, descuentoPorcentaje = ?, fechaInicioVigencia = ?, fechaFinVigencia = ? WHERE idTarifa = ?";
+        String sql = "UPDATE Tarifas SET tipoHabitacion = ?, precioBase = ?, descuentoPorcentaje = ? WHERE idTarifa = ?";
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
@@ -150,9 +141,7 @@ public class TarifaDAO {
             pstmt.setString(1, tarifa.getTipoHabitacion());
             pstmt.setDouble(2, tarifa.getPrecioBase());
             pstmt.setDouble(3, tarifa.getDescuentoPorcentaje());
-            pstmt.setDate(4, tarifa.getFechaInicioVigencia() != null ? java.sql.Date.valueOf(tarifa.getFechaInicioVigencia()) : null);
-            pstmt.setDate(5, tarifa.getFechaFinVigencia() != null ? java.sql.Date.valueOf(tarifa.getFechaFinVigencia()) : null);
-            pstmt.setInt(6, tarifa.getIdTarifa());
+            pstmt.setInt(4, tarifa.getIdTarifa());
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;

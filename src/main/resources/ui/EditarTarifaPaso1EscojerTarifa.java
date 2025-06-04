@@ -33,8 +33,7 @@ import ui.PanelHabitaciones1;
 import ui.Tarifas;
 import ui.Menu;
 
-// Importar la nueva clase de formulario de edición
-import ui.EditarTarifaFormulario; // <-- ¡NUEVA IMPORTACIÓN!
+import ui.EditarTarifaFormulario; 
 
 public class EditarTarifaPaso1EscojerTarifa {
 
@@ -62,7 +61,7 @@ public class EditarTarifaPaso1EscojerTarifa {
 	public EditarTarifaPaso1EscojerTarifa() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90);
+            UIManager.put("Button.arc", 0);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -269,8 +268,7 @@ public class EditarTarifaPaso1EscojerTarifa {
 				tarifa.getTipoHabitacion(),
 				tarifa.getPrecioBase(),
 				tarifa.getDescuentoPorcentaje(),
-				tarifa.getFechaInicioVigencia(),
-				tarifa.getFechaFinVigencia()
+
 			});
 		}
 	}

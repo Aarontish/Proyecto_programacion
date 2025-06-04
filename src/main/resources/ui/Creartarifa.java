@@ -7,47 +7,47 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 
 import javax.swing.BorderFactory;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
 import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-import ui.TiposHabitacion; 
+import Dao.TarifaDAO;
+import modelos.Tarifa;
+
+import ui.TiposHabitacion;
 import ui.Rentas;
 import ui.Clientes;
 import ui.PanelHabitaciones1;
 import ui.Tarifas;
 import ui.Menu;
 
-import Dao.TarifaDAO;
-import modelos.Tarifa;
-
 public class Creartarifa {
 
 	public JFrame frame;
-	private JTextField textFieldNombre;
-	private JTextField textFieldDescripcion;
-	private JTextField textFieldPrecio;
+	private JTextField textFieldNombreTarifa;
+	private JTextField textFieldPrecioPorNoche;
 	private JComboBox<String> comboBoxTipoTarifa;
-    private TarifaDAO tarifaDAO;
+	private JTextArea textAreaDescripcion;
+	private TarifaDAO tarifaDAO;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90);
+					UIManager.put("Button.arc", 90); 
 
 					Creartarifa window = new Creartarifa();
 					window.frame.setVisible(true);
@@ -61,7 +61,7 @@ public class Creartarifa {
 	public Creartarifa() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90);
+            UIManager.put("Button.arc", 90); 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -100,7 +100,7 @@ public class Creartarifa {
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				TiposHabitacion tiposHabitacionWindow = new TiposHabitacion(); // <-- Nombre de clase actualizado
+				TiposHabitacion tiposHabitacionWindow = new TiposHabitacion();
 				tiposHabitacionWindow.frame.setVisible(true);
 			}
 		});
@@ -184,16 +184,16 @@ public class Creartarifa {
 
 		JLabel logo = new JLabel("");
 		logo.setBounds(0, 0, 170, 95);
-		ImageIcon icon2 = new ImageIcon(getClass().getResource("/images/logo.png"));
-        Image imagen2 = icon2.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
-        logo.setIcon(new ImageIcon(imagen2));
+		ImageIcon icon12 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image imagen12 = icon12.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(imagen12));
 		panel_1.add(logo);
 
-		JLabel lblTarifas = new JLabel("Crear Tarifa");
-		lblTarifas.setForeground(new Color(255, 255, 255));
-		lblTarifas.setFont(new Font("Dialog", Font.BOLD, 36));
-		lblTarifas.setBounds(141, 31, 229, 33);
-		panel_1.add(lblTarifas);
+		JLabel Titulo = new JLabel("Crear Tarifa");
+		Titulo.setForeground(new Color(255, 255, 255));
+		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
+		Titulo.setBounds(180, 11, 410, 73);
+		panel_1.add(Titulo);
 
 		JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));
@@ -208,59 +208,69 @@ public class Creartarifa {
 				tarifasWindow.frame.setVisible(true);
 			}
 		});
-		botonVolver.setBounds(59, 131, 50, 50);
-		ImageIcon icon42 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-        Image imagen42 = icon42.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonVolver.setIcon(new ImageIcon(imagen42));
+		botonVolver.setBounds(60, 132, 36, 36);
+		ImageIcon icon69 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+        Image imagen69 = icon69.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		botonVolver.setIcon(new ImageIcon(imagen69));
 		panel.add(botonVolver);
 
-		JLabel lblEditarTarifas = new JLabel("Crear tarifa:");
-		lblEditarTarifas.setForeground(new Color(0, 0, 0));
-		lblEditarTarifas.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblEditarTarifas.setBounds(108, 143, 289, 33);
-		panel.add(lblEditarTarifas);
+		JLabel lblCrearTarifa = new JLabel("Crear tarifa");
+		lblCrearTarifa.setFont(new Font("Jost*", Font.BOLD, 38));
+		lblCrearTarifa.setBounds(131, 126, 400, 56);
+		panel.add(lblCrearTarifa);
 
-		JLabel lblNombre = new JLabel("Tipo de Tarifa:");
-		lblNombre.setForeground(Color.BLACK);
-		lblNombre.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblNombre.setBounds(108, 223, 289, 33);
-		panel.add(lblNombre);
+		JLabel lblNombreTarifa = new JLabel("Nombre:");
+		lblNombreTarifa.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblNombreTarifa.setBounds(100, 200, 300, 30);
+		panel.add(lblNombreTarifa);
 
-		textFieldNombre = new JTextField();
-		textFieldNombre.setFont(new Font("Dialog", Font.BOLD, 16));
-		textFieldNombre.setBounds(108, 266, 212, 33);
-		panel.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
+		textFieldNombreTarifa = new JTextField();
+		textFieldNombreTarifa.setFont(new Font("Dialog", Font.PLAIN, 16));
+		textFieldNombreTarifa.setBounds(100, 240, 250, 35);
+		panel.add(textFieldNombreTarifa);
+		textFieldNombreTarifa.setColumns(10);
 
-		JLabel lblDescripcion = new JLabel("Descuento (%):");
-		lblDescripcion.setForeground(Color.BLACK);
-		lblDescripcion.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblDescripcion.setBounds(108, 323, 289, 33);
+		JLabel lblTipoTarifa = new JLabel("Tipo:");
+		lblTipoTarifa.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblTipoTarifa.setBounds(400, 200, 200, 30);
+		panel.add(lblTipoTarifa);
+
+		String[] tiposTarifa = {"Reembolsable", "No Reembolsable", "Corporativa", "Promocional"};
+		comboBoxTipoTarifa = new JComboBox<>(tiposTarifa);
+		comboBoxTipoTarifa.setFont(new Font("Dialog", Font.PLAIN, 16));
+		comboBoxTipoTarifa.setBounds(400, 240, 250, 35);
+		panel.add(comboBoxTipoTarifa);
+
+		JLabel lblDescripcion = new JLabel("Descripción:");
+		lblDescripcion.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblDescripcion.setBounds(100, 300, 250, 30);
 		panel.add(lblDescripcion);
 
-		textFieldDescripcion = new JTextField();
-		textFieldDescripcion.setFont(new Font("Dialog", Font.BOLD, 16));
-		textFieldDescripcion.setBounds(108, 374, 212, 33);
-		panel.add(textFieldDescripcion);
-		textFieldDescripcion.setColumns(10);
+		textAreaDescripcion = new JTextArea();
+		textAreaDescripcion.setFont(new Font("Dialog", Font.PLAIN, 16));
+		textAreaDescripcion.setLineWrap(true);
+		textAreaDescripcion.setWrapStyleWord(true);
+		JScrollPane scrollPaneDescripcion = new JScrollPane(textAreaDescripcion);
+		scrollPaneDescripcion.setBounds(100, 340, 250, 80);
+		panel.add(scrollPaneDescripcion);
 
-		JLabel lblPrecio = new JLabel("Precio Base:");
-		lblPrecio.setForeground(Color.BLACK);
-		lblPrecio.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblPrecio.setBounds(440, 323, 289, 33);
-		panel.add(lblPrecio);
+		JLabel lblPrecioPorNoche = new JLabel("Precio por noche:");
+		lblPrecioPorNoche.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblPrecioPorNoche.setBounds(400, 300, 250, 30);
+		panel.add(lblPrecioPorNoche);
 
-		textFieldPrecio = new JTextField();
-		textFieldPrecio.setFont(new Font("Dialog", Font.BOLD, 16));
-		textFieldPrecio.setBounds(440, 366, 255, 33);
-		panel.add(textFieldPrecio);
-		textFieldPrecio.setColumns(10);
+		textFieldPrecioPorNoche = new JTextField();
+		textFieldPrecioPorNoche.setFont(new Font("Dialog", Font.PLAIN, 16));
+		textFieldPrecioPorNoche.setBounds(400, 340, 250, 35);
+		panel.add(textFieldPrecioPorNoche);
+		textFieldPrecioPorNoche.setColumns(10);
 
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(Color.RED);
+		btnCancelar.setBackground(new Color(239, 35, 60)); 
 		btnCancelar.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		btnCancelar.setForeground(new Color(255, 255, 255));
 		btnCancelar.setBounds(967, 517, 170, 50);
+		btnCancelar.putClientProperty("FlatLaf.style", "arc: 0"); 
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -270,49 +280,38 @@ public class Creartarifa {
 		});
 		panel.add(btnCancelar);
 
-		JButton btnGuardarCambios = new JButton("Crear tarifa");
-		btnGuardarCambios.setForeground(Color.WHITE);
-		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
-		btnGuardarCambios.setBackground(new Color(255, 214, 10));
-		btnGuardarCambios.setBounds(967, 592, 170, 50);
-		btnGuardarCambios.addActionListener(new ActionListener() {
+		JButton btnGuardarTarifa = new JButton("Crear");
+		btnGuardarTarifa.setForeground(Color.DARK_GRAY);
+		btnGuardarTarifa.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
+		btnGuardarTarifa.setBackground(Color.YELLOW); 
+		btnGuardarTarifa.setBounds(967, 592, 170, 50);
+		btnGuardarTarifa.putClientProperty("FlatLaf.style", "arc: 0"); 
+		btnGuardarTarifa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String tipoTarifa = textFieldNombre.getText().trim();
-				String descuentoStr = textFieldDescripcion.getText().trim();
-				String precioStr = textFieldPrecio.getText().trim();
+				String nombreTarifa = textFieldNombreTarifa.getText().trim();
+				String precioPorNocheStr = textFieldPrecioPorNoche.getText().trim();
+				
 
-				if (tipoTarifa.isEmpty() || precioStr.isEmpty()) {
-					JOptionPane.showMessageDialog(frame, "Los campos 'Tipo de Tarifa' y 'Precio Base' son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+				if (nombreTarifa.isEmpty() || precioPorNocheStr.isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "Los campos 'Nombre' y 'Precio por noche' son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
 
-				double precioBase;
+				double precioPorNoche;
 				try {
-					precioBase = Double.parseDouble(precioStr);
-					if (precioBase <= 0) {
-						JOptionPane.showMessageDialog(frame, "El 'Precio Base' debe ser un número positivo.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-						return;
-					}
+					precioPorNoche = Double.parseDouble(precioPorNocheStr);
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(frame, "El 'Precio Base' debe ser un número válido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(frame, "Precio por noche debe ser un número válido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
 
-				double descuentoPorcentaje = 0.0;
-				if (!descuentoStr.isEmpty()) {
-					try {
-						descuentoPorcentaje = Double.parseDouble(descuentoStr);
-						if (descuentoPorcentaje < 0 || descuentoPorcentaje > 100) {
-							JOptionPane.showMessageDialog(frame, "El 'Descuento' debe ser un número entre 0 y 100.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-							return;
-						}
-					} catch (NumberFormatException ex) {
-						JOptionPane.showMessageDialog(frame, "El 'Descuento' debe ser un número válido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-						return;
-					}
+				if (precioPorNoche < 0) {
+					JOptionPane.showMessageDialog(frame, "Valores numéricos inválidos. Precio por noche no negativo.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+					return;
 				}
-
-				Tarifa nuevaTarifa = new Tarifa(0, tipoTarifa, precioBase, descuentoPorcentaje, null, null);
+				
+	
+				Tarifa nuevaTarifa = new Tarifa(0, nombreTarifa, precioPorNoche, 0.0); 
 
 				if (tarifaDAO.createTarifa(nuevaTarifa)) {
 					JOptionPane.showMessageDialog(frame, "Tarifa creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -320,11 +319,11 @@ public class Creartarifa {
 					Tarifas tarifasWindow = new Tarifas();
 					tarifasWindow.frame.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(frame, "Error al crear la tarifa. Puede que el tipo de tarifa ya exista.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame, "Error al crear la tarifa.", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
-		panel.add(btnGuardarCambios);
+		panel.add(btnGuardarTarifa);
 	}
 
 	public void dispose() {

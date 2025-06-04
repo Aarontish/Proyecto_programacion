@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
@@ -108,9 +109,9 @@ public class Tarifas {
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
 
-		JLabel menuTitulo = new JLabel("Tarifas:");
+		JLabel menuTitulo = new JLabel("Tipos de tarifas:");
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
-		menuTitulo.setBounds(131, 126, 245, 56);
+		menuTitulo.setBounds(131, 126, 400, 56);
 		panel.add(menuTitulo);
 
 		JButton botonSuperior1 = new JButton("");
@@ -120,7 +121,6 @@ public class Tarifas {
 		botonSuperior1.setContentAreaFilled(true);
 		botonSuperior1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Acción para el botón de usuario superior
 			}
 		});
 		botonSuperior1.setBounds(1098, 11, 56, 56);
@@ -136,7 +136,6 @@ public class Tarifas {
 		botonSuperior2.setContentAreaFilled(true);
 		botonSuperior2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Acción para el botón de información superior
 			}
 		});
 		botonSuperior2.setBounds(1032, 11, 56, 56);
@@ -296,7 +295,7 @@ public class Tarifas {
         });
 		panel.add(textFieldBuscar);
 
-		JButton btnEliminarTarifa = new JButton("Eliminar Tarifa");
+		JButton btnEliminarTarifa = new JButton("Eliminar");
 		btnEliminarTarifa.setBackground(new Color(239, 35, 60));
 		btnEliminarTarifa.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnEliminarTarifa.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -310,7 +309,7 @@ public class Tarifas {
 					if (confirm == JOptionPane.YES_OPTION) {
 						if (tarifaDAO.deleteTarifa(idTarifa)) {
 							JOptionPane.showMessageDialog(frame, "Tarifa eliminada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-							cargarDatosTabla(""); // Recargar tabla
+							cargarDatosTabla("");
 						} else {
 							JOptionPane.showMessageDialog(frame, "Error al eliminar la tarifa.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -320,10 +319,10 @@ public class Tarifas {
 				}
 			}
 		});
-		btnEliminarTarifa.setBounds(131, 193, 245, 40);
+		btnEliminarTarifa.setBounds(131, 193, 150, 40);
 		panel.add(btnEliminarTarifa);
 
-		JButton btnEditarTarifa = new JButton("Editar Tarifa");
+		JButton btnEditarTarifa = new JButton("Editar");
 		btnEditarTarifa.setBackground(new Color(50, 186, 125));
 		btnEditarTarifa.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
 		btnEditarTarifa.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
@@ -341,15 +340,15 @@ public class Tarifas {
 				}
 			}
 		});
-		btnEditarTarifa.setBounds(388, 193, 245, 40);
+		btnEditarTarifa.setBounds(291, 193, 150, 40);
 		panel.add(btnEditarTarifa);
 
-		JButton btnCrearTarifaNueva = new JButton("Crear Tarifa Nueva");
+		JButton btnCrearTarifaNueva = new JButton("Crear");
 		btnCrearTarifaNueva.setForeground(Color.DARK_GRAY);
 		btnCrearTarifaNueva.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
 		btnCrearTarifaNueva.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnCrearTarifaNueva.setBackground(Color.YELLOW);
-		btnCrearTarifaNueva.setBounds(645, 193, 280, 40);
+		btnCrearTarifaNueva.setBounds(451, 193, 150, 40);
 		btnCrearTarifaNueva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -359,7 +358,7 @@ public class Tarifas {
 		});
 		panel.add(btnCrearTarifaNueva);
 
-		String[] columnNames = { "ID Tarifa", "Tipo Habitación", "Precio Base", "Descuento (%)", "Inicio Vigencia", "Fin Vigencia" };
+		String[] columnNames = { "ID Tarifa", "Tipo de Tarifa", "Precio", "Condiciones" }; 
 		tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -377,30 +376,51 @@ public class Tarifas {
 		scrollPane.setBounds(131, 250, 950, 350);
 		panel.add(scrollPane);
 
+        TableColumnModel tcm = tableTarifas.getColumnModel();
+        tcm.removeColumn(tcm.getColumn(0));
+
 		cargarDatosTabla(""); 
 	}
 
-	
 	private void cargarDatosTabla(String filtro) {
-		tableModel.setRowCount(0); // Limpia la tabla
+		tableModel.setRowCount(0);
 
 		List<Tarifa> tarifas;
 		if (filtro != null && !filtro.isEmpty() && !filtro.equals("BUSCAR")) {
-			// Usar el método del DAO para filtrar por tipo de habitación
 			tarifas = tarifaDAO.getTarifasByTipoHabitacion(filtro);
 		} else {
-			// Obtener todas las tarifas si no hay filtro
 			tarifas = tarifaDAO.getAllTarifas();
 		}
 
 		for (Tarifa tarifa : tarifas) {
+			String condiciones = "";
+			switch (tarifa.getTipoHabitacion().toLowerCase()) {
+				case "reembolsable":
+					condiciones = "Cancelable";
+					break;
+				case "no reembolsable":
+					condiciones = "No Cancelable";
+					break;
+				case "promocional":
+					condiciones = "Solo temporada";
+					break;
+				case "corporativa":
+					condiciones = "Empresa";
+					break;
+				default:
+					if (tarifa.getDescuentoPorcentaje() > 0) {
+						condiciones = "Con descuento: " + tarifa.getDescuentoPorcentaje() + "%";
+					} else {
+						condiciones = "Sin descuento";
+					}
+					break;
+			}
+
 			tableModel.addRow(new Object[]{
 				tarifa.getIdTarifa(),
 				tarifa.getTipoHabitacion(),
-				tarifa.getPrecioBase(),
-				tarifa.getDescuentoPorcentaje(),
-				tarifa.getFechaInicioVigencia(),
-				tarifa.getFechaFinVigencia()
+				String.format("$ %.2f MXN", tarifa.getPrecioBase()),
+				condiciones
 			});
 		}
 	}

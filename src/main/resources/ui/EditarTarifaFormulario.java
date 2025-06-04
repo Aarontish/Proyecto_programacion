@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -17,6 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
 import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
@@ -24,7 +26,6 @@ import com.formdev.flatlaf.FlatLightLaf;
 import Dao.TarifaDAO;
 import modelos.Tarifa;
 
-// Importaciones para navegación
 import ui.TiposHabitacion;
 import ui.Rentas;
 import ui.Clientes;
@@ -35,22 +36,22 @@ import ui.Menu;
 public class EditarTarifaFormulario {
 
 	public JFrame frame;
-	private JTextField textFieldTipoTarifa;
-	private JTextField textFieldDescuento;
-	private JTextField textFieldPrecio;
+	private JTextField textFieldNombreTarifa;
+	private JTextField textFieldPrecioPorNoche;
+	private JComboBox<String> comboBoxTipoTarifa;
+	private JTextArea textAreaDescripcion;
 	private TarifaDAO tarifaDAO;
 	private Tarifa tarifaAEditar;
 
-	// Constructor que recibe el ID de la tarifa a editar
 	public EditarTarifaFormulario(int idTarifa) {
 		this();
 		tarifaDAO = new TarifaDAO();
-		tarifaAEditar = tarifaDAO.getTarifaById(idTarifa); // Esta línea es correcta si TarifaDAO tiene el método
+		tarifaAEditar = tarifaDAO.getTarifaById(idTarifa);
 
 		if (tarifaAEditar != null) {
-			textFieldTipoTarifa.setText(tarifaAEditar.getTipoHabitacion());
-			textFieldDescuento.setText(String.valueOf(tarifaAEditar.getDescuentoPorcentaje()));
-			textFieldPrecio.setText(String.valueOf(tarifaAEditar.getPrecioBase()));
+			textFieldNombreTarifa.setText(tarifaAEditar.getTipoHabitacion());
+			textFieldPrecioPorNoche.setText(String.valueOf(tarifaAEditar.getPrecioBase()));
+			
 		} else {
 			JOptionPane.showMessageDialog(frame, "Tarifa no encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
 			frame.dispose();
@@ -59,7 +60,6 @@ public class EditarTarifaFormulario {
 		}
 	}
 
-	// Constructor por defecto (para el main o si no se pasa ID)
 	public EditarTarifaFormulario() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -199,16 +199,16 @@ public class EditarTarifaFormulario {
 
 		JLabel logo = new JLabel("");
 		logo.setBounds(0, 0, 170, 95);
-		ImageIcon icon2 = new ImageIcon(getClass().getResource("/images/logo.png"));
-        Image imagen2 = icon2.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
-        logo.setIcon(new ImageIcon(imagen2));
+		ImageIcon icon12 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image imagen12 = icon12.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(imagen12));
 		panel_1.add(logo);
 
-		JLabel lblEditarTarifa = new JLabel("Editar Tarifa");
-		lblEditarTarifa.setForeground(new Color(255, 255, 255));
-		lblEditarTarifa.setFont(new Font("Dialog", Font.BOLD, 36));
-		lblEditarTarifa.setBounds(141, 31, 229, 33);
-		panel_1.add(lblEditarTarifa);
+		JLabel Titulo = new JLabel("Editar Tarifa");
+		Titulo.setForeground(new Color(255, 255, 255));
+		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
+		Titulo.setBounds(180, 11, 410, 73);
+		panel_1.add(Titulo);
 
 		JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));
@@ -223,59 +223,69 @@ public class EditarTarifaFormulario {
 				tarifasWindow.frame.setVisible(true);
 			}
 		});
-		botonVolver.setBounds(59, 131, 50, 50);
-		ImageIcon icon42 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-        Image imagen42 = icon42.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonVolver.setIcon(new ImageIcon(imagen42));
+		botonVolver.setBounds(60, 132, 36, 36);
+		ImageIcon icon69 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+        Image imagen69 = icon69.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		botonVolver.setIcon(new ImageIcon(imagen69));
 		panel.add(botonVolver);
 
-		JLabel lblTituloFormulario = new JLabel("Datos de la tarifa:");
-		lblTituloFormulario.setForeground(new Color(0, 0, 0));
-		lblTituloFormulario.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblTituloFormulario.setBounds(108, 143, 300, 33);
-		panel.add(lblTituloFormulario);
+		JLabel lblEditarTarifa = new JLabel("Editar Tarifa:");
+		lblEditarTarifa.setFont(new Font("Jost*", Font.BOLD, 38));
+		lblEditarTarifa.setBounds(131, 126, 400, 56);
+		panel.add(lblEditarTarifa);
 
-		JLabel lblTipoTarifa = new JLabel("Tipo de Tarifa:");
-		lblTipoTarifa.setForeground(Color.BLACK);
+		JLabel lblNombreTarifa = new JLabel("Nombre:");
+		lblNombreTarifa.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblNombreTarifa.setBounds(100, 200, 300, 30);
+		panel.add(lblNombreTarifa);
+
+		textFieldNombreTarifa = new JTextField();
+		textFieldNombreTarifa.setFont(new Font("Dialog", Font.PLAIN, 16));
+		textFieldNombreTarifa.setBounds(100, 240, 250, 35);
+		panel.add(textFieldNombreTarifa);
+		textFieldNombreTarifa.setColumns(10);
+
+		JLabel lblTipoTarifa = new JLabel("Tipo:");
 		lblTipoTarifa.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblTipoTarifa.setBounds(108, 220, 200, 30);
+		lblTipoTarifa.setBounds(400, 200, 200, 30);
 		panel.add(lblTipoTarifa);
 
-		textFieldTipoTarifa = new JTextField();
-		textFieldTipoTarifa.setFont(new Font("Dialog", Font.BOLD, 16));
-		textFieldTipoTarifa.setBounds(108, 260, 250, 35);
-		panel.add(textFieldTipoTarifa);
-		textFieldTipoTarifa.setColumns(10);
+		String[] tiposTarifa = {"Reembolsable", "No Reembolsable", "Corporativa", "Promocional"};
+		comboBoxTipoTarifa = new JComboBox<>(tiposTarifa);
+		comboBoxTipoTarifa.setFont(new Font("Dialog", Font.PLAIN, 16));
+		comboBoxTipoTarifa.setBounds(400, 240, 250, 35);
+		panel.add(comboBoxTipoTarifa);
 
-		JLabel lblDescuento = new JLabel("Descuento (%):");
-		lblDescuento.setForeground(Color.BLACK);
-		lblDescuento.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblDescuento.setBounds(108, 320, 200, 30);
-		panel.add(lblDescuento);
+		JLabel lblDescripcion = new JLabel("Descripción:");
+		lblDescripcion.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblDescripcion.setBounds(100, 300, 250, 30);
+		panel.add(lblDescripcion);
 
-		textFieldDescuento = new JTextField();
-		textFieldDescuento.setFont(new Font("Dialog", Font.BOLD, 16));
-		textFieldDescuento.setBounds(108, 360, 250, 35);
-		panel.add(textFieldDescuento);
-		textFieldDescuento.setColumns(10);
+		textAreaDescripcion = new JTextArea();
+		textAreaDescripcion.setFont(new Font("Dialog", Font.PLAIN, 16));
+		textAreaDescripcion.setLineWrap(true);
+		textAreaDescripcion.setWrapStyleWord(true);
+		JScrollPane scrollPaneDescripcion = new JScrollPane(textAreaDescripcion);
+		scrollPaneDescripcion.setBounds(100, 340, 250, 80);
+		panel.add(scrollPaneDescripcion);
 
-		JLabel lblPrecio = new JLabel("Precio Base:");
-		lblPrecio.setForeground(Color.BLACK);
-		lblPrecio.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblPrecio.setBounds(400, 220, 200, 30);
-		panel.add(lblPrecio);
+		JLabel lblPrecioPorNoche = new JLabel("Precio por noche:");
+		lblPrecioPorNoche.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblPrecioPorNoche.setBounds(400, 300, 250, 30);
+		panel.add(lblPrecioPorNoche);
 
-		textFieldPrecio = new JTextField();
-		textFieldPrecio.setFont(new Font("Dialog", Font.BOLD, 16));
-		textFieldPrecio.setBounds(400, 260, 250, 35);
-		panel.add(textFieldPrecio);
-		textFieldPrecio.setColumns(10);
+		textFieldPrecioPorNoche = new JTextField();
+		textFieldPrecioPorNoche.setFont(new Font("Dialog", Font.PLAIN, 16));
+		textFieldPrecioPorNoche.setBounds(400, 340, 250, 35);
+		panel.add(textFieldPrecioPorNoche);
+		textFieldPrecioPorNoche.setColumns(10);
 
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(Color.RED);
+		btnCancelar.setBackground(new Color(239, 35, 60)); 
 		btnCancelar.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		btnCancelar.setForeground(new Color(255, 255, 255));
 		btnCancelar.setBounds(967, 517, 170, 50);
+		btnCancelar.putClientProperty("FlatLaf.style", "arc: 0"); 
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -288,8 +298,9 @@ public class EditarTarifaFormulario {
 		JButton btnGuardarCambios = new JButton("Guardar Cambios");
 		btnGuardarCambios.setForeground(Color.WHITE);
 		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
-		btnGuardarCambios.setBackground(new Color(50, 186, 125));
+		btnGuardarCambios.setBackground(Color.YELLOW);
 		btnGuardarCambios.setBounds(967, 592, 170, 50);
+		btnGuardarCambios.putClientProperty("FlatLaf.style", "arc: 0"); 
 		btnGuardarCambios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (tarifaAEditar == null) {
@@ -297,44 +308,31 @@ public class EditarTarifaFormulario {
 					return;
 				}
 
-				String tipoTarifa = textFieldTipoTarifa.getText().trim();
-				String descuentoStr = textFieldDescuento.getText().trim();
-				String precioStr = textFieldPrecio.getText().trim();
+				String nombreTarifa = textFieldNombreTarifa.getText().trim();
+				String precioPorNocheStr = textFieldPrecioPorNoche.getText().trim();
+		
 
-				if (tipoTarifa.isEmpty() || precioStr.isEmpty()) {
-					JOptionPane.showMessageDialog(frame, "Campos 'Tipo de Tarifa' y 'Precio Base' son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+				if (nombreTarifa.isEmpty() || precioPorNocheStr.isEmpty()) {
+					JOptionPane.showMessageDialog(frame, "Los campos 'Nombre' y 'Precio por noche' son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
 
-				double precioBase;
+				double precioPorNoche;
 				try {
-					precioBase = Double.parseDouble(precioStr);
-					if (precioBase <= 0) {
-						JOptionPane.showMessageDialog(frame, "El 'Precio Base' debe ser un número positivo.", "Error", JOptionPane.WARNING_MESSAGE);
-						return;
-					}
+					precioPorNoche = Double.parseDouble(precioPorNocheStr);
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(frame, "El 'Precio Base' debe ser un número válido.", "Error", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(frame, "Precio por noche debe ser un número válido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
 
-				double descuentoPorcentaje = 0.0;
-				if (!descuentoStr.isEmpty()) {
-					try {
-						descuentoPorcentaje = Double.parseDouble(descuentoStr);
-						if (descuentoPorcentaje < 0 || descuentoPorcentaje > 100) {
-							JOptionPane.showMessageDialog(frame, "El 'Descuento' debe ser entre 0 y 100.", "Error", JOptionPane.WARNING_MESSAGE);
-							return;
-						}
-					} catch (NumberFormatException ex) {
-						JOptionPane.showMessageDialog(frame, "El 'Descuento' debe ser un número válido.", "Error", JOptionPane.WARNING_MESSAGE);
-						return;
-					}
+				if (precioPorNoche < 0) {
+					JOptionPane.showMessageDialog(frame, "Valores numéricos inválidos. Precio por noche no negativo.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+					return;
 				}
-
-				tarifaAEditar.setTipoHabitacion(tipoTarifa);
-				tarifaAEditar.setPrecioBase(precioBase);
-				tarifaAEditar.setDescuentoPorcentaje(descuentoPorcentaje);
+				
+				tarifaAEditar.setTipoHabitacion(nombreTarifa);
+				tarifaAEditar.setPrecioBase(precioPorNoche);
+				tarifaAEditar.setDescuentoPorcentaje(0.0); 
 
 				if (tarifaDAO.updateTarifa(tarifaAEditar)) {
 					JOptionPane.showMessageDialog(frame, "Tarifa actualizada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
