@@ -358,7 +358,7 @@ public class Tarifas {
 		});
 		panel.add(btnCrearTarifaNueva);
 
-		String[] columnNames = { "ID Tarifa", "Tipo de Tarifa", "Precio", "Condiciones" }; 
+		String[] columnNames = { "ID Tarifa", "Tipo de Tarifa", "Precio", "Condiciones", "Descripcion" }; 
 		tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

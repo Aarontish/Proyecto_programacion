@@ -297,7 +297,7 @@ public class EditarTarifaFormulario {
 
 		JButton btnGuardarCambios = new JButton("Guardar Cambios");
 		btnGuardarCambios.setForeground(Color.WHITE);
-		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
+		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnGuardarCambios.setBackground(Color.YELLOW);
 		btnGuardarCambios.setBounds(967, 592, 170, 50);
 		btnGuardarCambios.putClientProperty("FlatLaf.style", "arc: 0"); 
