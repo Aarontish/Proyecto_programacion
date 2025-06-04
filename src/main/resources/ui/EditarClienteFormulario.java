@@ -24,15 +24,14 @@ import com.formdev.flatlaf.FlatLightLaf;
 import Dao.ClienteDAO;
 import modelos.Cliente;
 
-
 import ui.TiposHabitacion;
 import ui.Rentas;
-import ui.Clientes; 
+import ui.Clientes;
 import ui.PanelHabitaciones1;
 import ui.Tarifas;
 import ui.Menu;
 
-public class CrearNuevoCliente {
+public class EditarClienteFormulario {
 
 	public JFrame frame;
 	private JTextField textFieldNombre;
@@ -40,24 +39,28 @@ public class CrearNuevoCliente {
 	private JTextField textFieldTelefono;
 	private JTextField textFieldEmail;
 	private ClienteDAO clienteDAO;
+	private Cliente clienteAEditar;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90);
+	public EditarClienteFormulario(int idCliente) {
+		this();
+		clienteDAO = new ClienteDAO();
+		clienteAEditar = clienteDAO.obtenerClientePorId(idCliente);
 
-					CrearNuevoCliente window = new CrearNuevoCliente();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		if (clienteAEditar != null) {
+			textFieldNombre.setText(clienteAEditar.getNombre());
+			textFieldApellido.setText(clienteAEditar.getApellido());
+			textFieldTelefono.setText(clienteAEditar.getTelefono());
+			textFieldEmail.setText(clienteAEditar.getEmail());
+		} else {
+			JOptionPane.showMessageDialog(frame, "Cliente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+			frame.dispose();
+			Clientes clientesWindow = new Clientes();
+			clientesWindow.frame.setVisible(true);
+		}
 	}
 
-	public CrearNuevoCliente() {
+	// Constructor por defecto (para el main o si no se pasa ID)
+	public EditarClienteFormulario() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
             UIManager.put("Button.arc", 90);
@@ -66,6 +69,19 @@ public class CrearNuevoCliente {
         }
         clienteDAO = new ClienteDAO();
 		initialize();
+	}
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EditarClienteFormulario window = new EditarClienteFormulario(1); // Ejemplo: editar cliente con ID 1
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	private void initialize() {
@@ -188,7 +204,7 @@ public class CrearNuevoCliente {
         logo.setIcon(new ImageIcon(imagen12));
 		panel_1.add(logo);
 
-		JLabel Titulo = new JLabel("Crear Cliente");
+		JLabel Titulo = new JLabel("Editar Cliente");
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
@@ -213,10 +229,10 @@ public class CrearNuevoCliente {
 		botonVolver.setIcon(new ImageIcon(imagen69));
 		panel.add(botonVolver);
 
-		JLabel lblCrearCliente = new JLabel("Crear Nuevo Cliente:");
-		lblCrearCliente.setFont(new Font("Jost*", Font.BOLD, 38));
-		lblCrearCliente.setBounds(131, 126, 400, 56);
-		panel.add(lblCrearCliente);
+		JLabel lblEditarCliente = new JLabel("Editar Cliente:");
+		lblEditarCliente.setFont(new Font("Jost*", Font.BOLD, 38));
+		lblEditarCliente.setBounds(131, 126, 400, 56);
+		panel.add(lblEditarCliente);
 
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Dialog", Font.BOLD, 24));
@@ -276,18 +292,22 @@ public class CrearNuevoCliente {
 		});
 		panel.add(btnCancelar);
 
-		JButton btnGuardarCliente = new JButton("Guardar Cliente");
-		btnGuardarCliente.setForeground(Color.WHITE);
-		btnGuardarCliente.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
-		btnGuardarCliente.setBackground(new Color(255, 214, 10));
-		btnGuardarCliente.setBounds(967, 592, 170, 50);
-		btnGuardarCliente.addActionListener(new ActionListener() {
+		JButton btnGuardarCambios = new JButton("Guardar Cambios");
+		btnGuardarCambios.setForeground(Color.WHITE);
+		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
+		btnGuardarCambios.setBackground(new Color(50, 186, 125));
+		btnGuardarCambios.setBounds(967, 592, 170, 50);
+		btnGuardarCambios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (clienteAEditar == null) {
+					JOptionPane.showMessageDialog(frame, "No hay cliente seleccionado para editar.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
 				String nombre = textFieldNombre.getText().trim();
 				String apellido = textFieldApellido.getText().trim();
 				String telefono = textFieldTelefono.getText().trim();
 				String email = textFieldEmail.getText().trim();
-				LocalDate fechaRegistro = LocalDate.now();
 
 				if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || email.isEmpty()) {
 					JOptionPane.showMessageDialog(frame, "Todos los campos son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
@@ -302,19 +322,22 @@ public class CrearNuevoCliente {
 				    return;
 				}
 
-				Cliente nuevoCliente = new Cliente(0, nombre, apellido, telefono, email, fechaRegistro);
+				clienteAEditar.setNombre(nombre);
+				clienteAEditar.setApellido(apellido);
+				clienteAEditar.setTelefono(telefono);
+				clienteAEditar.setEmail(email);
 
-				if (clienteDAO.agregarCliente(nuevoCliente)) {
-					JOptionPane.showMessageDialog(frame, "Cliente creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+				if (clienteDAO.actualizarCliente(clienteAEditar)) {
+					JOptionPane.showMessageDialog(frame, "Cliente actualizado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 					frame.dispose();
 					Clientes clientesWindow = new Clientes();
 					clientesWindow.frame.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(frame, "Error al crear el cliente. Puede que el email ya exista.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame, "Error al actualizar el cliente.", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
-		panel.add(btnGuardarCliente);
+		panel.add(btnGuardarCambios);
 	}
 
 	public void dispose() {

@@ -18,36 +18,32 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField; // Importar JPasswordField
-import javax.swing.JOptionPane;     // Importar JOptionPane para mensajes
-import javax.swing.SwingConstants; // Importar SwingConstants
+import javax.swing.JPasswordField; 
+import javax.swing.JOptionPane;     
+import javax.swing.SwingConstants; 
 import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-// !!! IMPORTACIONES CRUCIALES PARA EL BACKEND !!!
-import Dao.UsuarioDAO;         // Importar tu DAO de Usuario
-import modelos.Usuario;         // Importar tu clase modelo Usuario
-// Asume que tu clase Menu está en el paquete default o donde la tengas.
-// Si la mueves a un paquete (ej. 'vistas'), la importarías así:
-// import vistas.Menu; // Esta línea no es necesaria si este Login.java no abre el menú directamente
+
+import Dao.UsuarioDAO;          
+import modelos.Usuario;         
+import ui.Menu; 
 
 public class Login {
 
     private JFrame frame;
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JLabel messageLabel; // Para mostrar mensajes de error/éxito
-    private UsuarioDAO usuarioDAO; // Instancia de tu DAO de Usuario
+    private JLabel messageLabel;
+    private UsuarioDAO usuarioDAO; 
 
-    /**
-     * Launch the application.
-     */
+  
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    // Configurar el Look and Feel también aquí para el lanzamiento directo
+                  
                     UIManager.setLookAndFeel(new FlatLightLaf());
                     UIManager.put("Button.arc", 90);
 
@@ -60,9 +56,7 @@ public class Login {
         });
     }
 
-    /**
-     * Create the application.
-     */
+
     public Login() {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -74,9 +68,7 @@ public class Login {
         initialize();
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
+
     private void initialize() {
         frame = new JFrame();
         frame.setResizable(false);
@@ -101,7 +93,6 @@ public class Login {
 
         JLabel logo = new JLabel(""); // Logo
         logo.setBounds(0, 0, 170, 95);
-        // CORREGIDO: new ImageIcon(getClass().getResource("/images/logo.png"));
         ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
         Image portada2 = portada1.getImage();
         Image portada3 = portada2.getScaledInstance(170, 95, Image.SCALE_SMOOTH);
@@ -114,47 +105,45 @@ public class Login {
         Titulo.setBounds(180, 11, 410, 73);
         panel_1.add(Titulo);
 
-        JButton botonSuperior1 = new JButton(""); // Boton usuario esquina superior derecha
+        JButton botonSuperior1 = new JButton(""); 
         botonSuperior1.setBackground(new Color(0, 0, 0));
         botonSuperior1.setBorderPainted(false);
         botonSuperior1.setFocusPainted(false);
         botonSuperior1.setContentAreaFilled(true);
         botonSuperior1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Acciones para el botón superior de usuario (ej. abrir perfil)
+               
             }
         });
         botonSuperior1.setBounds(1098, 11, 56, 56);
-        // CORREGIDO: new ImageIcon(getClass().getResource("/images/usuario.png"));
         ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image c2 = c1.getImage();
         Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
         botonSuperior1.setIcon(new ImageIcon(c3));
         panel_1.add(botonSuperior1);
 
-        JButton botonSuperior2 = new JButton(""); // Boton información esquina superior derecha
+        JButton botonSuperior2 = new JButton(""); 
         botonSuperior2.setBackground(new Color(0, 0, 0));
         botonSuperior2.setBorderPainted(false);
         botonSuperior2.setFocusPainted(false);
         botonSuperior2.setContentAreaFilled(true);
         botonSuperior2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Acciones para el botón superior de información
+                
             }
         });
         botonSuperior2.setBounds(1032, 11, 56, 56);
-        // CORREGIDO: new ImageIcon(getClass().getResource("/images/informacion.png"));
         ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
         Image e2 = e1.getImage();
         Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
         botonSuperior2.setIcon(new ImageIcon(e3));
         panel_1.add(botonSuperior2);
 
-        // --- Panel para el formulario de Login (reemplaza los botones grandes de antes) ---
+        
         JPanel loginPanel = new JPanel();
-        loginPanel.setLayout(null); // Usaremos un layout nulo para posicionar
+        loginPanel.setLayout(null); 
         loginPanel.setBackground(new Color(255, 255, 255));
-        loginPanel.setBounds(380, 205, 400, 350); // Posición y tamaño del panel de login
+        loginPanel.setBounds(380, 205, 400, 350);
 
         // Etiqueta de "Iniciar Sesión" (dentro del nuevo panel)
         JLabel loginTitle = new JLabel("Iniciar Sesión");
@@ -195,23 +184,21 @@ public class Login {
         doLoginButton.setContentAreaFilled(true);
         doLoginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                frame.dispose(); // Cierra la ventana actual del menú
-				Menu conexion = new Menu();
-				conexion.frame.setVisible(true); 	
+                performLogin();
             }
         });
         loginPanel.add(doLoginButton);
 
-        // Etiqueta para mensajes de error/éxito
+
         messageLabel = new JLabel("");
         messageLabel.setForeground(Color.RED); // Inicialmente en rojo para errores
         messageLabel.setFont(new Font("Jost*", Font.PLAIN, 14));
         messageLabel.setBounds(50, 300, 300, 20);
         loginPanel.add(messageLabel);
 
-        panel.add(loginPanel); // Añade el panel de login al panel principal del frame
+        panel.add(loginPanel);
 
-        // Opcional: Botón/enlace para registrarse (abre otra ventana de registro)
+      
         JButton registerLinkButton = new JButton("¿No tienes cuenta? Regístrate aquí");
         registerLinkButton.setFont(new Font("Jost*", Font.PLAIN, 14));
         registerLinkButton.setBorderPainted(false);
@@ -219,9 +206,7 @@ public class Login {
         registerLinkButton.setForeground(Color.BLUE);
         registerLinkButton.setBounds(77, 320, 250, 20); // Posición debajo del mensaje
         registerLinkButton.addActionListener(e -> {
-
             JOptionPane.showMessageDialog(frame, "Funcionalidad de registro pendiente. Abre la ventana de registro.");
-
         });
         loginPanel.add(registerLinkButton);
     }
@@ -237,17 +222,22 @@ public class Login {
             return;
         }
 
-        Usuario authenticatedUser = usuarioDAO.validarUsuario(username, password);
+
+        Usuario authenticatedUser = usuarioDAO.login(username, password);
 
         if (authenticatedUser != null) {
             messageLabel.setForeground(Color.GREEN);
             messageLabel.setText("¡Login exitoso!");
-            JOptionPane.showMessageDialog(frame, "Bienvenido, " + authenticatedUser.getNombreUsuario() + "!");
+            JOptionPane.showMessageDialog(frame, "Bienvenido, " + authenticatedUser.getNombreUsuario() + "!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+
+            frame.dispose(); // Cierra la ventana actual del login
+            Menu menuWindow = new Menu(); // Abre la ventana del menú principal
+            menuWindow.frame.setVisible(true);
 
         } else {
             messageLabel.setForeground(Color.RED);
             messageLabel.setText("Credenciales incorrectas. Intenta de nuevo.");
-            // Opcional: JOptionPane.showMessageDialog(frame, "Credenciales incorrectas.");
+            JOptionPane.showMessageDialog(frame, "Credenciales incorrectas.", "Error de Login", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

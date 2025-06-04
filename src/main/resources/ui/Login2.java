@@ -1,4 +1,4 @@
-package ui; // Asegúrate de que esta línea esté al inicio.
+package ui; 
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -26,7 +26,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 
 import Dao.UsuarioDAO;
 import modelos.Usuario;
-import ui.Menu; // <--- ¡Esta importación es CRUCIAL y ya está bien!
+import ui.Menu;
 
 public class Login2 {
 
@@ -36,9 +36,6 @@ public class Login2 {
     private JLabel messageLabel;
     private UsuarioDAO usuarioDAO;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -55,9 +52,6 @@ public class Login2 {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public Login2() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -69,9 +63,6 @@ public class Login2 {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -96,7 +87,6 @@ public class Login2 {
 
 		JLabel logo = new JLabel(""); // Logo
 		logo.setBounds(0, 0, 170, 95);
-		// <--- ¡Ruta de imagen CORRECTA!
 		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
 		Image portada2 = portada1.getImage();
 		Image portada3 = portada2.getScaledInstance(170, 95, Image.SCALE_SMOOTH);
@@ -119,7 +109,6 @@ public class Login2 {
 			}
 		});
 		botonSuperior1.setBounds(1098, 11, 56, 56);
-		// <--- ¡Ruta de imagen CORRECTA!
 		ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
 		Image c2 = c1.getImage();
 		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
@@ -136,7 +125,6 @@ public class Login2 {
 			}
 		});
 		botonSuperior2.setBounds(1032, 11, 56, 56);
-		// <--- ¡Ruta de imagen CORRECTA!
 		ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
 		Image e2 = e1.getImage();
 		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
@@ -151,10 +139,10 @@ public class Login2 {
 		botonVolver.setContentAreaFilled(true);
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+              
 			}
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
-		// <--- ¡Ruta de imagen CORRECTA!
 		ImageIcon f1 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
 		Image f2 = f1.getImage();
 		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
@@ -175,7 +163,6 @@ public class Login2 {
 
 		JLabel userIcon = new JLabel(""); // Icono junto al campo de usuario
 		userIcon.setBounds(346, 193, 30, 30);
-		// <--- ¡Ruta de imagen CORRECTA!
 		ImageIcon g1 = new ImageIcon(getClass().getResource("/images/icon.png"));
 		Image g2 = g1.getImage();
 		Image g3 = g2.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -194,7 +181,6 @@ public class Login2 {
 
 		JLabel candadoIcon = new JLabel(""); // Icono junto al campo de contraseña
 		candadoIcon.setBounds(346, 313, 30, 30);
-		// <--- ¡Ruta de imagen CORRECTA!
 		ImageIcon h1 = new ImageIcon(getClass().getResource("/images/candado.png"));
 		Image h2 = h1.getImage();
 		Image h3 = h2.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -231,7 +217,7 @@ public class Login2 {
 		botonLogin2.setBackground(new Color(255, 214, 10));
 		botonLogin2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				performLogin();
+				performLogin(); 
 			}
 		});
 		botonLogin2.setBounds(482, 492, 200, 50);
@@ -248,7 +234,8 @@ public class Login2 {
             return;
         }
 
-        Usuario usuarioAutenticado = usuarioDAO.validarUsuario(username, password);
+        
+        Usuario usuarioAutenticado = usuarioDAO.login(username, password);
 
         if (usuarioAutenticado != null) {
             messageLabel.setForeground(Color.GREEN);
@@ -256,9 +243,8 @@ public class Login2 {
             JOptionPane.showMessageDialog(frame, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
 
             frame.dispose();
-
-            Menu menuWindow = new Menu(); // <--- ¡Aquí es donde se usa la clase Menu!
-            menuWindow.setVisible(true);
+            Menu menuWindow = new Menu();
+            menuWindow.frame.setVisible(true);
 
         } else {
             messageLabel.setForeground(Color.RED);

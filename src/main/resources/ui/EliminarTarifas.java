@@ -7,34 +7,46 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class EliminarTarifas {
-	//Nota para cian:
-    /*la forma en que se va eliminar una celda de la tablas es donde le click encima y pues que
-	salga una pantalla de esta seguro que diga si o no cancelar 
-	los datos que estan en la tabla estan de adorno son solo para que te des una idea estos tiene
-	que guardarse en la base de datos.*/
-	JFrame frame;
+import Dao.TarifaDAO;
+import modelos.Tarifa;
 
-	/**
-	 * Launch the application.
-	 */
+import ui.TiposHabitacion; 
+import ui.Rentas;
+import ui.Clientes;
+import ui.PanelHabitaciones1;
+import ui.Tarifas;
+import ui.Menu;
+
+public class EliminarTarifas {
+
+	public JFrame frame;
+	private JTable table_1;
+	private DefaultTableModel tableModel;
+	private TarifaDAO tarifaDAO;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					UIManager.setLookAndFeel(new FlatLightLaf());
+					UIManager.put("Button.arc", 90);
+
 					EliminarTarifas window = new EliminarTarifas();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -44,23 +56,17 @@ public class EliminarTarifas {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public EliminarTarifas() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 0); // Esquinas redondas
+            UIManager.put("Button.arc", 90);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
+        tarifaDAO = new TarifaDAO();
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -72,28 +78,28 @@ public class EliminarTarifas {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 
-		JPanel panel_1 = new JPanel(); //Borde negro
+		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 0, 1164, 95);
 		panel_1.setBackground(new Color(0, 0, 0));
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
-		JPanel panel_2 = new JPanel(); //Borde gris
+		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(0, 95, 1164, 26);
 		panel_2.setBackground(new Color(55, 54, 48));
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 
-		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
+		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>");
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
 		btnTiposDeRentas.setBackground(new Color(56, 54, 41));
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose(); // Cierra la ventana actual del menú
-				TiposHabitacion conexion = new TiposHabitacion();
-				conexion.frame.setVisible(true); 	
+				frame.dispose();
+				TiposHabitacion tiposHabitacionWindow = new TiposHabitacion(); // <-- Nombre de clase actualizado
+				tiposHabitacionWindow.frame.setVisible(true);
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -102,13 +108,12 @@ public class EliminarTarifas {
         btnTiposDeRentas.setContentAreaFilled(true);
 		panel_2.add(btnTiposDeRentas);
 
-		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
+		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>");
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Rentas
-				frame.dispose(); // Cierra la ventana actual del menú
-				Rentas conexion = new Rentas();
-				conexion.frame.setVisible(true); 	
+				frame.dispose();
+				Rentas rentasWindow = new Rentas();
+				rentasWindow.frame.setVisible(true);
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -121,7 +126,7 @@ public class EliminarTarifas {
 		btnrentas.setBounds(932, 0, 81, 23);
 		panel_2.add(btnrentas);
 
-		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
+		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>");
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -130,18 +135,16 @@ public class EliminarTarifas {
 		btnclientes.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnclientes.setBackground(new Color(56, 54, 41));
 		btnclientes.setBounds(841, 0, 81, 23);
-		panel_2.add(btnclientes);
-		
-		JButton btnClientes = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnclientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Rentas
-				frame.dispose(); // Cierra la ventana actual del menú
-				Clientes conexion = new Clientes();
-				conexion.frame.setVisible(true); 	
+				frame.dispose();
+				Clientes clientesWindow = new Clientes();
+				clientesWindow.frame.setVisible(true);
 			}
 		});
-		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
+		panel_2.add(btnclientes);
+
+		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>");
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -150,25 +153,21 @@ public class EliminarTarifas {
 		btnhabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnhabitaciones.setBackground(new Color(56, 54, 41));
 		btnhabitaciones.setBounds(731, 0, 100, 23);
-		panel_2.add(btnhabitaciones);
-		
-		JButton btnHabitaciones = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnhabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Rentas
-				frame.dispose(); // Cierra la ventana actual del menú
-				PanelHabitaciones1 conexion = new PanelHabitaciones1();
-				conexion.frame.setVisible(true); 	
+				frame.dispose();
+				PanelHabitaciones1 habitacionesWindow = new PanelHabitaciones1();
+				habitacionesWindow.frame.setVisible(true);
 			}
 		});
+		panel_2.add(btnhabitaciones);
 
-		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
+		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>");
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Tarifas
-				frame.dispose(); // Cierra la ventana actual del menú
-				Tarifas conexion = new Tarifas();
-				conexion.frame.setVisible(true); 	
+				frame.dispose();
+				Tarifas tarifasWindow = new Tarifas();
+				tarifasWindow.frame.setVisible(true);
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -181,21 +180,20 @@ public class EliminarTarifas {
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
 
-		JLabel logo = new JLabel(""); //Logo
+		JLabel logo = new JLabel("");
 		logo.setBounds(0, 0, 170, 95);
-		// CORRECCIÓN: Usar getResource para cargar la imagen
 		ImageIcon icon2 = new ImageIcon(getClass().getResource("/images/logo.png"));
         Image imagen2 = icon2.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
         logo.setIcon(new ImageIcon(imagen2));
 		panel_1.add(logo);
-		
-		JLabel lblTarifas = new JLabel("Tarifas");
-		lblTarifas.setForeground(new Color(255, 255, 255));
-		lblTarifas.setFont(new Font("Dialog", Font.BOLD, 36));
-		lblTarifas.setBounds(141, 31, 229, 33);
-		panel_1.add(lblTarifas);
-		
-		JButton botonVolver = new JButton(""); // Boton para volver atrás
+
+		JLabel lblEliminarTarifa = new JLabel("Eliminar Tarifa");
+		lblEliminarTarifa.setForeground(new Color(255, 255, 255));
+		lblEliminarTarifa.setFont(new Font("Dialog", Font.BOLD, 36));
+		lblEliminarTarifa.setBounds(141, 31, 229, 33);
+		panel_1.add(lblEliminarTarifa);
+
+		JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));
 		botonVolver.setBackground(new Color(255, 255, 255));
 		botonVolver.setBorderPainted(false);
@@ -203,16 +201,9 @@ public class EliminarTarifas {
 		botonVolver.setContentAreaFilled(true);
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		JButton meButton = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
-		botonVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Aquí podrías abrir la ventana de Rentas
-				frame.dispose(); // Cierra la ventana actual del menú
-				Tarifas conexion = new Tarifas();
-				conexion.frame.setVisible(true); 	
+				frame.dispose();
+				Tarifas tarifasWindow = new Tarifas();
+				tarifasWindow.frame.setVisible(true);
 			}
 		});
 		botonVolver.setBounds(59, 131, 50, 50);
@@ -220,44 +211,87 @@ public class EliminarTarifas {
         Image imagen42 = icon42.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(imagen42));
 		panel.add(botonVolver);
-		
-		JLabel lblNewLabel = new JLabel("Eliminar tarifa:");
+
+		JLabel lblNewLabel = new JLabel("Selecciona la tarifa a eliminar:");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblNewLabel.setBounds(107, 137, 246, 33);
+		lblNewLabel.setBounds(107, 137, 500, 33);
 		panel.add(lblNewLabel);
-		
-		JButton btnNewButton = new JButton("Eliminar");
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBackground(Color.RED);
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
-		btnNewButton.setBounds(107, 184, 155, 50);
-		panel.add(btnNewButton);
-		
-		//tabla con datos x,
-		String[] columnNames = { "Tipo de Tarifa", "Precio", "Condiciones" };
-		Object[][] data = {
-		    { "Estándar", "$10", "Sin restricciones" },
-		    { "Premium", "$20", "Acceso a todos los servicios" },
-		    { "Económica", "$5", "Restringido en horarios" },
-		};
-		//configuracion de la tabla como fuentes de texto tamano color etc.:
-		JTable table_1 = new JTable(data, columnNames);
+
+		String[] columnNames = { "ID Tarifa", "Tipo de Habitación", "Precio Base", "Descuento (%)", "Vigencia Inicio", "Vigencia Fin" };
+		tableModel = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+		table_1 = new JTable(tableModel);
 		table_1.setFont(new Font("Dialog", Font.PLAIN, 14));
-		table_1.setRowHeight(25); 
-		table_1.getTableHeader().setFont(new Font("Dialog", Font.BOLD, 16)); 
-		table_1.getTableHeader().setBackground(new Color(55, 54, 48)); 
-		table_1.getTableHeader().setForeground(Color.WHITE); 
+		table_1.setRowHeight(25);
+		table_1.getTableHeader().setFont(new Font("Dialog", Font.BOLD, 16));
+		table_1.getTableHeader().setBackground(new Color(55, 54, 48));
+		table_1.getTableHeader().setForeground(Color.WHITE);
 
 		JScrollPane scrollPane = new JScrollPane(table_1);
-		scrollPane.setBounds(107, 250, 800, 300);
+		scrollPane.setBounds(107, 200, 800, 300);
 		panel.add(scrollPane);
-		
-		JLabel lblParaPoderEliminar = new JLabel("Para poder eliminar una tarfia de click encima de ella.");
-		lblParaPoderEliminar.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblParaPoderEliminar.setBounds(272, 196, 404, 33);
-		panel.add(lblParaPoderEliminar);
 
-		
-		
+		cargarDatosTabla();
+
+		JButton btnEliminarSeleccionada = new JButton("Eliminar Seleccionada");
+		btnEliminarSeleccionada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table_1.getSelectedRow();
+				if (selectedRow >= 0) {
+					int idTarifa = (int) tableModel.getValueAt(selectedRow, 0);
+					int confirm = JOptionPane.showConfirmDialog(frame, "¿Estás seguro de ELIMINAR esta tarifa?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
+					if (confirm == JOptionPane.YES_OPTION) {
+						if (tarifaDAO.deleteTarifa(idTarifa)) {
+							JOptionPane.showMessageDialog(frame, "Tarifa eliminada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+							cargarDatosTabla();
+						} else {
+							JOptionPane.showMessageDialog(frame, "Error al eliminar la tarifa.", "Error", JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				} else {
+					JOptionPane.showMessageDialog(frame, "Selecciona una tarifa para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+		btnEliminarSeleccionada.setBackground(Color.RED);
+		btnEliminarSeleccionada.setForeground(Color.WHITE);
+		btnEliminarSeleccionada.setFont(new Font("Dialog", Font.BOLD, 20));
+		btnEliminarSeleccionada.setBounds(400, 520, 250, 50);
+		panel.add(btnEliminarSeleccionada);
+	}
+
+	private void cargarDatosTabla() {
+		tableModel.setRowCount(0);
+		List<Tarifa> tarifas = tarifaDAO.getAllTarifas();
+		for (Tarifa tarifa : tarifas) {
+			tableModel.addRow(new Object[]{
+				tarifa.getIdTarifa(),
+				tarifa.getTipoHabitacion(),
+				tarifa.getPrecioBase(),
+				tarifa.getDescuentoPorcentaje(),
+				tarifa.getFechaInicioVigencia(),
+				tarifa.getFechaFinVigencia()
+			});
+		}
+	}
+
+	public void dispose() {
+		if (frame != null) {
+			frame.dispose();
+		}
+	}
+
+	public void setVisible(boolean b) {
+		if (frame != null) {
+			frame.setVisible(b);
+		}
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 }
