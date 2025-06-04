@@ -291,6 +291,7 @@ public class Creartarifa {
 				String nombreTarifa = textFieldNombreTarifa.getText().trim();
 				String precioPorNocheStr = textFieldPrecioPorNoche.getText().trim();
 				String descripcion = textAreaDescripcion.getText().trim(); 
+				String tipoCondicion = (String) comboBoxTipoTarifa.getSelectedItem(); 
 
 				if (nombreTarifa.isEmpty() || precioPorNocheStr.isEmpty()) {
 					JOptionPane.showMessageDialog(frame, "Los campos 'Nombre' y 'Precio por noche' son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
@@ -310,7 +311,7 @@ public class Creartarifa {
 					return;
 				}
 	
-				Tarifa nuevaTarifa = new Tarifa(0, nombreTarifa, precioPorNoche, 0.0, descripcion);
+				Tarifa nuevaTarifa = new Tarifa(0, nombreTarifa, precioPorNoche, 0.0, descripcion, tipoCondicion);
 
 				if (tarifaDAO.createTarifa(nuevaTarifa)) {
 					JOptionPane.showMessageDialog(frame, "Tarifa creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

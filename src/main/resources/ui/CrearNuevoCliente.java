@@ -34,7 +34,7 @@ public class CrearNuevoCliente {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Creal_nuevo_cliente window = new Creal_nuevo_cliente();
+					CrearNuevoCliente window = new CrearNuevoCliente();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
