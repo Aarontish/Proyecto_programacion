@@ -282,7 +282,7 @@ public class Menu {
 		botonTiposDeHabitaciones.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        frame.dispose(); // Cierra la ventana actual del menú
-		        Tipos_de_habitacion conexion = new Tipos_de_habitacion();
+		        TiposHabitacion conexion = new TiposHabitacion();
 		        conexion.frame.setVisible(true); 
 		    }
 		});

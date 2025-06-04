@@ -219,7 +219,7 @@ public class Creartipodehabitacion {
 			public void actionPerformed(ActionEvent e) {
 				// Aquí podrías abrir la ventana de Rentas
 				frame.dispose(); // Cierra la ventana actual del menú
-				Tipos_de_habitacion conexion = new Tipos_de_habitacion();
+				TiposHabitacion conexion = new TiposHabitacion();
 				conexion.frame.setVisible(true); 	
 			}
 		});

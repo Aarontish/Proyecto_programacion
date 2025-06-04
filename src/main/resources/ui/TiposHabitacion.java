@@ -20,7 +20,7 @@ import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class Tipos_de_habitacion {
+public class TiposHabitacion {
 
 	JFrame frame;
 
@@ -31,7 +31,7 @@ public class Tipos_de_habitacion {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Tipos_de_habitacion window = new Tipos_de_habitacion();
+					TiposHabitacion window = new TiposHabitacion();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class Tipos_de_habitacion {
 	/**
 	 * Create the application.
 	 */
-	public Tipos_de_habitacion() {
+	public TiposHabitacion() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
             UIManager.put("Button.arc", 0); // Esquinas redondas
@@ -345,7 +345,7 @@ public class Tipos_de_habitacion {
         btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose(); // Cierra la ventana actual del menú
-				Detalles_de_habitacion conexion = new Detalles_de_habitacion();
+				DetallesHabitacion4 conexion = new DetallesHabitacion4();
 				conexion.frame.setVisible(true); 	
 			}
 		});
