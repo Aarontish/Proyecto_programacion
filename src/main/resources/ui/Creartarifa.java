@@ -39,7 +39,7 @@ public class Creartarifa {
 	private JTextField textFieldNombreTarifa;
 	private JTextField textFieldPrecioPorNoche;
 	private JComboBox<String> comboBoxTipoTarifa;
-	private JTextArea textAreaDescripcion;
+	private JTextArea textAreaDescripcion; 
 	private TarifaDAO tarifaDAO;
 
 	public static void main(String[] args) {
@@ -47,7 +47,7 @@ public class Creartarifa {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90); 
+					UIManager.put("Button.arc", 90);
 
 					Creartarifa window = new Creartarifa();
 					window.frame.setVisible(true);
@@ -61,7 +61,7 @@ public class Creartarifa {
 	public Creartarifa() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90); 
+            UIManager.put("Button.arc", 90);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -266,11 +266,11 @@ public class Creartarifa {
 		textFieldPrecioPorNoche.setColumns(10);
 
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(239, 35, 60)); 
+		btnCancelar.setBackground(new Color(239, 35, 60));
 		btnCancelar.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		btnCancelar.setForeground(new Color(255, 255, 255));
 		btnCancelar.setBounds(967, 517, 170, 50);
-		btnCancelar.putClientProperty("FlatLaf.style", "arc: 0"); 
+		btnCancelar.putClientProperty("FlatLaf.style", "arc: 0");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -283,14 +283,14 @@ public class Creartarifa {
 		JButton btnGuardarTarifa = new JButton("Crear");
 		btnGuardarTarifa.setForeground(Color.DARK_GRAY);
 		btnGuardarTarifa.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
-		btnGuardarTarifa.setBackground(Color.YELLOW); 
+		btnGuardarTarifa.setBackground(Color.YELLOW);
 		btnGuardarTarifa.setBounds(967, 592, 170, 50);
-		btnGuardarTarifa.putClientProperty("FlatLaf.style", "arc: 0"); 
+		btnGuardarTarifa.putClientProperty("FlatLaf.style", "arc: 0");
 		btnGuardarTarifa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombreTarifa = textFieldNombreTarifa.getText().trim();
 				String precioPorNocheStr = textFieldPrecioPorNoche.getText().trim();
-				
+				String descripcion = textAreaDescripcion.getText().trim(); 
 
 				if (nombreTarifa.isEmpty() || precioPorNocheStr.isEmpty()) {
 					JOptionPane.showMessageDialog(frame, "Los campos 'Nombre' y 'Precio por noche' son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
@@ -309,9 +309,8 @@ public class Creartarifa {
 					JOptionPane.showMessageDialog(frame, "Valores numéricos inválidos. Precio por noche no negativo.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
-				
 	
-				Tarifa nuevaTarifa = new Tarifa(0, nombreTarifa, precioPorNoche, 0.0); 
+				Tarifa nuevaTarifa = new Tarifa(0, nombreTarifa, precioPorNoche, 0.0, descripcion);
 
 				if (tarifaDAO.createTarifa(nuevaTarifa)) {
 					JOptionPane.showMessageDialog(frame, "Tarifa creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

@@ -246,7 +246,7 @@ public class EditarTarifaPaso1EscojerTarifa {
 				if (selectedRow >= 0) {
 					int idTarifa = (int) tableModel.getValueAt(selectedRow, 0);
 					frame.dispose();
-					EditarTarifaFormulario editarFormulario = new EditarTarifaFormulario(idTarifa); // <-- Abre el formulario con el ID
+					EditarTarifaFormulario editarFormulario = new EditarTarifaFormulario(idTarifa); 
 					editarFormulario.frame.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(frame, "Selecciona una tarifa para editar.", "Advertencia", JOptionPane.WARNING_MESSAGE);

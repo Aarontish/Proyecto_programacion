@@ -44,13 +44,22 @@ public class EditarTarifaFormulario {
 	private Tarifa tarifaAEditar;
 
 	public EditarTarifaFormulario(int idTarifa) {
-		this();
+		this(); 
 		tarifaDAO = new TarifaDAO();
 		tarifaAEditar = tarifaDAO.getTarifaById(idTarifa);
 
 		if (tarifaAEditar != null) {
 			textFieldNombreTarifa.setText(tarifaAEditar.getTipoHabitacion());
 			textFieldPrecioPorNoche.setText(String.valueOf(tarifaAEditar.getPrecioBase()));
+			textAreaDescripcion.setText(tarifaAEditar.getDescripcion()); 
+
+            String tipoHabitacion = tarifaAEditar.getTipoHabitacion();
+            for (int i = 0; i < comboBoxTipoTarifa.getItemCount(); i++) {
+                if (comboBoxTipoTarifa.getItemAt(i).equals(tipoHabitacion)) {
+                    comboBoxTipoTarifa.setSelectedIndex(i);
+                    break;
+                }
+            }
 			
 		} else {
 			JOptionPane.showMessageDialog(frame, "Tarifa no encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -75,7 +84,8 @@ public class EditarTarifaFormulario {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditarTarifaFormulario window = new EditarTarifaFormulario(1);
+					
+					EditarTarifaFormulario window = new EditarTarifaFormulario(1); 
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -281,11 +291,11 @@ public class EditarTarifaFormulario {
 		textFieldPrecioPorNoche.setColumns(10);
 
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(239, 35, 60)); 
+		btnCancelar.setBackground(new Color(239, 35, 60));
 		btnCancelar.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		btnCancelar.setForeground(new Color(255, 255, 255));
 		btnCancelar.setBounds(967, 517, 170, 50);
-		btnCancelar.putClientProperty("FlatLaf.style", "arc: 0"); 
+		btnCancelar.putClientProperty("FlatLaf.style", "arc: 0");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -296,11 +306,11 @@ public class EditarTarifaFormulario {
 		panel.add(btnCancelar);
 
 		JButton btnGuardarCambios = new JButton("Guardar Cambios");
-		btnGuardarCambios.setForeground(Color.WHITE);
+		btnGuardarCambios.setForeground(Color.GRAY);
 		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnGuardarCambios.setBackground(Color.YELLOW);
 		btnGuardarCambios.setBounds(967, 592, 170, 50);
-		btnGuardarCambios.putClientProperty("FlatLaf.style", "arc: 0"); 
+		btnGuardarCambios.putClientProperty("FlatLaf.style", "arc: 0");
 		btnGuardarCambios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (tarifaAEditar == null) {
@@ -310,7 +320,7 @@ public class EditarTarifaFormulario {
 
 				String nombreTarifa = textFieldNombreTarifa.getText().trim();
 				String precioPorNocheStr = textFieldPrecioPorNoche.getText().trim();
-		
+				String descripcion = textAreaDescripcion.getText().trim(); // Añadido: Obtener la descripción del JTextArea
 
 				if (nombreTarifa.isEmpty() || precioPorNocheStr.isEmpty()) {
 					JOptionPane.showMessageDialog(frame, "Los campos 'Nombre' y 'Precio por noche' son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
@@ -332,7 +342,8 @@ public class EditarTarifaFormulario {
 				
 				tarifaAEditar.setTipoHabitacion(nombreTarifa);
 				tarifaAEditar.setPrecioBase(precioPorNoche);
-				tarifaAEditar.setDescuentoPorcentaje(0.0); 
+				tarifaAEditar.setDescuentoPorcentaje(0.0);
+				tarifaAEditar.setDescripcion(descripcion); 
 
 				if (tarifaDAO.updateTarifa(tarifaAEditar)) {
 					JOptionPane.showMessageDialog(frame, "Tarifa actualizada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

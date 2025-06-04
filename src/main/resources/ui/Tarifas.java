@@ -23,7 +23,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableColumnModel; 
 
 import com.formdev.flatlaf.FlatLightLaf;
 
@@ -42,7 +42,7 @@ public class Tarifas {
 
 	public JFrame frame;
 	private JTextField textFieldBuscar;
-	private JTable tableTarifas;
+	private JTable tableTarifas; 
 	private DefaultTableModel tableModel;
 	private TarifaDAO tarifaDAO;
 
@@ -51,7 +51,7 @@ public class Tarifas {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90);
+					UIManager.put("Button.arc", 0);
 
 					Tarifas window = new Tarifas();
 					window.frame.setVisible(true);
@@ -65,12 +65,13 @@ public class Tarifas {
 	public Tarifas() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90);
+            UIManager.put("Button.arc", 0);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         tarifaDAO = new TarifaDAO();
 		initialize();
+		cargarDatosTabla(""); 
 	}
 
 	private void initialize() {
@@ -251,21 +252,29 @@ public class Tarifas {
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
 
-		JButton btnBuscar = new JButton("");
+		JButton btnBuscar = new JButton(""); 
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String filtro = textFieldBuscar.getText().trim();
-				if (filtro.equals("BUSCAR")) {
+				if (filtro.equals("BUSCAR")) { 
 					cargarDatosTabla(""); 
 				} else {
 					cargarDatosTabla(filtro); 
 				}
 			}
 		});
-		btnBuscar.setBounds(720, 140, 40, 40);
-		ImageIcon icon9 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
-        Image imagen9 = icon9.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-		btnBuscar.setIcon(new ImageIcon(imagen9));
+		btnBuscar.setBounds(720, 140, 40, 40); 
+		
+		try {
+			ImageIcon searchIcon = new ImageIcon(getClass().getResource("/images/busqueda.png"));
+			if (searchIcon.getImage() != null) {
+				Image imagen9 = searchIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+				btnBuscar.setIcon(new ImageIcon(imagen9));
+			}
+		} catch (Exception e) {
+			System.err.println("Error al cargar el icono de búsqueda: " + e.getMessage());
+			
+		}
 		btnBuscar.setBorderPainted(false);
 		btnBuscar.setFocusPainted(false);
 		btnBuscar.setContentAreaFilled(true);
@@ -365,24 +374,24 @@ public class Tarifas {
                 return false; 
             }
         };
-		tableTarifas = new JTable(tableModel);
+		tableTarifas = new JTable(tableModel); 
 		tableTarifas.setFont(new Font("Dialog", Font.PLAIN, 14));
 		tableTarifas.setRowHeight(25);
 		tableTarifas.getTableHeader().setFont(new Font("Dialog", Font.BOLD, 16));
 		tableTarifas.getTableHeader().setBackground(new Color(55, 54, 48));
 		tableTarifas.getTableHeader().setForeground(Color.WHITE);
 
-		JScrollPane scrollPane = new JScrollPane(tableTarifas);
+		JScrollPane scrollPane = new JScrollPane(tableTarifas); 
 		scrollPane.setBounds(131, 250, 950, 350);
 		panel.add(scrollPane);
 
-        TableColumnModel tcm = tableTarifas.getColumnModel();
+        TableColumnModel tcm = tableTarifas.getColumnModel(); 
         tcm.removeColumn(tcm.getColumn(0));
 
 		cargarDatosTabla(""); 
 	}
 
-	private void cargarDatosTabla(String filtro) {
+	private void cargarDatosTabla(String filtro) { 
 		tableModel.setRowCount(0);
 
 		List<Tarifa> tarifas;
@@ -394,6 +403,7 @@ public class Tarifas {
 
 		for (Tarifa tarifa : tarifas) {
 			String condiciones = "";
+			
 			switch (tarifa.getTipoHabitacion().toLowerCase()) {
 				case "reembolsable":
 					condiciones = "Cancelable";
@@ -407,7 +417,7 @@ public class Tarifas {
 				case "corporativa":
 					condiciones = "Empresa";
 					break;
-				default:
+				default: 
 					if (tarifa.getDescuentoPorcentaje() > 0) {
 						condiciones = "Con descuento: " + tarifa.getDescuentoPorcentaje() + "%";
 					} else {
@@ -420,7 +430,8 @@ public class Tarifas {
 				tarifa.getIdTarifa(),
 				tarifa.getTipoHabitacion(),
 				String.format("$ %.2f MXN", tarifa.getPrecioBase()),
-				condiciones
+				condiciones,
+				tarifa.getDescripcion()
 			});
 		}
 	}

@@ -25,7 +25,8 @@ public class TarifaDAO {
     }
 
     public boolean createTarifa(Tarifa tarifa) {
-        String sql = "INSERT INTO Tarifas (tipoHabitacion, precioBase, descuentoPorcentaje) VALUES (?, ?, ?)";
+       
+        String sql = "INSERT INTO Tarifas (tipoHabitacion, precioBase, descuentoPorcentaje, descripcion) VALUES (?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
@@ -34,6 +35,7 @@ public class TarifaDAO {
             pstmt.setString(1, tarifa.getTipoHabitacion());
             pstmt.setDouble(2, tarifa.getPrecioBase());
             pstmt.setDouble(3, tarifa.getDescuentoPorcentaje());
+            pstmt.setString(4, tarifa.getDescripcion()); 
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
@@ -47,7 +49,8 @@ public class TarifaDAO {
     }
 
     public Tarifa getTarifaById(int idTarifa) {
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje FROM Tarifas WHERE idTarifa = ?";
+       
+        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, descripcion FROM Tarifas WHERE idTarifa = ?";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -64,10 +67,12 @@ public class TarifaDAO {
                 tarifa.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 tarifa.setPrecioBase(rs.getDouble("precioBase"));
                 tarifa.setDescuentoPorcentaje(rs.getDouble("descuentoPorcentaje"));
+                tarifa.setDescripcion(rs.getString("descripcion")); 
             }
         } catch (SQLException e) {
             System.err.println("Error al obtener tarifa por ID: " + e.getMessage());
             e.printStackTrace();
+            return null;
         } finally {
             closeResources(conn, pstmt, rs);
         }
@@ -75,7 +80,8 @@ public class TarifaDAO {
     }
 
     public List<Tarifa> getAllTarifas() {
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje FROM Tarifas";
+       
+        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, descripcion FROM Tarifas";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -91,6 +97,7 @@ public class TarifaDAO {
                 tarifa.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 tarifa.setPrecioBase(rs.getDouble("precioBase"));
                 tarifa.setDescuentoPorcentaje(rs.getDouble("descuentoPorcentaje"));
+                tarifa.setDescripcion(rs.getString("descripcion")); 
                 tarifas.add(tarifa);
             }
         } catch (SQLException e) {
@@ -103,7 +110,8 @@ public class TarifaDAO {
     }
 
     public List<Tarifa> getTarifasByTipoHabitacion(String tipo) {
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje FROM Tarifas WHERE tipoHabitacion LIKE ?";
+     
+        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, descripcion FROM Tarifas WHERE tipoHabitacion LIKE ?";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -120,6 +128,7 @@ public class TarifaDAO {
                 tarifa.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 tarifa.setPrecioBase(rs.getDouble("precioBase"));
                 tarifa.setDescuentoPorcentaje(rs.getDouble("descuentoPorcentaje"));
+                tarifa.setDescripcion(rs.getString("descripcion"));
                 tarifas.add(tarifa);
             }
         } catch (SQLException e) {
@@ -132,7 +141,8 @@ public class TarifaDAO {
     }
 
     public boolean updateTarifa(Tarifa tarifa) {
-        String sql = "UPDATE Tarifas SET tipoHabitacion = ?, precioBase = ?, descuentoPorcentaje = ? WHERE idTarifa = ?";
+       
+        String sql = "UPDATE Tarifas SET tipoHabitacion = ?, precioBase = ?, descuentoPorcentaje = ?, descripcion = ? WHERE idTarifa = ?";
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
@@ -141,7 +151,8 @@ public class TarifaDAO {
             pstmt.setString(1, tarifa.getTipoHabitacion());
             pstmt.setDouble(2, tarifa.getPrecioBase());
             pstmt.setDouble(3, tarifa.getDescuentoPorcentaje());
-            pstmt.setInt(4, tarifa.getIdTarifa());
+            pstmt.setString(4, tarifa.getDescripcion()); 
+            pstmt.setInt(5, tarifa.getIdTarifa());
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
