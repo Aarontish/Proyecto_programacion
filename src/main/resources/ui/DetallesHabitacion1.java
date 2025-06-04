@@ -24,7 +24,6 @@ import com.formdev.flatlaf.FlatLightLaf;
 public class DetallesHabitacion1 {
 
 	public JFrame frame; // <--- ¡CAMBIO AQUÍ! DEBE SER PUBLIC
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -234,48 +233,11 @@ public class DetallesHabitacion1 {
 		btntarifas.setBackground(new Color(56, 54, 41));
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
-
-		JButton btnBuscar = new JButton(""); //Boton para la barra de busqueda
-		btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBuscar.setBounds(720, 140, 40, 40);
 		// Corrected image path
 		ImageIcon u1 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
 		Image u2 = u1.getImage();
 		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		btnBuscar.setIcon(new ImageIcon(u3));
-		btnBuscar.setBorderPainted(false);
-		btnBuscar.setFocusPainted(false);
-		btnBuscar.setContentAreaFilled(true);
-		panel.add(btnBuscar);
-
-		textField = new JTextField("BUSCAR"); //Texto de ejemplo
-		textField.setToolTipText("");
-		textField.setBounds(770, 140, 290, 40);
-		textField.setColumns(10);
-		textField.setBackground(new Color(217, 217, 217));
-        textField.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
-        textField.setForeground(Color.GRAY);
-        final String placeholder = "BUSCAR"; //Borra el texto de ejemplo al escribir en el campo
-        textField.addFocusListener(new FocusAdapter() {
-
-            public void focusGained(FocusEvent e) {
-                if (textField.getText().equals(placeholder)) {
-                    textField.setText("");
-                    textField.setForeground(Color.BLACK);
-                }
-            }
-
-            public void focusLost(FocusEvent e) {
-                if (textField.getText().isEmpty()) {
-                    textField.setText(placeholder);
-                    textField.setForeground(Color.GRAY);
-                }
-            }
-        });
-		panel.add(textField);
+        final String placeholder = "BUSCAR";
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(0, 187, 249));

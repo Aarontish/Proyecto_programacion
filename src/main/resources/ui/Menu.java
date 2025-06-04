@@ -282,7 +282,7 @@ public class Menu {
 		botonTiposDeHabitaciones.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        frame.dispose(); // Cierra la ventana actual del menú
-		        TiposHabitacion conexion = new TiposHabitacion();
+		        Tipos_de_habitacion conexion = new Tipos_de_habitacion();
 		        conexion.frame.setVisible(true); 
 		    }
 		});
@@ -309,6 +309,10 @@ public class Menu {
 		botonTarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Aquí podrías abrir la ventana de Tarifas
+				frame.dispose(); // Cierra la ventana actual del menú
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true); 	
+				
 				
 			}
 		});
