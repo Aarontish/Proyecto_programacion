@@ -31,7 +31,9 @@ import modelos.Usuario;
 import ui.Menu; 
 
 public class Registro {
-
+	/*En caso de que les salga un error solo cambien la letra registro por Registro, 
+	 * por alguna razone el github no marca como mofidicacion el cambio de La r por la R mayuscula
+	 */
     JFrame frame;
     private JTextField usernameField;
     private JPasswordField passwordField;
