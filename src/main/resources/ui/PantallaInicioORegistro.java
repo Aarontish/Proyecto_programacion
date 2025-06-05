@@ -113,6 +113,7 @@ public class PantallaInicioORegistro {
 				
 				frame.dispose(); // Cierra la ventana actual del menú
 				Registro conexion = new Registro();
+				
 				conexion.frame.setVisible(true); 
 			}
 		});
