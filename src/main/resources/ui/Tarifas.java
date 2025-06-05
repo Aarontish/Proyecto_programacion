@@ -46,21 +46,7 @@ public class Tarifas {
 	private DefaultTableModel tableModel;
 	private TarifaDAO tarifaDAO;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 0);
-
-					Tarifas window = new Tarifas();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	public Tarifas() {
 		try {
@@ -114,36 +100,10 @@ public class Tarifas {
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
 		menuTitulo.setBounds(131, 126, 400, 56);
 		panel.add(menuTitulo);
-
-		JButton botonSuperior1 = new JButton("");
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior1.setBounds(1098, 11, 56, 56);
 		ImageIcon icon14 = new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen14 = icon14.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        botonSuperior1.setIcon(new ImageIcon(imagen14));
-		panel_1.add(botonSuperior1);
-
-		JButton botonSuperior2 = new JButton("");
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior2.setBounds(1032, 11, 56, 56);
 		ImageIcon icon13 = new ImageIcon(getClass().getResource("/images/informacion.png"));
         Image imagen13 = icon13.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        botonSuperior2.setIcon(new ImageIcon(imagen13));
-		panel_1.add(botonSuperior2);
 
 		JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));

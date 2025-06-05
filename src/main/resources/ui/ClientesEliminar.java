@@ -108,38 +108,11 @@ public class ClientesEliminar {
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
 		menuTitulo.setBounds(131, 126, 245, 56);
 		panel.add(menuTitulo);
-		
-		JButton botonSuperior1 = new JButton("");
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior1.setBounds(1098, 11, 56, 56);
 		ImageIcon c2 = new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image c1 = c2.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        botonSuperior1.setIcon(new ImageIcon(c1));
-		panel_1.add(botonSuperior1);
-		
-		
-		JButton botonSuperior2 = new JButton("");
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior2.setBounds(1032, 11, 56, 56);
 		
 		ImageIcon icon14 = new ImageIcon(getClass().getResource("/images/informacion.png"));
         Image imagen14 = icon14.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-        botonSuperior2.setIcon(new ImageIcon(imagen14));
-		panel_1.add(botonSuperior2);
 		
 		JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));

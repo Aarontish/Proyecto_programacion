@@ -26,23 +26,7 @@ public class Menu {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					// Configura el look and feel también aquí para el lanzamiento directo del menú
-					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90);
-
-					Menu window = new Menu();
-					window.frame.setVisible(true); // Hace visible el frame interno
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
 	 */

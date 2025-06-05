@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -15,123 +17,73 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField; 
+import javax.swing.JOptionPane;     
+import javax.swing.SwingConstants; 
 import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class registro {
 
-	private JFrame frame;
-	private JTextField textField;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+import Dao.UsuarioDAO;          
+import modelos.Usuario;         
+import ui.Menu; 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					registro window = new registro();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+public class Registro {
 
-	/**
-	 * Create the application.
-	 */
-	public registro() {
-		
-		try {
+    JFrame frame;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JLabel messageLabel;
+    private UsuarioDAO usuarioDAO; 
+    private JPasswordField passwordField_1;
+
+  
+    
+
+    public Registro() {
+        try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90); // Esquinas redondas
+            UIManager.put("Button.arc", 0); // Esquinas redondas
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-		
-		initialize();
-	}
+        usuarioDAO = new UsuarioDAO(); // Inicializar el DAO aquí
+        initialize();
+    }
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 1180, 700);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(null);
-		
-		JPanel panel_1 = new JPanel(); //Borde negro
-		panel_1.setBackground(new Color(0, 0, 0));
-		panel_1.setBounds(0, 0, 1164, 95);
-		panel.add(panel_1);
-		panel_1.setLayout(null);
-		
-		JPanel panel_2 = new JPanel(); //Borde gris
-		panel_2.setBackground(new Color(55, 54, 48));
-		panel_2.setBounds(0, 95, 1164, 26);
-		panel.add(panel_2);
-		
-		JLabel logo = new JLabel(""); //Logo
-		logo.setBounds(0, 0, 170, 95);
-		 ImageIcon portada1 =new ImageIcon("images/logo.png");
-	        Image portada2= portada1.getImage();
-	        Image portada3=portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
-	        logo.setIcon(new ImageIcon(portada3));
-		panel_1.add(logo);
-		
-		JLabel Titulo = new JLabel("Registro"); //Titulo 
-		Titulo.setForeground(new Color(255, 255, 255));
-		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
-		Titulo.setBounds(180, 11, 410, 73);
-		panel_1.add(Titulo);
-		
-		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior1.setBounds(1098, 11, 56, 56);
-		ImageIcon c1 = new ImageIcon("images/usuario.png");
-		Image c2 = c1.getImage();
-		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior1.setIcon(new ImageIcon(c3));
-		panel_1.add(botonSuperior1);
-		
-		
-		JButton botonSuperior2 = new JButton(""); //Boton información esquina superior derecha
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior2.setBounds(1032, 11, 56, 56);
-		ImageIcon e1 = new ImageIcon("images/informacion.png");
-		Image e2 = e1.getImage();
-		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
-		botonSuperior2.setIcon(new ImageIcon(e3));
-		panel_1.add(botonSuperior2);
-		
-		JButton botonVolver = new JButton(""); // Boton para volver atrás
+
+    private void initialize() {
+        frame = new JFrame();
+        frame.setResizable(false);
+        frame.setBounds(100, 100, 1180, 700);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(255, 255, 255));
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        panel.setLayout(null);
+
+        JPanel panel_1 = new JPanel(); // Borde negro
+        panel_1.setBackground(new Color(0, 0, 0));
+        panel_1.setBounds(0, 0, 1164, 95);
+        panel.add(panel_1);
+        panel_1.setLayout(null);
+
+        JPanel panel_2 = new JPanel(); // Borde gris
+        panel_2.setBackground(new Color(55, 54, 48));
+        panel_2.setBounds(0, 95, 1164, 26);
+        panel.add(panel_2);
+
+        JLabel logo = new JLabel(""); // Logo
+        logo.setBounds(0, 0, 170, 95);
+        ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image portada2 = portada1.getImage();
+        Image portada3 = portada2.getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(portada3));
+        panel_1.add(logo);
+        JButton botonVolver = new JButton(""); // Boton para volver atrás
 		botonVolver.setForeground(new Color(255, 255, 255));
 		botonVolver.setBackground(new Color(255, 255, 255));
 		botonVolver.setBorderPainted(false);
@@ -139,73 +91,129 @@ public class registro {
 		botonVolver.setContentAreaFilled(true);
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				PantallaInicioORegistro conexion = new PantallaInicioORegistro();
+				conexion.frame.setVisible(true); 
+              
 			}
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
-		ImageIcon f1 = new ImageIcon("images/flecha_izquierda.png");
+		ImageIcon f1 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
 		Image f2 = f1.getImage();
-		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH); 
+		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(f3));
 		panel.add(botonVolver);
 		
-		JButton botonLogin2 = new JButton("Registrarse"); //Boton para iniciar sesión
-		botonLogin2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		botonLogin2.setFont(new Font("Jost* Medium", Font.BOLD, 24));
-		botonLogin2.setBackground(new Color(255, 214, 10));
-		botonLogin2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonLogin2.setBounds(482, 492, 200, 50);
-		panel.add(botonLogin2);
-		
-		JLabel textoUsuario = new JLabel("Usuario:");
-		textoUsuario.setFont(new Font("Jost*", Font.BOLD, 24));
-		textoUsuario.setBounds(382, 152, 94, 30);
-		panel.add(textoUsuario);
-		
-		textField = new JTextField();
-		textField.setBackground(new Color(233, 236, 239));
-		textField.setBounds(382, 193, 400, 30);
-		panel.add(textField);
-		textField.setColumns(10);
-		
-		JLabel textoContraseña = new JLabel("Contraseña:");
-		textoContraseña.setFont(new Font("Jost*", Font.BOLD, 24));
-		textoContraseña.setBounds(382, 234, 136, 30);
-		panel.add(textoContraseña);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBackground(new Color(233, 236, 239));
-		passwordField.setBounds(382, 275, 400, 30);
-		panel.add(passwordField);
-		
-		JButton botonVerContraseña = new JButton("Ver contraseña");
-		botonVerContraseña.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
-		botonVerContraseña.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		botonVerContraseña.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonVerContraseña.setBounds(382, 316, 120, 23);
-		panel.add(botonVerContraseña);
-		
-		JLabel textoConfirmarContraseña = new JLabel("Confirmar Contraseña:");
-		textoConfirmarContraseña.setFont(new Font("Jost*", Font.BOLD, 24));
-		textoConfirmarContraseña.setBounds(382, 350, 256, 30);
-		panel.add(textoConfirmarContraseña);
-		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBackground(new Color(233, 236, 239));
-		passwordField_1.setBounds(382, 391, 400, 30);
-		panel.add(passwordField_1);
-		
-		JButton botonVerContraseña2 = new JButton("Ver contraseña");
-		botonVerContraseña2.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
-		botonVerContraseña2.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
-		botonVerContraseña2.setBounds(382, 432, 120, 23);
-		panel.add(botonVerContraseña2);
-		
-	}
+        JLabel Titulo = new JLabel("Registro/Iniciar sesión"); // Titulo
+        Titulo.setForeground(new Color(255, 255, 255));
+        Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
+        Titulo.setBounds(180, 11, 410, 73);
+        panel_1.add(Titulo);
+        ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image c2 = c1.getImage();
+        Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
+        Image e2 = e1.getImage();
+        Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 
+        
+        JPanel loginPanel = new JPanel();
+        loginPanel.setLayout(null); 
+        loginPanel.setBackground(new Color(255, 255, 255));
+        loginPanel.setBounds(380, 205, 400, 420);
+
+        // Etiqueta de "Iniciar Sesión" (dentro del nuevo panel)
+        JLabel loginTitle = new JLabel("Registro\r\n");
+        loginTitle.setFont(new Font("Dialog", Font.BOLD, 32));
+        loginTitle.setBounds(119, 10, 200, 40);
+        loginPanel.add(loginTitle);
+
+        // Campo de Usuario
+        JLabel userLabel = new JLabel("Usuario:");
+        userLabel.setFont(new Font("Jost*", Font.PLAIN, 18));
+        userLabel.setBounds(50, 80, 100, 30);
+        loginPanel.add(userLabel);
+
+        usernameField = new JTextField();
+        usernameField.setBounds(50, 115, 300, 35);
+        usernameField.setFont(new Font("Jost*", Font.PLAIN, 16));
+        loginPanel.add(usernameField);
+
+        // Campo de Contraseña
+        JLabel passwordLabel = new JLabel("Contraseña:");
+        passwordLabel.setFont(new Font("Jost*", Font.PLAIN, 18));
+        passwordLabel.setBounds(50, 160, 150, 30);
+        loginPanel.add(passwordLabel);
+
+        passwordField = new JPasswordField();
+        passwordField.setBounds(50, 195, 300, 35);
+        passwordField.setFont(new Font("Jost*", Font.PLAIN, 16));
+        loginPanel.add(passwordField);
+
+        // Botón de Login (el que realmente enviará las credenciales)
+        JButton doLoginButton = new JButton("Ingresar");
+        doLoginButton.setBackground(new Color(255, 214, 10));
+        doLoginButton.setForeground(new Color(0, 0, 0));
+        doLoginButton.setFont(new Font("Jost*", Font.BOLD, 20));
+        doLoginButton.setBounds(127, 348, 150, 45);
+        doLoginButton.setFocusPainted(false);
+        doLoginButton.setBorderPainted(false);
+        doLoginButton.setContentAreaFilled(true);
+        doLoginButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                performLogin();
+            }
+        });
+        loginPanel.add(doLoginButton);
+
+
+        messageLabel = new JLabel("");
+        messageLabel.setForeground(Color.RED); // Inicialmente en rojo para errores
+        messageLabel.setFont(new Font("Jost*", Font.PLAIN, 14));
+        messageLabel.setBounds(50, 300, 300, 20);
+        loginPanel.add(messageLabel);
+
+        panel.add(loginPanel);
+        
+        passwordField_1 = new JPasswordField();
+        passwordField_1.setFont(new Font("Dialog", Font.PLAIN, 16));
+        passwordField_1.setBounds(50, 279, 300, 35);
+        loginPanel.add(passwordField_1);
+        
+        JLabel lblConfirmarContrasena = new JLabel("Confirmar contraseña:\r\n");
+        lblConfirmarContrasena.setFont(new Font("Dialog", Font.PLAIN, 18));
+        lblConfirmarContrasena.setBounds(50, 240, 269, 30);
+        loginPanel.add(lblConfirmarContrasena);
+    }
+    
+
+    // --- Lógica del Login ---
+    private void performLogin() {
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword()); // Obtiene la contraseña como String
+
+        if (username.isEmpty() || password.isEmpty()) {
+            messageLabel.setForeground(Color.RED);
+            messageLabel.setText("Por favor, ingresa usuario y contraseña.");
+            return;
+        }
+
+
+        Usuario authenticatedUser = usuarioDAO.login(username, password);
+
+        if (authenticatedUser != null) {
+            messageLabel.setForeground(Color.GREEN);
+            messageLabel.setText("¡Login exitoso!");
+            JOptionPane.showMessageDialog(frame, "Bienvenido, " + authenticatedUser.getNombreUsuario() + "!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+
+            frame.dispose(); // Cierra la ventana actual del login
+            Menu menuWindow = new Menu(); // Abre la ventana del menú principal
+            menuWindow.frame.setVisible(true);
+
+        } else {
+            messageLabel.setForeground(Color.RED);
+            messageLabel.setText("Credenciales incorrectas. Intenta de nuevo.");
+            JOptionPane.showMessageDialog(frame, "Credenciales incorrectas.", "Error de Login", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

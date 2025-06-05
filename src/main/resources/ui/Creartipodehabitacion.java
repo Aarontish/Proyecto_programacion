@@ -195,10 +195,10 @@ public class Creartipodehabitacion {
         logo.setIcon(new ImageIcon(imagen2));
 		panel_1.add(logo);
 		
-		JLabel lblTarifas = new JLabel("Tarifas");
+		JLabel lblTarifas = new JLabel("Tipos de habitacion");
 		lblTarifas.setForeground(new Color(255, 255, 255));
 		lblTarifas.setFont(new Font("Dialog", Font.BOLD, 36));
-		lblTarifas.setBounds(141, 31, 229, 33);
+		lblTarifas.setBounds(141, 31, 483, 33);
 		panel_1.add(lblTarifas);
 		
 		JButton botonVolver = new JButton(""); // Boton para volver atrás
@@ -242,7 +242,8 @@ public class Creartipodehabitacion {
 		panel.add(lblNombre);
 		
 		textField = new JTextField();
-		textField.setBounds(108, 266, 250, 33);
+		textField.setFont(new Font("Tahoma", Font.BOLD, 20));
+		textField.setBounds(108, 266, 289, 47);
 		panel.add(textField);
 		textField.setColumns(10);
 		
@@ -254,7 +255,7 @@ public class Creartipodehabitacion {
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(108, 366, 237, 145);
+		textField_1.setBounds(108, 366, 289, 211);
 		panel.add(textField_1);
 		
 		JLabel lblTipoDeTarifa = new JLabel("Tipo de tarifa:");
@@ -264,9 +265,9 @@ public class Creartipodehabitacion {
 		panel.add(lblTipoDeTarifa);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Dialog", Font.BOLD, 16));
+		comboBox.setFont(new Font("Dialog", Font.BOLD, 20));
 		comboBox.setToolTipText("Rembolsable\r\nNo rembolsable\r\ncorporativa \r\nPromocional\r\n");
-		comboBox.setBounds(440, 266, 250, 44);
+		comboBox.setBounds(440, 266, 310, 50);
 		panel.add(comboBox);
 		
 		JLabel lblPrecio = new JLabel("Capacidad maxima");
@@ -277,23 +278,23 @@ public class Creartipodehabitacion {
 		
 		JButton btnNewButton = new JButton("Cancelar");
 		btnNewButton.setBackground(Color.RED);
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 24));
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBounds(967, 517, 170, 50);
+		btnNewButton.setBounds(923, 468, 214, 80);
 		panel.add(btnNewButton);
 		
 		JButton btnGuardarCambios = new JButton("Crear habitacion");
 		btnGuardarCambios.setForeground(Color.WHITE);
-		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnGuardarCambios.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		btnGuardarCambios.setBackground(new Color(255, 214, 10));
-		btnGuardarCambios.setBounds(967, 592, 170, 50);
+		btnGuardarCambios.setBounds(923, 558, 214, 84);
 		panel.add(btnGuardarCambios);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1 persona", "2 personas", "3 personas", "4 personas", "5 personas", "6 personas"}));
 		comboBox_1.setToolTipText("Rembolsable\r\nNo rembolsable\r\ncorporativa \r\nPromocional\r\n");
-		comboBox_1.setFont(new Font("Dialog", Font.BOLD, 16));
-		comboBox_1.setBounds(440, 383, 250, 44);
+		comboBox_1.setFont(new Font("Dialog", Font.BOLD, 20));
+		comboBox_1.setBounds(440, 383, 310, 56);
 		panel.add(comboBox_1);
 		
 		

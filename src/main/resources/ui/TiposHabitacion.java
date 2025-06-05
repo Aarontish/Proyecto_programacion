@@ -27,18 +27,7 @@ public class TiposHabitacion {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TiposHabitacion window = new TiposHabitacion();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -95,41 +84,14 @@ public class TiposHabitacion {
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
-
-		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior1.setBounds(1098, 11, 56, 56);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/usuario.png"));
 		ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
 		Image c2 = c1.getImage();
 		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonSuperior1.setIcon(new ImageIcon(c3));
-		panel_1.add(botonSuperior1);
-
-
-		JButton botonSuperior2 = new JButton(""); //Boton información esquina superior derecha
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior2.setBounds(1032, 11, 56, 56);
 		// CORREGIDO: new ImageIcon(getClass().getResource("/images/informacion.png"));
 		ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
 		Image e2 = e1.getImage();
 		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonSuperior2.setIcon(new ImageIcon(e3));
-		panel_1.add(botonSuperior2);
 
 		JButton botonVolver = new JButton(""); // Boton para volver atrás
 		botonVolver.setForeground(new Color(255, 255, 255));

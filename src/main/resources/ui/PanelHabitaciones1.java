@@ -32,18 +32,7 @@ public class PanelHabitaciones1 {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PanelHabitaciones1 window = new PanelHabitaciones1();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -103,37 +92,10 @@ public class PanelHabitaciones1 {
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
 		menuTitulo.setBounds(131, 126, 283, 56);
 		panel.add(menuTitulo);
-		
-		JButton botonSuperior1 = new JButton(""); //Boton usuario esquina superior derecha
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior1.setBounds(1098, 11, 56, 56);
 		ImageIcon icon69 = new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image imagen69 = icon69.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
-		botonSuperior1.setIcon(new ImageIcon(imagen69));
-		panel_1.add(botonSuperior1);
-		
-		
-		JButton botonSuperior2 = new JButton(""); //Boton información esquina superior derecha
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonSuperior2.setBounds(1032, 11, 56, 56);
 		ImageIcon icon79 = new ImageIcon(getClass().getResource("/images/informacion.png"));
         Image imagen79 = icon79.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
-		botonSuperior2.setIcon(new ImageIcon(imagen79));
-		panel_1.add(botonSuperior2);
 		
 		JButton botonVolver = new JButton(""); // Boton para volver atrás
 		botonVolver.setForeground(new Color(255, 255, 255));

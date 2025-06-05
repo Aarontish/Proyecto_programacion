@@ -14,7 +14,7 @@ public class Main {
                     UIManager.setLookAndFeel(new FlatLightLaf());
                     UIManager.put("Button.arc", 90);
 
-                    Login2 window = new Login2();
+                    PantallaInicioORegistro window = new PantallaInicioORegistro();
                     window.frame.setVisible(true);
 
                 } catch (Exception e) {

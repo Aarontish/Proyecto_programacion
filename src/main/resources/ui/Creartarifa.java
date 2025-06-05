@@ -42,26 +42,12 @@ public class Creartarifa {
 	private JTextArea textAreaDescripcion; 
 	private TarifaDAO tarifaDAO;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(new FlatLightLaf());
-					UIManager.put("Button.arc", 90);
-
-					Creartarifa window = new Creartarifa();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	public Creartarifa() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 90);
+            UIManager.put("Button.arc", 0);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
