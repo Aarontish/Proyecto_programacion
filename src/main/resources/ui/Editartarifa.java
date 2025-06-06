@@ -206,12 +206,12 @@ public class Editartarifa {
 				
 			}
 		});
-		JButton meButton = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
+		JButton meButton = new JButton("<html>Rentas &#8594;</html>"); 
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Aquí podrías abrir la ventana de Rentas
 				frame.dispose(); // Cierra la ventana actual del menú
-				EditarTarifaPaso1EscojerTarifa conexion = new EditarTarifaPaso1EscojerTarifa();
+				Tarifas conexion = new Tarifas();
 				conexion.frame.setVisible(true); 	
 			}
 		});
