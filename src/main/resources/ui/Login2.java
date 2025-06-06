@@ -37,6 +37,7 @@ public class Login2 {
     private UsuarioDAO usuarioDAO;
 
 	
+
 	public Login2() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -69,7 +70,6 @@ public class Login2 {
 		panel_2.setBackground(new Color(55, 54, 48));
 		panel_2.setBounds(0, 95, 1164, 26);
 		panel.add(panel_2);
-        panel_2.setLayout(null); // Asegurarse de que tenga un layout
 
 		JLabel logo = new JLabel(""); // Logo
 		logo.setBounds(0, 0, 170, 95);

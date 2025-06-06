@@ -59,6 +59,7 @@ public class EditarClienteFormulario {
 		}
 	}
 
+	// Constructor por defecto (para el main o si no se pasa ID)
 	public EditarClienteFormulario() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -68,6 +69,19 @@ public class EditarClienteFormulario {
         }
         clienteDAO = new ClienteDAO();
 		initialize();
+	}
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EditarClienteFormulario window = new EditarClienteFormulario(1); // Ejemplo: editar cliente con ID 1
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	private void initialize() {
@@ -183,18 +197,18 @@ public class EditarClienteFormulario {
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
 
-		JLabel logoPanel1 = new JLabel("");
-		logoPanel1.setBounds(0, 0, 170, 95);
+		JLabel logo = new JLabel("");
+		logo.setBounds(0, 0, 170, 95);
 		ImageIcon icon12 = new ImageIcon(getClass().getResource("/images/logo.png"));
         Image imagen12 = icon12.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
-        logoPanel1.setIcon(new ImageIcon(imagen12));
-		panel_1.add(logoPanel1);
+        logo.setIcon(new ImageIcon(imagen12));
+		panel_1.add(logo);
 
-		JLabel TituloPanel1 = new JLabel("Editar Cliente");
-		TituloPanel1.setForeground(new Color(255, 255, 255));
-		TituloPanel1.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
-		TituloPanel1.setBounds(180, 11, 410, 73);
-		panel_1.add(TituloPanel1);
+		JLabel Titulo = new JLabel("Editar Cliente");
+		Titulo.setForeground(new Color(255, 255, 255));
+		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
+		Titulo.setBounds(180, 11, 410, 73);
+		panel_1.add(Titulo);
 
 		JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));
@@ -300,12 +314,12 @@ public class EditarClienteFormulario {
 					return;
 				}
 				if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$")) {
-					JOptionPane.showMessageDialog(frame, "Formato de email inválido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-					return;
+				    JOptionPane.showMessageDialog(frame, "Formato de email inválido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+				    return;
 				}
 				if (!telefono.matches("^\\d{10}$")) {
-					JOptionPane.showMessageDialog(frame, "El teléfono debe contener 10 dígitos numéricos.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-					return;
+				    JOptionPane.showMessageDialog(frame, "El teléfono debe contener 10 dígitos numéricos.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+				    return;
 				}
 
 				clienteAEditar.setNombre(nombre);

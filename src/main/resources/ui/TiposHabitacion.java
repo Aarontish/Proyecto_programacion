@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -18,105 +17,83 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-import javax.swing.JScrollPane;
-import java.awt.FlowLayout; // Para un layout flexible de los paneles de tipo
 
 import com.formdev.flatlaf.FlatLightLaf;
-
-import Dao.TipoHabitacionDAO; // Importar el DAO para TiposHabitacion
-import modelos.TiposHabitacion; // Importar la clase de modelo TiposHabitacion
-import ui.Menu;
-import ui.Rentas;
-import ui.Clientes;
-import ui.PanelHabitaciones1; // Asumiendo que esta es la primera vista de habitaciones
-import ui.Tarifas;
-import ui.DetallesHabitacion4; // Asumiendo que esta clase existe y puede recibir un ID
-import ui.Detallesfamiliar; // Asumiendo que esta clase existe
-import ui.EliminarTipodeHabitacion; // Asumiendo que esta clase existe y puede recibir un ID
-import ui.EditartiposdeHabitaciones; // Asumiendo que esta clase existe y puede recibir un ID
-import ui.Creartipodehabitacion; // Asumiendo que esta clase existe
 
 public class TiposHabitacion {
 
 	JFrame frame;
-    private TipoHabitacionDAO tipoHabitacionDAO; // Instancia del DAO para interactuar con la BD
-    private JPanel tiposHabitacionDisplayPanel; // Panel donde se añadirán dinámicamente los tipos de habitación
 
+	/**
+	 * Launch the application.
+	 */
+	
+
+	/**
+	 * Create the application.
+	 */
 	public TiposHabitacion() {
 		try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 0); // Esquinas redondas para un estilo moderno
+            UIManager.put("Button.arc", 0); // Esquinas redondas
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        tipoHabitacionDAO = new TipoHabitacionDAO(); // Inicializar el DAO
-		initialize(); // Inicializar los componentes de la interfaz
-        loadTiposHabitacion(); // Cargar y mostrar los tipos de habitación desde la BD al iniciar
+
+		initialize();
 	}
 
+	/**
+	 * Initialize the contents of the frame.
+	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setResizable(false); // Ventana no redimensionable
-		frame.setBounds(100, 100, 1180, 700); // Tamaño y posición de la ventana
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar la aplicación al cerrar la ventana
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 1180, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255)); // Fondo blanco para el panel principal
-		frame.getContentPane().add(panel, BorderLayout.CENTER); // Añadir al centro del frame
-		panel.setLayout(null); // Usar layout nulo para posicionamiento absoluto
+		panel.setBackground(new Color(255, 255, 255));
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
 
-		JPanel panel_1 = new JPanel(); // Panel superior negro para el encabezado
+		JPanel panel_1 = new JPanel(); //Borde negro
 		panel_1.setBackground(new Color(0, 0, 0));
 		panel_1.setBounds(0, 0, 1164, 95);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
-		JPanel panel_2 = new JPanel(); // Panel gris debajo del encabezado negro
+		JPanel panel_2 = new JPanel(); //Borde gris
 		panel_2.setBackground(new Color(55, 54, 48));
 		panel_2.setBounds(0, 95, 1164, 26);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 
-		JLabel logo = new JLabel(""); // Etiqueta para el logo
+		JLabel logo = new JLabel(""); //Logo
 		logo.setBounds(0, 0, 170, 95);
-		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png")); // Cargar imagen del logo
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/logo.png"));
+		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
 	    Image portada2 = portada1.getImage();
-	    Image portada3 = portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH); // Escalar imagen
-	    logo.setIcon(new ImageIcon(portada3)); // Establecer icono
+	    Image portada3 = portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
+	    logo.setIcon(new ImageIcon(portada3));
 		panel_1.add(logo);
 		
-		JLabel Titulo = new JLabel("Tipos de habitaciones:"); // Título de la sección
+		
+		JLabel Titulo = new JLabel("Tipos  de habitaciones:"); //Titulo
 		Titulo.setForeground(new Color(255, 255, 255));
 		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
 		Titulo.setBounds(180, 11, 410, 73);
 		panel_1.add(Titulo);
-
-		// Botones de iconos superiores (usuario, información) - Sin funcionalidad de navegación aquí
-		JButton botonSuperior1 = new JButton("");
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.setBounds(1098, 11, 56, 56);
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/usuario.png"));
 		ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
 		Image c2 = c1.getImage();
 		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonSuperior1.setIcon(new ImageIcon(c3));
-		panel_1.add(botonSuperior1);
-
-		JButton botonSuperior2 = new JButton("");
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.setBounds(1032, 11, 56, 56);
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/informacion.png"));
 		ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
 		Image e2 = e1.getImage();
 		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonSuperior2.setIcon(new ImageIcon(e3));
-		panel_1.add(botonSuperior2);
 
-		JButton botonVolver = new JButton(""); // Botón para volver al menú principal
+		JButton botonVolver = new JButton(""); // Boton para volver atrás
 		botonVolver.setForeground(new Color(255, 255, 255));
 		botonVolver.setBackground(new Color(255, 255, 255));
 		botonVolver.setBorderPainted(false);
@@ -124,27 +101,39 @@ public class TiposHabitacion {
 		botonVolver.setContentAreaFilled(true);
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose(); // Cierra la ventana actual
-				Menu conexion = new Menu(); // Abre la ventana del menú principal
-				conexion.frame.setVisible(true);
+				frame.dispose(); // Cierra la ventana actual del menú
+				Menu conexion = new Menu();
+				conexion.frame.setVisible(true); 	
 			}
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
 		ImageIcon f1 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
 		Image f2 = f1.getImage();
 		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(f3));
 		panel.add(botonVolver);
 
-		// Botones de navegación superior para otras secciones
-		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>");
+		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
 		btnTiposDeRentas.setBackground(new Color(56, 54, 41));
 		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-                // Ya estamos en esta ventana, no hacer nada o refrescar
+			}
+		});
+
+		JButton btnTiposDeRentas1 = new JButton("<html>Tipos de habitaciones &#8594;</html>"); //Botón superior tipos de habitaciones
+		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
+		btnTiposDeRentas.setForeground(new Color(255, 255, 255));
+		btnTiposDeRentas.setBackground(new Color(56, 54, 41));
+		btnTiposDeRentas.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnTiposDeRentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -152,13 +141,13 @@ public class TiposHabitacion {
         btnTiposDeRentas.setFocusPainted(false);
         btnTiposDeRentas.setContentAreaFilled(true);
 		panel_2.add(btnTiposDeRentas);
-
-		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>");
+		
+		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>"); //Botón superior rentas
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				frame.dispose(); // Cierra la ventana actual del menú
 				Rentas conexion = new Rentas();
-				conexion.frame.setVisible(true);
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -170,13 +159,13 @@ public class TiposHabitacion {
 		btnrentas.setBackground(new Color(56, 54, 41));
 		btnrentas.setBounds(932, 0, 81, 23);
 		panel_2.add(btnrentas);
-
-		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>");
+		
+		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>"); //Botón superior clientes
 		btnclientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				frame.dispose(); // Cierra la ventana actual del menú
 				Clientes conexion = new Clientes();
-				conexion.frame.setVisible(true);
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnclientes.setForeground(Color.WHITE);
@@ -188,13 +177,13 @@ public class TiposHabitacion {
 		btnclientes.setBackground(new Color(56, 54, 41));
 		btnclientes.setBounds(841, 0, 81, 23);
 		panel_2.add(btnclientes);
-
-		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>");
+		
+		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>"); //Botón superior habitaciones
 		btnhabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				frame.dispose(); // Cierra la ventana actual del menú
 				PanelHabitaciones1 conexion = new PanelHabitaciones1();
-				conexion.frame.setVisible(true);
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btnhabitaciones.setForeground(Color.WHITE);
@@ -206,13 +195,13 @@ public class TiposHabitacion {
 		btnhabitaciones.setBackground(new Color(56, 54, 41));
 		btnhabitaciones.setBounds(731, 0, 100, 23);
 		panel_2.add(btnhabitaciones);
-
-		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>");
+		
+		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>"); //Botón superior tarifas
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				frame.dispose(); // Cierra la ventana actual del menú
 				Tarifas conexion = new Tarifas();
-				conexion.frame.setVisible(true);
+				conexion.frame.setVisible(true); 
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -224,166 +213,179 @@ public class TiposHabitacion {
 		btntarifas.setBackground(new Color(56, 54, 41));
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
+		
+		
+		// CORREGIDO: new ImageIcon(getClass().getResource("/images/busqueda.png"));
+		ImageIcon u1 = new ImageIcon(getClass().getResource("/images/busqueda.png"));
+		Image u2 = u1.getImage();
+		Image u3 = u2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        final String placeholder = "BUSCAR";
 
+        JPanel panel_3 = new JPanel();
+        panel_3.setBackground(new Color(152, 193, 217));
+        panel_3.setBounds(131, 193, 300, 440);
+        panel.add(panel_3);
+        panel_3.setLayout(null);
 
-        // Botones de acción principales (Crear, Editar, Eliminar tipos de habitación)
-		JButton btnEliminarTipo = new JButton("Eliminar");
-		btnEliminarTipo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				EliminarTipodeHabitacion conexion = new EliminarTipodeHabitacion(); // Asumo que necesitará un ID después
+        JLabel lblImagen1 = new JLabel();
+        lblImagen1.setBounds(50, 39, 200, 200);
+        ImageIcon icon1 = new ImageIcon(getClass().getResource("/images/foto1.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        lblImagen1.setIcon(new ImageIcon(imagen1));
+        panel_3.add(lblImagen1);
+
+        JLabel lblTexto1 = new JLabel("Habitaciones:");
+        lblTexto1.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 20));
+        lblTexto1.setBounds(92, 249, 135, 20);
+        panel_3.add(lblTexto1);
+        
+        JLabel lblEstandar = new JLabel("Estandar");
+        lblEstandar.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
+        lblEstandar.setBounds(92, 10, 135, 20);
+        panel_3.add(lblEstandar);
+        
+        JLabel lblTexto1_2 = new JLabel("3");
+        lblTexto1_2.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 30));
+        lblTexto1_2.setBounds(147, 289, 40, 29);
+        panel_3.add(lblTexto1_2);
+        
+        JButton btnNewButton_1_1_1_1 = new JButton("Detalles");
+        btnNewButton_1_1_1_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frame.dispose(); // Cierra la ventana actual del menú
+				DetallesHabitacion4 conexion = new DetallesHabitacion4();
+				conexion.frame.setVisible(true); 
+        	}
+        });
+        btnNewButton_1_1_1_1.setBackground(new Color(255, 230, 167));
+        btnNewButton_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+        btnNewButton_1_1_1_1.setBounds(92, 375, 124, 55);
+        
+        panel_3.add(btnNewButton_1_1_1_1);
+
+        // Segundo panel
+        JPanel panel_2_1 = new JPanel();
+        panel_2_1.setLayout(null);
+        panel_2_1.setBackground(new Color(152, 193, 217));
+        panel_2_1.setBounds(461, 193, 300, 440);
+        panel.add(panel_2_1);
+
+        JLabel lblImagen2 = new JLabel();
+        lblImagen2.setBounds(49, 36, 200, 200);
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("/images/foto2.png"));
+        Image imagen2 = icon2.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        lblImagen2.setIcon(new ImageIcon(imagen2));
+        panel_2_1.add(lblImagen2);
+        
+        JLabel lblTexto1_1 = new JLabel("Habitaciones:");
+        lblTexto1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
+        lblTexto1_1.setBounds(86, 246, 135, 20);
+        panel_2_1.add(lblTexto1_1);
+        
+        JLabel lblTexto1_1_2 = new JLabel("Familiar");
+        lblTexto1_1_2.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
+        lblTexto1_1_2.setBounds(86, 10, 135, 20);
+        panel_2_1.add(lblTexto1_1_2);
+        
+        JLabel lblTexto1_2_1 = new JLabel("4");
+        lblTexto1_2_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 30));
+        lblTexto1_2_1.setBounds(138, 288, 40, 29);
+        panel_2_1.add(lblTexto1_2_1);
+        
+        JButton btnNewButton_1_1_1 = new JButton("Detalles");
+        btnNewButton_1_1_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frame.dispose(); // Cierra la ventana actual del menú
+				Detallesfamiliar conexion = new Detallesfamiliar();
 				conexion.frame.setVisible(true);
+        		
+        	}
+        });
+        btnNewButton_1_1_1.setBackground(new Color(255, 230, 167));
+        btnNewButton_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+        btnNewButton_1_1_1.setBounds(86, 375, 124, 55);
+        panel_2_1.add(btnNewButton_1_1_1);
+
+        // Tercer panel
+        JPanel panel_1_1 = new JPanel();
+        panel_1_1.setLayout(null);
+        panel_1_1.setBackground(new Color(152, 193, 217));
+        panel_1_1.setBounds(811, 193, 300, 440);
+        panel.add(panel_1_1);
+
+        JLabel lblImagen3 = new JLabel();
+        lblImagen3.setBounds(51, 41, 200, 200);
+        ImageIcon icon3 = new ImageIcon(getClass().getResource("/images/foto3.png"));
+        Image imagen3 = icon3.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        lblImagen3.setIcon(new ImageIcon(imagen3));
+        panel_1_1.add(lblImagen3);
+        
+        JLabel lblTexto1_1_1 = new JLabel("Habitaciones:");
+        lblTexto1_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
+        lblTexto1_1_1.setBounds(86, 251, 135, 20);
+        panel_1_1.add(lblTexto1_1_1);
+        
+        JLabel lblTexto1_1_1_1 = new JLabel("Suite");
+        lblTexto1_1_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
+        lblTexto1_1_1_1.setBounds(86, 10, 135, 20);
+        panel_1_1.add(lblTexto1_1_1_1);
+        
+        JLabel lblTexto1_2_1_1 = new JLabel("5");
+        lblTexto1_2_1_1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 30));
+        lblTexto1_2_1_1.setBounds(139, 281, 40, 29);
+        panel_1_1.add(lblTexto1_2_1_1);
+        
+        JButton btnNewButton_1_1 = new JButton("Detalles");
+        btnNewButton_1_1.setBackground(new Color(255, 230, 167));
+        btnNewButton_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+        btnNewButton_1_1.setBounds(86, 375, 124, 55);
+        btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose(); // Cierra la ventana actual del menú
+				DetallesHabitacion4 conexion = new DetallesHabitacion4();
+				conexion.frame.setVisible(true); 	
 			}
 		});
-		btnEliminarTipo.setForeground(Color.WHITE);
-		btnEliminarTipo.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnEliminarTipo.setBackground(new Color(239, 35, 60));
-		btnEliminarTipo.setBounds(131, 131, 124, 55);
-		panel.add(btnEliminarTipo);
-
-		JButton btnEditarTipo = new JButton("Editar\r\n");
-		btnEditarTipo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				EditartiposdeHabitaciones conexion = new EditartiposdeHabitaciones(); // Asumo que necesitará un ID después
-				conexion.frame.setVisible(true);
-			}
-		});
-		btnEditarTipo.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnEditarTipo.setBackground(new Color(44, 196, 196));
-		btnEditarTipo.setBounds(265, 128, 124, 55);
-		panel.add(btnEditarTipo);
-
-		JButton btnCrearTipo = new JButton("Crear tipo");
-		btnCrearTipo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+        panel_1_1.add(btnNewButton_1_1);
+        
+        JButton btnNewButton_1_1_1_1_1 = new JButton("Eliminar");
+        btnNewButton_1_1_1_1_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frame.dispose(); // Cierra la ventana actual del menú
+				EliminarTipodeHabitacion conexion = new EliminarTipodeHabitacion();
+				conexion.frame.setVisible(true); 
+        	}
+        });
+        btnNewButton_1_1_1_1_1.setForeground(Color.WHITE);
+        btnNewButton_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+        btnNewButton_1_1_1_1_1.setBackground(new Color(239, 35, 60));
+        btnNewButton_1_1_1_1_1.setBounds(131, 131, 124, 55);
+        panel.add(btnNewButton_1_1_1_1_1);
+        
+        JButton btnNewButton_1_1_1_1_1_1 = new JButton("Editar\r\n");
+        btnNewButton_1_1_1_1_1_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frame.dispose(); // Cierra la ventana actual del menú
+				EditartiposdeHabitaciones conexion = new EditartiposdeHabitaciones();
+				conexion.frame.setVisible(true); 
+        	}
+        });
+        btnNewButton_1_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+        btnNewButton_1_1_1_1_1_1.setBackground(new Color(44, 196, 196));
+        btnNewButton_1_1_1_1_1_1.setBounds(265, 128, 124, 55);
+        panel.add(btnNewButton_1_1_1_1_1_1);
+        
+        JButton btnNewButton_1_1_1_1_1_1_1 = new JButton("Crear tipo");
+        btnNewButton_1_1_1_1_1_1_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frame.dispose(); // Cierra la ventana actual del menú
 				Creartipodehabitacion conexion = new Creartipodehabitacion();
-				conexion.frame.setVisible(true);
-			}
-		});
-		btnCrearTipo.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnCrearTipo.setBackground(Color.YELLOW);
-		btnCrearTipo.setBounds(399, 127, 154, 55);
-		panel.add(btnCrearTipo);
-
-
-        // Panel para mostrar los tipos de habitación dinámicamente
-        tiposHabitacionDisplayPanel = new JPanel();
-        tiposHabitacionDisplayPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20)); // Layout flexible, con espacio entre componentes
-        tiposHabitacionDisplayPanel.setBackground(new Color(255, 255, 255)); // Fondo blanco para el panel de contenido
-
-        JScrollPane scrollPane = new JScrollPane(tiposHabitacionDisplayPanel);
-        scrollPane.setBounds(131, 193 + 55 + 20, 980, 440); // Posición debajo de los botones de acción
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); // Scroll vertical si es necesario
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Sin scroll horizontal
-        panel.add(scrollPane); // Añadir el JScrollPane al panel principal
-	}
-
-    // Método para cargar y mostrar los tipos de habitación desde la base de datos
-    private void loadTiposHabitacion() {
-        tiposHabitacionDisplayPanel.removeAll(); // Limpiar el panel antes de añadir nuevos paneles
-
-        // Obtener todos los tipos de habitación usando el DAO
-        List<modelos.TiposHabitacion> tipos = tipoHabitacionDAO.getAllTiposHabitacion();
-
-        // Icono por defecto para los tipos de habitación si no hay una imagen específica
-        ImageIcon defaultIcon = new ImageIcon(getClass().getResource("/images/foto_default.png"));
-        // Asegúrate de que esta imagen exista o cámbiala por una que tengas.
-        // Si no tienes una, puedes crear una muy simple: https://placehold.co/200x200/cccccc/000000?text=Tipo
-
-        Image defaultImage = defaultIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-        ImageIcon scaledDefaultIcon = new ImageIcon(defaultImage);
-
-        if (tipos != null && !tipos.isEmpty()) {
-            for (modelos.TiposHabitacion tipo : tipos) {
-                JPanel typePanel = new JPanel();
-                typePanel.setLayout(null); // Usar layout nulo para un control preciso
-                typePanel.setBackground(new Color(152, 193, 217)); // Color de fondo del panel de tipo
-                typePanel.setPreferredSize(new java.awt.Dimension(300, 440)); // Establecer tamaño preferido para FlowLayout
-
-                JLabel lblNombreTipo = new JLabel(tipo.getNombreTipo());
-                lblNombreTipo.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
-                lblNombreTipo.setBounds(10, 10, 280, 25);
-                typePanel.add(lblNombreTipo);
-
-                JLabel lblDescripcion = new JLabel("<html>" + tipo.getDescripcion() + "</html>");
-                lblDescripcion.setFont(new Font("Dialog", Font.PLAIN, 14));
-                lblDescripcion.setBounds(10, 40, 280, 100);
-                typePanel.add(lblDescripcion);
-
-                // Aquí podrías intentar cargar una imagen específica para cada tipo si tuvieras una convención de nombres
-                // Por ejemplo: /images/tipo_individual.png, /images/tipo_doble.png
-                // Por ahora, usamos el placeholder
-                JLabel lblImagen = new JLabel(scaledDefaultIcon);
-                lblImagen.setBounds(50, 150, 200, 200);
-                typePanel.add(lblImagen);
-
-
-                // Botones de acción individuales para cada tipo de habitación
-                JButton btnDetalles = new JButton("Detalles");
-                btnDetalles.setBackground(new Color(255, 230, 167));
-                btnDetalles.setFont(new Font("Tahoma", Font.BOLD, 20));
-                btnDetalles.setBounds(10, 375, 90, 55);
-                final int tipoId = tipo.getIdTipoHabitacion(); // Necesario para el ActionListener
-                btnDetalles.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        frame.dispose();
-                        // Asumo que DetallesHabitacion4 puede recibir un ID de tipo de habitación en su constructor
-                        DetallesHabitacion4 detallesWindow = new DetallesHabitacion4(tipoId);
-                        detallesWindow.frame.setVisible(true);
-                    }
-                });
-                typePanel.add(btnDetalles);
-
-                JButton btnEditar = new JButton("Editar");
-                btnEditar.setBackground(new Color(44, 196, 196));
-                btnEditar.setFont(new Font("Tahoma", Font.BOLD, 20));
-                btnEditar.setBounds(105, 375, 90, 55);
-                btnEditar.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        frame.dispose();
-                        // Asumo que EditartiposdeHabitaciones puede recibir un ID de tipo de habitación en su constructor
-                        EditartiposdeHabitaciones editarWindow = new EditartiposdeHabitaciones(tipoId);
-                        editarWindow.frame.setVisible(true);
-                    }
-                });
-                typePanel.add(btnEditar);
-
-                JButton btnEliminar = new JButton("Eliminar");
-                btnEliminar.setBackground(new Color(239, 35, 60));
-                btnEliminar.setForeground(Color.WHITE);
-                btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 20));
-                btnEliminar.setBounds(200, 375, 90, 55);
-                btnEliminar.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        frame.dispose();
-                        // Asumo que EliminarTipodeHabitacion puede recibir un ID de tipo de habitación en su constructor
-                        EliminarTipodeHabitacion eliminarWindow = new EliminarTipodeHabitacion(tipoId);
-                        eliminarWindow.frame.setVisible(true);
-                    }
-                });
-                typePanel.add(btnEliminar);
-
-                tiposHabitacionDisplayPanel.add(typePanel); // Añadir el panel de tipo al panel principal de visualización
-            }
-        } else {
-            // Mensaje si no hay tipos de habitación para mostrar
-            JLabel noTypesLabel = new JLabel("No se encontraron tipos de habitación.");
-            noTypesLabel.setFont(new Font("Jost*", Font.BOLD, 20));
-            noTypesLabel.setForeground(Color.GRAY);
-            noTypesLabel.setHorizontalAlignment(JLabel.CENTER);
-            tiposHabitacionDisplayPanel.add(noTypesLabel);
-        }
-
-        tiposHabitacionDisplayPanel.revalidate(); // Revalidar el panel para que se actualice la vista
-        tiposHabitacionDisplayPanel.repaint(); // Repintar el panel
-    }
-
-	public void setVisible(boolean b) {
-		frame.setVisible(b);
+				conexion.frame.setVisible(true); 
+        	}
+        });
+        btnNewButton_1_1_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+        btnNewButton_1_1_1_1_1_1_1.setBackground(Color.YELLOW);
+        btnNewButton_1_1_1_1_1_1_1.setBounds(399, 127, 154, 55);
+        panel.add(btnNewButton_1_1_1_1_1_1_1);
 	}
 }

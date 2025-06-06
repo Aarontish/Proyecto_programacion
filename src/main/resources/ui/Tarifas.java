@@ -18,36 +18,35 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.JScrollPane; 
+import javax.swing.JTable;    
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableColumnModel; 
 
 import com.formdev.flatlaf.FlatLightLaf;
 
 import Dao.TarifaDAO;
-import Dao.TipoHabitacionDAO; // Importar TipoHabitacionDAO
 import modelos.Tarifa;
-import modelos.TiposHabitacion; // Importar TiposHabitacion
 
 import ui.TiposHabitacion;
 import ui.Rentas;
 import ui.Clientes;
 import ui.PanelHabitaciones1;
 import ui.Menu;
-import ui.Creartarifa;
-import ui.EditarTarifaFormulario;
+import ui.Creartarifa; 
+import ui.EditarTarifaFormulario; 
 
 public class Tarifas {
 
 	public JFrame frame;
 	private JTextField textFieldBuscar;
-	private JTable tableTarifas;
+	private JTable tableTarifas; 
 	private DefaultTableModel tableModel;
 	private TarifaDAO tarifaDAO;
-    private TipoHabitacionDAO tipoHabitacionDAO; // Añadir instancia de TipoHabitacionDAO
+
+	
 
 	public Tarifas() {
 		try {
@@ -57,10 +56,8 @@ public class Tarifas {
             ex.printStackTrace();
         }
         tarifaDAO = new TarifaDAO();
-        tipoHabitacionDAO = new TipoHabitacionDAO(); // Inicializar TipoHabitacionDAO
 		initialize();
-		// Cargar datos en el constructor se hace después de la inicialización de la tabla.
-		cargarDatosTabla("");
+		cargarDatosTabla(""); 
 	}
 
 	private void initialize() {
@@ -103,30 +100,10 @@ public class Tarifas {
 		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
 		menuTitulo.setBounds(131, 126, 400, 56);
 		panel.add(menuTitulo);
-		
-		JButton botonSuperior1 = new JButton(""); // Asumiendo que es para el usuario actual
-		botonSuperior1.setBackground(new Color(0, 0, 0));
-		botonSuperior1.setBorderPainted(false);
-		botonSuperior1.setFocusPainted(false);
-		botonSuperior1.setContentAreaFilled(true);
-		botonSuperior1.setBounds(1098, 11, 56, 56);
-		ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
-		Image c2 = c1.getImage();
-		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonSuperior1.setIcon(new ImageIcon(c3));
-		panel_1.add(botonSuperior1);
-
-		JButton botonSuperior2 = new JButton(""); // Asumiendo que es para información
-		botonSuperior2.setBackground(new Color(0, 0, 0));
-		botonSuperior2.setBorderPainted(false);
-		botonSuperior2.setFocusPainted(false);
-		botonSuperior2.setContentAreaFilled(true);
-		botonSuperior2.setBounds(1032, 11, 56, 56);
-		ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
-		Image e2 = e1.getImage();
-		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonSuperior2.setIcon(new ImageIcon(e3));
-		panel_1.add(botonSuperior2);
+		ImageIcon icon14 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen14 = icon14.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		ImageIcon icon13 = new ImageIcon(getClass().getResource("/images/informacion.png"));
+        Image imagen13 = icon13.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 
 		JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));
@@ -222,7 +199,7 @@ public class Tarifas {
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>");
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    // Ya estás en la pantalla de Tarifas, no necesitas hacer nada aquí
+			
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -235,18 +212,18 @@ public class Tarifas {
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
 
-		JButton btnBuscar = new JButton("");
+		JButton btnBuscar = new JButton(""); 
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String filtro = textFieldBuscar.getText().trim();
-				if (filtro.equals("BUSCAR") || filtro.isEmpty()) {
-					cargarDatosTabla(""); // Si está vacío o placeholder, carga todo
+				if (filtro.equals("BUSCAR")) { 
+					cargarDatosTabla(""); 
 				} else {
-					cargarDatosTabla(filtro); // Carga con el filtro
+					cargarDatosTabla(filtro); 
 				}
 			}
 		});
-		btnBuscar.setBounds(720, 140, 40, 40);
+		btnBuscar.setBounds(720, 140, 40, 40); 
 		
 		try {
 			ImageIcon searchIcon = new ImageIcon(getClass().getResource("/images/busqueda.png"));
@@ -256,6 +233,7 @@ public class Tarifas {
 			}
 		} catch (Exception e) {
 			System.err.println("Error al cargar el icono de búsqueda: " + e.getMessage());
+			
 		}
 		btnBuscar.setBorderPainted(false);
 		btnBuscar.setFocusPainted(false);
@@ -349,85 +327,73 @@ public class Tarifas {
 		});
 		panel.add(btnCrearTarifaNueva);
 
-		// Nombres de las columnas de la tabla. "Tipo de Tarifa" se llenará con el nombre del tipo de habitación.
-		String[] columnNames = { "ID Tarifa", "Tipo de Habitación", "Nombre Tarifa", "Precio Base", "Condiciones", "Descripción" }; // Actualizado
+		String[] columnNames = { "ID Tarifa", "Tipo de Tarifa", "Precio", "Condiciones", "Descripcion" }; 
 		tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false;
+                return false; 
             }
         };
-		tableTarifas = new JTable(tableModel);
+		tableTarifas = new JTable(tableModel); 
 		tableTarifas.setFont(new Font("Dialog", Font.PLAIN, 14));
 		tableTarifas.setRowHeight(25);
 		tableTarifas.getTableHeader().setFont(new Font("Dialog", Font.BOLD, 16));
 		tableTarifas.getTableHeader().setBackground(new Color(55, 54, 48));
 		tableTarifas.getTableHeader().setForeground(Color.WHITE);
 
-		JScrollPane scrollPane = new JScrollPane(tableTarifas);
+		JScrollPane scrollPane = new JScrollPane(tableTarifas); 
 		scrollPane.setBounds(131, 250, 950, 350);
 		panel.add(scrollPane);
 
-        // Se mantiene el ID de la tarifa oculto (columna 0)
-        TableColumnModel tcm = tableTarifas.getColumnModel();
-        // Asegurarse de que la columna 0 (ID Tarifa) exista antes de intentar removerla
-        if (tcm.getColumnCount() > 0) {
-            tcm.removeColumn(tcm.getColumn(0));
-        }
+        TableColumnModel tcm = tableTarifas.getColumnModel(); 
+        tcm.removeColumn(tcm.getColumn(0));
 
-		// La carga inicial ya se hace en el constructor
-		// cargarDatosTabla("");
+		cargarDatosTabla(""); 
 	}
 
-	private void cargarDatosTabla(String filtro) {
-		tableModel.setRowCount(0); // Limpiar datos existentes
+	private void cargarDatosTabla(String filtro) { 
+		tableModel.setRowCount(0);
 
 		List<Tarifa> tarifas;
 		if (filtro != null && !filtro.isEmpty() && !filtro.equals("BUSCAR")) {
-            // Si hay un filtro, intentar buscar por nombre de tipo de habitación
-            int idTipoHabitacionFiltrado = tipoHabitacionDAO.getIdTipoHabitacionByNombre(filtro);
-            if (idTipoHabitacionFiltrado != -1) {
-                tarifas = tarifaDAO.getTarifasByTipoHabitacion(idTipoHabitacionFiltrado);
-            } else {
-                // Si el filtro no es un nombre de tipo de habitación válido, buscar por nombre de tarifa o descripción
-                // Nota: Tu TarifaDAO actual no tiene un método de búsqueda genérico por nombre/descripción.
-                // Aquí, para simplificar y evitar más errores, cargaremos todas las tarifas y filtraremos en memoria.
-                tarifas = tarifaDAO.getAllTarifas();
-                // Filtro en memoria por nombre de tarifa o descripción
-                List<Tarifa> tarifasFiltradas = new java.util.ArrayList<>();
-                for (Tarifa t : tarifas) {
-                    if (t.getNombreTarifa().toLowerCase().contains(filtro.toLowerCase()) ||
-                        t.getDescripcion().toLowerCase().contains(filtro.toLowerCase()) ||
-                        t.getCondiciones().toLowerCase().contains(filtro.toLowerCase())) {
-                        tarifasFiltradas.add(t);
-                    }
-                }
-                tarifas = tarifasFiltradas;
-            }
+			tarifas = tarifaDAO.getTarifasByTipoHabitacion(filtro);
 		} else {
 			tarifas = tarifaDAO.getAllTarifas();
 		}
 
-		if (tarifas != null) {
-            for (Tarifa tarifa : tarifas) {
-                // Obtener el nombre del tipo de habitación usando el DAO de TiposHabitacion
-                String nombreTipoHabitacion = tipoHabitacionDAO.getNombreTipoHabitacionById(tarifa.getIdTipoHabitacion());
-                if (nombreTipoHabitacion == null) {
-                    nombreTipoHabitacion = "Desconocido"; // Fallback si no se encuentra el nombre
-                }
+		for (Tarifa tarifa : tarifas) {
+			String condiciones = "";
+			
+			switch (tarifa.getTipoHabitacion().toLowerCase()) {
+				case "reembolsable":
+					condiciones = "Cancelable";
+					break;
+				case "no reembolsable":
+					condiciones = "No Cancelable";
+					break;
+				case "promocional":
+					condiciones = "Solo temporada";
+					break;
+				case "corporativa":
+					condiciones = "Empresa";
+					break;
+				default: 
+					if (tarifa.getDescuentoPorcentaje() > 0) {
+						condiciones = "Con descuento: " + tarifa.getDescuentoPorcentaje() + "%";
+					} else {
+						condiciones = "Sin descuento";
+					}
+					break;
+			}
 
-                String condicionesDisplay = tarifa.getCondiciones(); // Las condiciones ya vienen del modelo Tarifa
-
-                tableModel.addRow(new Object[]{
-                    tarifa.getIdTarifa(),
-                    nombreTipoHabitacion, // Usar el nombre del tipo de habitación
-                    tarifa.getNombreTarifa(), // Usar el nombre de la tarifa
-                    String.format("$ %.2f MXN", tarifa.getPrecioBase()),
-                    condicionesDisplay,
-                    tarifa.getDescripcion()
-                });
-            }
-        }
+			tableModel.addRow(new Object[]{
+				tarifa.getIdTarifa(),
+				tarifa.getTipoHabitacion(),
+				String.format("$ %.2f MXN", tarifa.getPrecioBase()),
+				condiciones,
+				tarifa.getDescripcion()
+			});
+		}
 	}
 
 	public void dispose() {

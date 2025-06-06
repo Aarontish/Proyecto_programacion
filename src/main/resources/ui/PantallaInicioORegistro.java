@@ -2,7 +2,7 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue; // Se mantiene por si se quiere un main temporal para pruebas, pero lo eliminamos de la versión final.
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -29,8 +29,12 @@ import modelos.Usuario;
 
 public class PantallaInicioORegistro {
 
-	public JFrame frame; // Hago el frame public para que pueda ser visible desde otras clases
+	JFrame frame;
 	private UsuarioDAO usuarioDAO;
+
+	/**
+	 * Launch the application.
+	 */
 
 	/**
 	 * Create the application.
@@ -42,7 +46,7 @@ public class PantallaInicioORegistro {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        usuarioDAO = new UsuarioDAO(); // Inicializar el DAO de usuario
+        usuarioDAO = new UsuarioDAO();
 		initialize();
 	}
 
@@ -67,13 +71,13 @@ public class PantallaInicioORegistro {
 		panel_2.setBackground(new Color(55, 54, 48));
 		panel_2.setBounds(0, 95, 1164, 26);
 		panel.add(panel_2);
-        panel_2.setLayout(null); // Asegurarse de que tenga un layout
 
 		JLabel logo = new JLabel(""); // Logo
 		logo.setBounds(0, 0, 170, 95);
-		ImageIcon icon01 = new ImageIcon(getClass().getResource("/images/logo.png"));
-        Image imagen01 = icon01.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
-        logo.setIcon(new ImageIcon(imagen01));
+		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
+		Image portada2 = portada1.getImage();
+		Image portada3 = portada2.getScaledInstance(170, 95, Image.SCALE_SMOOTH);
+		logo.setIcon(new ImageIcon(portada3));
 		panel_1.add(logo);
 
 		JLabel Titulo = new JLabel("Registro/Iniciar sesión"); // Titulo
@@ -82,34 +86,38 @@ public class PantallaInicioORegistro {
 		Titulo.setBounds(180, 11, 521, 73);
 		panel_1.add(Titulo);
 		
-		JButton Iniciar_sesion = new JButton(""); // Se quitó el texto y se usará solo el icono
+		
+		JButton Iniciar_sesion = new JButton("\r\n");
 		Iniciar_sesion.setBackground(new Color(255, 214, 10));
-		Iniciar_sesion.setBounds(87, 240, 350, 300); // Ajustado para el tamaño del botón
-		ImageIcon iconLogin = new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagenLogin = iconLogin.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH); // Escalar icono
-        Iniciar_sesion.setIcon(new ImageIcon(imagenLogin));
+		Iniciar_sesion.setBounds(346, 193, 30, 30);
+		ImageIcon icon121 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen121 = icon121.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        Iniciar_sesion.setIcon(new ImageIcon(imagen121));
 		Iniciar_sesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose(); // Cierra la ventana actual
+				frame.dispose(); // Cierra la ventana actual del menú
 				Login2 conexion = new Login2();
-				conexion.frame.setVisible(true);
+				conexion.frame.setVisible(true); 
 			}
 		});
+		Iniciar_sesion.setBounds(87, 240, 350, 300);
 		panel.add(Iniciar_sesion);
 		
-		JButton Registro = new JButton(""); // Se quitó el texto y se usará solo el icono
+		JButton Registro = new JButton("");
 		Registro.setBackground(new Color(0, 0, 0));
-		Registro.setBounds(729, 240, 350, 300); // Ajustado para el tamaño del botón
-		ImageIcon iconRegistro = new ImageIcon(getClass().getResource("/images/usuario.png"));
-        Image imagenRegistro = iconRegistro.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH); // Escalar icono
-        Registro.setIcon(new ImageIcon(imagenRegistro));
+		ImageIcon icon23 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+        Image imagen23 = icon23.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        Registro.setIcon(new ImageIcon(imagen23));
 		Registro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose(); // Cierra la ventana actual
-				registro conexion = new registro(); // Navega a la pantalla de registro
-				conexion.frame.setVisible(true);
+				
+				frame.dispose(); // Cierra la ventana actual del menú
+				Registro conexion = new Registro();
+				
+				conexion.frame.setVisible(true); 
 			}
 		});
+		Registro.setBounds(729, 240, 350, 300);
 		panel.add(Registro);
 		
 		JLabel lblNewLabel = new JLabel("Iniciar sesión\r\n");
@@ -122,8 +130,4 @@ public class PantallaInicioORegistro {
 		lblRegistrarse.setBounds(839, 550, 209, 56);
 		panel.add(lblRegistrarse);
 	}
-
-    public void setVisible(boolean b) {
-        frame.setVisible(b);
-    }
 }
