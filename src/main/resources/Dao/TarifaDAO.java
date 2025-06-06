@@ -12,16 +12,17 @@ import conexion.conexion_bd;
 public class TarifaDAO {
 
     public boolean createTarifa(Tarifa tarifa) {
-  
-        String sql = "INSERT INTO Tarifas (tipoHabitacion, precioBase, descuentoPorcentaje, descripcion, tipoCondicion) VALUES (?, ?, ?, ?, ?)";
+        // SQL coincide con la DB: idTipoHabitacion, nombreTarifa, precioBase, condiciones, descripcion
+        String sql = "INSERT INTO Tarifas (idTipoHabitacion, nombreTarifa, precioBase, condiciones, descripcion) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = conexion_bd.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             
-            pstmt.setString(1, tarifa.getTipoHabitacion());
-            pstmt.setDouble(2, tarifa.getPrecioBase());
-            pstmt.setDouble(3, tarifa.getDescuentoPorcentaje());
-            pstmt.setString(4, tarifa.getDescripcion());
-            pstmt.setString(5, tarifa.getTipoCondicion());
+            pstmt.setInt(1, tarifa.getIdTipoHabitacion());
+            pstmt.setString(2, tarifa.getNombreTarifa());
+            pstmt.setDouble(3, tarifa.getPrecioBase());
+            pstmt.setString(4, tarifa.getCondiciones());
+            pstmt.setString(5, tarifa.getDescripcion());
+            
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {
@@ -42,20 +43,20 @@ public class TarifaDAO {
 
     public Tarifa getTarifaById(int id) {
         Tarifa tarifa = null;
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, descripcion, tipoCondicion FROM Tarifas WHERE idTarifa = ?";
+        // SQL selecciona solo las columnas que el modelo Tarifa tiene
+        String sql = "SELECT idTarifa, idTipoHabitacion, nombreTarifa, precioBase, condiciones, descripcion FROM Tarifas WHERE idTarifa = ?";
         try (Connection conn = conexion_bd.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-         
                     tarifa = new Tarifa(
                             rs.getInt("idTarifa"),
-                            rs.getString("tipoHabitacion"),
+                            rs.getInt("idTipoHabitacion"),
+                            rs.getString("nombreTarifa"),
                             rs.getDouble("precioBase"),
-                            rs.getDouble("descuentoPorcentaje"),
-                            rs.getString("descripcion"),
-                            rs.getString("tipoCondicion")
+                            rs.getString("condiciones"),
+                            rs.getString("descripcion")
                     );
                 }
             }
@@ -68,20 +69,21 @@ public class TarifaDAO {
 
     public List<Tarifa> getAllTarifas() {
         List<Tarifa> tarifas = new ArrayList<>();
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, descripcion, tipoCondicion FROM Tarifas";
+        // SQL selecciona solo las columnas que el modelo Tarifa tiene
+        String sql = "SELECT idTarifa, idTipoHabitacion, nombreTarifa, precioBase, condiciones, descripcion FROM Tarifas";
         try (Connection conn = conexion_bd.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-             
-                tarifas.add(new Tarifa(
+                Tarifa tarifa = new Tarifa(
                         rs.getInt("idTarifa"),
-                        rs.getString("tipoHabitacion"),
+                        rs.getInt("idTipoHabitacion"),
+                        rs.getString("nombreTarifa"),
                         rs.getDouble("precioBase"),
-                        rs.getDouble("descuentoPorcentaje"),
-                        rs.getString("descripcion"),
-                        rs.getString("tipoCondicion")
-                ));
+                        rs.getString("condiciones"),
+                        rs.getString("descripcion")
+                );
+                tarifas.add(tarifa);
             }
         } catch (SQLException e) {
             System.err.println("Error al obtener todas las tarifas: " + e.getMessage());
@@ -90,23 +92,24 @@ public class TarifaDAO {
         return tarifas;
     }
 
-    public List<Tarifa> getTarifasByTipoHabitacion(String tipoHabitacionFiltro) {
+    public List<Tarifa> getTarifasByTipoHabitacion(int idTipoHabitacionFiltro) { // Filtra por ID, no por nombre
         List<Tarifa> tarifas = new ArrayList<>();
-        String sql = "SELECT idTarifa, tipoHabitacion, precioBase, descuentoPorcentaje, descripcion, tipoCondicion FROM Tarifas WHERE tipoHabitacion LIKE ?";
+        // SQL filtra por idTipoHabitacion, que es lo que tiene el modelo
+        String sql = "SELECT idTarifa, idTipoHabitacion, nombreTarifa, precioBase, condiciones, descripcion FROM Tarifas WHERE idTipoHabitacion = ?";
         try (Connection conn = conexion_bd.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, "%" + tipoHabitacionFiltro + "%");
+            pstmt.setInt(1, idTipoHabitacionFiltro);
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                   
-                    tarifas.add(new Tarifa(
+                    Tarifa tarifa = new Tarifa(
                             rs.getInt("idTarifa"),
-                            rs.getString("tipoHabitacion"),
+                            rs.getInt("idTipoHabitacion"),
+                            rs.getString("nombreTarifa"),
                             rs.getDouble("precioBase"),
-                            rs.getDouble("descuentoPorcentaje"),
-                            rs.getString("descripcion"),
-                            rs.getString("tipoCondicion")
-                    ));
+                            rs.getString("condiciones"),
+                            rs.getString("descripcion")
+                    );
+                    tarifas.add(tarifa);
                 }
             }
         } catch (SQLException e) {
@@ -117,14 +120,15 @@ public class TarifaDAO {
     }
 
     public boolean updateTarifa(Tarifa tarifa) {
-        String sql = "UPDATE Tarifas SET tipoHabitacion = ?, precioBase = ?, descuentoPorcentaje = ?, descripcion = ?, tipoCondicion = ? WHERE idTarifa = ?";
+        // SQL coincide con la DB
+        String sql = "UPDATE Tarifas SET idTipoHabitacion = ?, nombreTarifa = ?, precioBase = ?, condiciones = ?, descripcion = ? WHERE idTarifa = ?";
         try (Connection conn = conexion_bd.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, tarifa.getTipoHabitacion());
-            pstmt.setDouble(2, tarifa.getPrecioBase());
-            pstmt.setDouble(3, tarifa.getDescuentoPorcentaje());
-            pstmt.setString(4, tarifa.getDescripcion());
-            pstmt.setString(5, tarifa.getTipoCondicion());
+            pstmt.setInt(1, tarifa.getIdTipoHabitacion());
+            pstmt.setString(2, tarifa.getNombreTarifa());
+            pstmt.setDouble(3, tarifa.getPrecioBase());
+            pstmt.setString(4, tarifa.getCondiciones());
+            pstmt.setString(5, tarifa.getDescripcion());
             pstmt.setInt(6, tarifa.getIdTarifa());
             int affectedRows = pstmt.executeUpdate();
             return affectedRows > 0;

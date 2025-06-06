@@ -2,11 +2,11 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -16,15 +16,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JComboBox;
+import javax.swing.JComboBox; // Para la selección de tipo de habitación
 import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
 import Dao.TarifaDAO;
+import Dao.TipoHabitacionDAO;
 import modelos.Tarifa;
+import modelos.TiposHabitacion;
 
 import ui.TiposHabitacion;
 import ui.Rentas;
@@ -37,22 +37,25 @@ public class Creartarifa {
 
 	public JFrame frame;
 	private JTextField textFieldNombreTarifa;
-	private JTextField textFieldPrecioPorNoche;
-	private JComboBox<String> comboBoxTipoTarifa;
-	private JTextArea textAreaDescripcion; 
-	private TarifaDAO tarifaDAO;
-
-	
+	private JTextField textFieldPrecioBase;
+	private JTextField textFieldCondiciones;
+	private JTextField textFieldDescripcion;
+    private JComboBox<String> comboBoxTipoHabitacion; // ComboBox para tipos de habitación
+    
+    private TarifaDAO tarifaDAO;
+    private TipoHabitacionDAO tipoHabitacionDAO;
 
 	public Creartarifa() {
-		try {
+        try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 0);
+            UIManager.put("Button.arc", 90);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         tarifaDAO = new TarifaDAO();
+        tipoHabitacionDAO = new TipoHabitacionDAO();
 		initialize();
+        cargarTiposHabitacion(); // Cargar los tipos de habitación al iniciar
 	}
 
 	private void initialize() {
@@ -67,16 +70,79 @@ public class Creartarifa {
 		panel.setLayout(null);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 1164, 95);
 		panel_1.setBackground(new Color(0, 0, 0));
+		panel_1.setBounds(0, 0, 1164, 95);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(0, 95, 1164, 26);
 		panel_2.setBackground(new Color(55, 54, 48));
+		panel_2.setBounds(0, 95, 1164, 26);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
+
+		JLabel logo = new JLabel("");
+		logo.setBounds(0, 0, 170, 95);
+		ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
+        Image portada2 = portada1.getImage();
+        Image portada3 = portada2.getScaledInstance(170, 95,Image.SCALE_SMOOTH);
+        logo.setIcon(new ImageIcon(portada3));
+		panel_1.add(logo);
+
+		JLabel Titulo = new JLabel("Panel de Tarifas:");
+		Titulo.setForeground(new Color(255, 255, 255));
+		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
+		Titulo.setBounds(180, 11, 410, 73);
+		panel_1.add(Titulo);
+
+		JLabel menuTitulo = new JLabel("Crear nueva tarifa:");
+		menuTitulo.setFont(new Font("Jost*", Font.BOLD, 38));
+		menuTitulo.setBounds(131, 126, 441, 56);
+		panel.add(menuTitulo);
+		
+		JButton botonSuperior1 = new JButton("");
+		botonSuperior1.setBackground(new Color(0, 0, 0));
+		botonSuperior1.setBorderPainted(false);
+		botonSuperior1.setFocusPainted(false);
+		botonSuperior1.setContentAreaFilled(true);
+		botonSuperior1.setBounds(1098, 11, 56, 56);
+		ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
+		Image c2 = c1.getImage();
+		Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		botonSuperior1.setIcon(new ImageIcon(c3));
+		panel_1.add(botonSuperior1);
+
+		JButton botonSuperior2 = new JButton("");
+		botonSuperior2.setBackground(new Color(0, 0, 0));
+		botonSuperior2.setBorderPainted(false);
+		botonSuperior2.setFocusPainted(false);
+		botonSuperior2.setContentAreaFilled(true);
+		botonSuperior2.setBounds(1032, 11, 56, 56);
+		ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
+		Image e2 = e1.getImage();
+		Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		botonSuperior2.setIcon(new ImageIcon(e3));
+		panel_1.add(botonSuperior2);
+
+		JButton botonVolver = new JButton("");
+		botonVolver.setForeground(new Color(255, 255, 255));
+		botonVolver.setBackground(new Color(255, 255, 255));
+		botonVolver.setBorderPainted(false);
+		botonVolver.setFocusPainted(false);
+		botonVolver.setContentAreaFilled(true);
+		botonVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				Tarifas conexion = new Tarifas(); // Volver a la pantalla de Tarifas
+				conexion.frame.setVisible(true); 	
+			}
+		});
+		botonVolver.setBounds(60, 132, 50, 50);
+		ImageIcon f1 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
+		Image f2 = f1.getImage();
+		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+		botonVolver.setIcon(new ImageIcon(f3));
+		panel.add(botonVolver);
 
 		JButton btnTiposDeRentas = new JButton("<html>Tipos de habitaciones &#8594;</html>");
 		btnTiposDeRentas.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
@@ -86,8 +152,8 @@ public class Creartarifa {
 		btnTiposDeRentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				TiposHabitacion tiposHabitacionWindow = new TiposHabitacion();
-				tiposHabitacionWindow.frame.setVisible(true);
+				TiposHabitacion conexion = new TiposHabitacion();
+				conexion.frame.setVisible(true);
 			}
 		});
 		btnTiposDeRentas.setBounds(1023, 0, 134, 23);
@@ -95,13 +161,13 @@ public class Creartarifa {
         btnTiposDeRentas.setFocusPainted(false);
         btnTiposDeRentas.setContentAreaFilled(true);
 		panel_2.add(btnTiposDeRentas);
-
+		
 		JButton btnrentas = new JButton("<html>Rentas &#8594;</html>");
 		btnrentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Rentas rentasWindow = new Rentas();
-				rentasWindow.frame.setVisible(true);
+				Rentas conexion = new Rentas();
+				conexion.frame.setVisible(true);
 			}
 		});
 		btnrentas.setForeground(Color.WHITE);
@@ -113,8 +179,15 @@ public class Creartarifa {
 		btnrentas.setBackground(new Color(56, 54, 41));
 		btnrentas.setBounds(932, 0, 81, 23);
 		panel_2.add(btnrentas);
-
+		
 		JButton btnclientes = new JButton("<html>Clientes &#8594;</html>");
+		btnclientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				Clientes conexion = new Clientes();
+				conexion.frame.setVisible(true);
+			}
+		});
 		btnclientes.setForeground(Color.WHITE);
 		btnclientes.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnclientes.setFocusPainted(false);
@@ -123,16 +196,16 @@ public class Creartarifa {
 		btnclientes.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnclientes.setBackground(new Color(56, 54, 41));
 		btnclientes.setBounds(841, 0, 81, 23);
-		btnclientes.addActionListener(new ActionListener() {
+		panel_2.add(btnclientes);
+		
+		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>");
+		btnhabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Clientes clientesWindow = new Clientes();
-				clientesWindow.frame.setVisible(true);
+				PanelHabitaciones1 conexion = new PanelHabitaciones1();
+				conexion.frame.setVisible(true);
 			}
 		});
-		panel_2.add(btnclientes);
-
-		JButton btnhabitaciones = new JButton("<html>Habitaciones &#8594;</html>");
 		btnhabitaciones.setForeground(Color.WHITE);
 		btnhabitaciones.setFont(new Font("Jost* Medium", Font.PLAIN, 12));
 		btnhabitaciones.setFocusPainted(false);
@@ -141,21 +214,14 @@ public class Creartarifa {
 		btnhabitaciones.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
 		btnhabitaciones.setBackground(new Color(56, 54, 41));
 		btnhabitaciones.setBounds(731, 0, 100, 23);
-		btnhabitaciones.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				PanelHabitaciones1 habitacionesWindow = new PanelHabitaciones1();
-				habitacionesWindow.frame.setVisible(true);
-			}
-		});
 		panel_2.add(btnhabitaciones);
-
+		
 		JButton btntarifas = new JButton("<html>Tarifas &#8594;</html>");
 		btntarifas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Tarifas tarifasWindow = new Tarifas();
-				tarifasWindow.frame.setVisible(true);
+				Tarifas conexion = new Tarifas();
+				conexion.frame.setVisible(true);
 			}
 		});
 		btntarifas.setForeground(Color.WHITE);
@@ -167,164 +233,148 @@ public class Creartarifa {
 		btntarifas.setBackground(new Color(56, 54, 41));
 		btntarifas.setBounds(649, 0, 72, 23);
 		panel_2.add(btntarifas);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(0, 187, 249));
+		panel_3.setBounds(131, 193, 300, 440);
+		panel.add(panel_3);
+		panel_3.setLayout(null);
 
-		JLabel logo = new JLabel("");
-		logo.setBounds(0, 0, 170, 95);
-		ImageIcon icon12 = new ImageIcon(getClass().getResource("/images/logo.png"));
-        Image imagen12 = icon12.getImage().getScaledInstance(170, 95, Image.SCALE_SMOOTH);
-        logo.setIcon(new ImageIcon(imagen12));
-		panel_1.add(logo);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(45, 11, 200, 200);
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/Images/usuario.png"));
+        Image imagen1 = icon1.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        lblNewLabel.setIcon(new ImageIcon(imagen1));
+		panel_3.add(lblNewLabel);
 
-		JLabel Titulo = new JLabel("Crear Tarifa");
-		Titulo.setForeground(new Color(255, 255, 255));
-		Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
-		Titulo.setBounds(180, 11, 410, 73);
-		panel_1.add(Titulo);
+		JLabel lblNewLabel_1_id = new JLabel("Crear Tarifa");
+		lblNewLabel_1_id.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 20));
+		lblNewLabel_1_id.setBounds(90, 222, 150, 20); // Ajustado para el texto
+		panel_3.add(lblNewLabel_1_id);
 
-		JButton botonVolver = new JButton("");
-		botonVolver.setForeground(new Color(255, 255, 255));
-		botonVolver.setBackground(new Color(255, 255, 255));
-		botonVolver.setBorderPainted(false);
-		botonVolver.setFocusPainted(false);
-		botonVolver.setContentAreaFilled(true);
-		botonVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Tarifas tarifasWindow = new Tarifas();
-				tarifasWindow.frame.setVisible(true);
-			}
-		});
-		botonVolver.setBounds(60, 132, 36, 36);
-		ImageIcon icon69 = new ImageIcon(getClass().getResource("/images/flecha_izquierda.png"));
-        Image imagen69 = icon69.getImage().getScaledInstance(36, 36, Image.SCALE_SMOOTH);
-		botonVolver.setIcon(new ImageIcon(imagen69));
-		panel.add(botonVolver);
+		JLabel textoTipoHabitacion = new JLabel("Tipo Habitación:");
+		textoTipoHabitacion.setFont(new Font("Jost*", Font.BOLD | Font.ITALIC, 16));
+		textoTipoHabitacion.setBounds(120, 272, 145, 20);
+		panel_3.add(textoTipoHabitacion);
+        
+        // ComboBox para Tipo de Habitación
+        comboBoxTipoHabitacion = new JComboBox<>();
+        comboBoxTipoHabitacion.setBounds(441, 240, 250, 35);
+        panel.add(comboBoxTipoHabitacion);
 
-		JLabel lblCrearTarifa = new JLabel("Crear tarifa");
-		lblCrearTarifa.setFont(new Font("Jost*", Font.BOLD, 38));
-		lblCrearTarifa.setBounds(131, 126, 400, 56);
-		panel.add(lblCrearTarifa);
-
-		JLabel lblNombreTarifa = new JLabel("Nombre:");
+		JLabel lblNombreTarifa = new JLabel("Nombre Tarifa:");
 		lblNombreTarifa.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblNombreTarifa.setBounds(100, 200, 300, 30);
+		lblNombreTarifa.setBounds(441, 200, 200, 30);
 		panel.add(lblNombreTarifa);
-
+		
 		textFieldNombreTarifa = new JTextField();
-		textFieldNombreTarifa.setFont(new Font("Dialog", Font.PLAIN, 16));
-		textFieldNombreTarifa.setBounds(100, 240, 250, 35);
+		textFieldNombreTarifa.setBackground(Color.LIGHT_GRAY);
+		textFieldNombreTarifa.setBounds(700, 240, 250, 35); // Posicionado a la derecha del combobox
 		panel.add(textFieldNombreTarifa);
 		textFieldNombreTarifa.setColumns(10);
+		
+		JLabel lblPrecioBase = new JLabel("Precio Base:");
+		lblPrecioBase.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblPrecioBase.setBounds(441, 300, 200, 30);
+		panel.add(lblPrecioBase);
+		
+		textFieldPrecioBase = new JTextField();
+		textFieldPrecioBase.setBackground(Color.LIGHT_GRAY);
+		textFieldPrecioBase.setBounds(441, 340, 250, 35);
+		panel.add(textFieldPrecioBase);
+		textFieldPrecioBase.setColumns(10);
+		
+		JLabel lblCondiciones = new JLabel("Condiciones:");
+		lblCondiciones.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblCondiciones.setBounds(700, 300, 250, 30);
+		panel.add(lblCondiciones);
+		
+		textFieldCondiciones = new JTextField();
+		textFieldCondiciones.setBackground(Color.LIGHT_GRAY);
+		textFieldCondiciones.setBounds(700, 340, 250, 35);
+		panel.add(textFieldCondiciones);
+		textFieldCondiciones.setColumns(10);
 
-		JLabel lblTipoTarifa = new JLabel("Tipo:");
-		lblTipoTarifa.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblTipoTarifa.setBounds(400, 200, 200, 30);
-		panel.add(lblTipoTarifa);
+        JLabel lblDescripcion = new JLabel("Descripción:");
+        lblDescripcion.setFont(new Font("Dialog", Font.BOLD, 24));
+        lblDescripcion.setBounds(441, 400, 200, 30);
+        panel.add(lblDescripcion);
 
-		String[] tiposTarifa = {"Reembolsable", "No Reembolsable", "Corporativa", "Promocional"};
-		comboBoxTipoTarifa = new JComboBox<>(tiposTarifa);
-		comboBoxTipoTarifa.setFont(new Font("Dialog", Font.PLAIN, 16));
-		comboBoxTipoTarifa.setBounds(400, 240, 250, 35);
-		panel.add(comboBoxTipoTarifa);
+        textFieldDescripcion = new JTextField();
+        textFieldDescripcion.setBackground(Color.LIGHT_GRAY);
+        textFieldDescripcion.setBounds(441, 440, 510, 35);
+        panel.add(textFieldDescripcion);
+        textFieldDescripcion.setColumns(10);
 
-		JLabel lblDescripcion = new JLabel("Descripción:");
-		lblDescripcion.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblDescripcion.setBounds(100, 300, 250, 30);
-		panel.add(lblDescripcion);
+		JButton btnCrearTarifa = new JButton("Crear Tarifa");
+		btnCrearTarifa.setBackground(new Color(255, 214, 10));
+		btnCrearTarifa.setFont(new Font("Inter", Font.BOLD | Font.ITALIC, 24));
+		btnCrearTarifa.setBorder(BorderFactory.createLineBorder(Color.BLACK,0));
+		btnCrearTarifa.setBounds(856, 573, 270, 60);
+        btnCrearTarifa.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String nombreTarifa = textFieldNombreTarifa.getText().trim();
+                String precioBaseStr = textFieldPrecioBase.getText().trim();
+                String condiciones = textFieldCondiciones.getText().trim();
+                String descripcion = textFieldDescripcion.getText().trim();
+                String tipoHabitacionNombre = (String) comboBoxTipoHabitacion.getSelectedItem();
 
-		textAreaDescripcion = new JTextArea();
-		textAreaDescripcion.setFont(new Font("Dialog", Font.PLAIN, 16));
-		textAreaDescripcion.setLineWrap(true);
-		textAreaDescripcion.setWrapStyleWord(true);
-		JScrollPane scrollPaneDescripcion = new JScrollPane(textAreaDescripcion);
-		scrollPaneDescripcion.setBounds(100, 340, 250, 80);
-		panel.add(scrollPaneDescripcion);
+                if (nombreTarifa.isEmpty() || precioBaseStr.isEmpty() || condiciones.isEmpty() || descripcion.isEmpty() || tipoHabitacionNombre == null || tipoHabitacionNombre.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Todos los campos son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
 
-		JLabel lblPrecioPorNoche = new JLabel("Precio por noche:");
-		lblPrecioPorNoche.setFont(new Font("Dialog", Font.BOLD, 24));
-		lblPrecioPorNoche.setBounds(400, 300, 250, 30);
-		panel.add(lblPrecioPorNoche);
+                double precioBase;
+                try {
+                    precioBase = Double.parseDouble(precioBaseStr);
+                    if (precioBase <= 0) {
+                        JOptionPane.showMessageDialog(frame, "El precio base debe ser un número positivo.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "El precio base debe ser un número válido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                
+                int idTipoHabitacion = tipoHabitacionDAO.getIdTipoHabitacionByNombre(tipoHabitacionNombre);
+                if (idTipoHabitacion == -1) {
+                    JOptionPane.showMessageDialog(frame, "Tipo de habitación seleccionado no es válido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
 
-		textFieldPrecioPorNoche = new JTextField();
-		textFieldPrecioPorNoche.setFont(new Font("Dialog", Font.PLAIN, 16));
-		textFieldPrecioPorNoche.setBounds(400, 340, 250, 35);
-		panel.add(textFieldPrecioPorNoche);
-		textFieldPrecioPorNoche.setColumns(10);
-
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBackground(new Color(239, 35, 60));
-		btnCancelar.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
-		btnCancelar.setForeground(new Color(255, 255, 255));
-		btnCancelar.setBounds(967, 517, 170, 50);
-		btnCancelar.putClientProperty("FlatLaf.style", "arc: 0");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				Tarifas tarifasWindow = new Tarifas();
-				tarifasWindow.frame.setVisible(true);
-			}
-		});
-		panel.add(btnCancelar);
-
-		JButton btnGuardarTarifa = new JButton("Crear");
-		btnGuardarTarifa.setForeground(Color.DARK_GRAY);
-		btnGuardarTarifa.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
-		btnGuardarTarifa.setBackground(Color.YELLOW);
-		btnGuardarTarifa.setBounds(967, 592, 170, 50);
-		btnGuardarTarifa.putClientProperty("FlatLaf.style", "arc: 0");
-		btnGuardarTarifa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String nombreTarifa = textFieldNombreTarifa.getText().trim();
-				String precioPorNocheStr = textFieldPrecioPorNoche.getText().trim();
-				String descripcion = textAreaDescripcion.getText().trim(); 
-				String tipoCondicion = (String) comboBoxTipoTarifa.getSelectedItem(); 
-
-				if (nombreTarifa.isEmpty() || precioPorNocheStr.isEmpty()) {
-					JOptionPane.showMessageDialog(frame, "Los campos 'Nombre' y 'Precio por noche' son obligatorios.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-					return;
-				}
-
-				double precioPorNoche;
-				try {
-					precioPorNoche = Double.parseDouble(precioPorNocheStr);
-				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(frame, "Precio por noche debe ser un número válido.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-					return;
-				}
-
-				if (precioPorNoche < 0) {
-					JOptionPane.showMessageDialog(frame, "Valores numéricos inválidos. Precio por noche no negativo.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
-					return;
-				}
-	
-				Tarifa nuevaTarifa = new Tarifa(0, nombreTarifa, precioPorNoche, 0.0, descripcion, tipoCondicion);
-
-				if (tarifaDAO.createTarifa(nuevaTarifa)) {
-					JOptionPane.showMessageDialog(frame, "Tarifa creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-					frame.dispose();
-					Tarifas tarifasWindow = new Tarifas();
-					tarifasWindow.frame.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(frame, "Error al crear la tarifa.", "Error", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		});
-		panel.add(btnGuardarTarifa);
+                Tarifa nuevaTarifa = new Tarifa(idTipoHabitacion, nombreTarifa, precioBase, condiciones, descripcion);
+                
+                if (tarifaDAO.createTarifa(nuevaTarifa)) {
+                    JOptionPane.showMessageDialog(frame, "Tarifa creada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    textFieldNombreTarifa.setText("");
+                    textFieldPrecioBase.setText("");
+                    textFieldCondiciones.setText("");
+                    textFieldDescripcion.setText("");
+                    // No es necesario recargar tipos de habitación
+                    frame.dispose();
+                    Tarifas pantallaTarifas = new Tarifas();
+                    pantallaTarifas.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Error al crear la tarifa. Podría existir o hay un problema en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+		panel.add(btnCrearTarifa);
 	}
 
-	public void dispose() {
-		if (frame != null) {
-			frame.dispose();
-		}
-	}
+    private void cargarTiposHabitacion() {
+        List<TiposHabitacion> tipos = tipoHabitacionDAO.getAllTiposHabitacion();
+        comboBoxTipoHabitacion.removeAllItems();
+        if (tipos != null) {
+            for (TiposHabitacion tipo : tipos) {
+                comboBoxTipoHabitacion.addItem(tipo.getNombreTipo());
+            }
+        }
+    }
 
-	public void setVisible(boolean b) {
-		if (frame != null) {
-			frame.setVisible(b);
-		}
-	}
-
-	public JFrame getFrame() {
-		return frame;
-	}
+    public void setVisible(boolean b) {
+        if (frame != null) {
+            frame.setVisible(b);
+        }
+    }
 }
