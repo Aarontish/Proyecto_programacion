@@ -1,7 +1,6 @@
-package ui;
+package ui; 
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -18,43 +17,37 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField; 
-import javax.swing.JOptionPane;     
-import javax.swing.SwingConstants; 
+import javax.swing.JPasswordField;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
+import Dao.UsuarioDAO;
+import modelos.Usuario;
+import ui.Menu;
+import ui.PantallaInicioORegistro;
 
-import Dao.UsuarioDAO;          
-import modelos.Usuario;         
-import ui.Menu; 
+public class registro {
 
-public class Registro {
-	/*En caso de que les salga un error solo cambien la letra registro por Registro, 
-	 * por alguna razone el github no marca como mofidicacion el cambio de La r por la R mayuscula
-	 */
-    JFrame frame;
+    public JFrame frame;
     private JTextField usernameField;
     private JPasswordField passwordField;
+    private JPasswordField confirmPasswordField;
     private JLabel messageLabel;
-    private UsuarioDAO usuarioDAO; 
-    private JPasswordField passwordField_1;
+    private UsuarioDAO usuarioDAO;
 
-  
-    
-
-    public Registro() {
+    public registro() {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            UIManager.put("Button.arc", 0); // Esquinas redondas
+            UIManager.put("Button.arc", 0);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        usuarioDAO = new UsuarioDAO(); // Inicializar el DAO aquí
+        usuarioDAO = new UsuarioDAO();
         initialize();
     }
-
 
     private void initialize() {
         frame = new JFrame();
@@ -67,25 +60,27 @@ public class Registro {
         frame.getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
 
-        JPanel panel_1 = new JPanel(); // Borde negro
+        JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(0, 0, 0));
         panel_1.setBounds(0, 0, 1164, 95);
         panel.add(panel_1);
         panel_1.setLayout(null);
 
-        JPanel panel_2 = new JPanel(); // Borde gris
+        JPanel panel_2 = new JPanel();
         panel_2.setBackground(new Color(55, 54, 48));
         panel_2.setBounds(0, 95, 1164, 26);
         panel.add(panel_2);
+        panel_2.setLayout(null);
 
-        JLabel logo = new JLabel(""); // Logo
+        JLabel logo = new JLabel("");
         logo.setBounds(0, 0, 170, 95);
         ImageIcon portada1 = new ImageIcon(getClass().getResource("/images/logo.png"));
         Image portada2 = portada1.getImage();
         Image portada3 = portada2.getScaledInstance(170, 95, Image.SCALE_SMOOTH);
         logo.setIcon(new ImageIcon(portada3));
         panel_1.add(logo);
-        JButton botonVolver = new JButton(""); // Boton para volver atrás
+        
+        JButton botonVolver = new JButton("");
 		botonVolver.setForeground(new Color(255, 255, 255));
 		botonVolver.setBackground(new Color(255, 255, 255));
 		botonVolver.setBorderPainted(false);
@@ -93,10 +88,9 @@ public class Registro {
 		botonVolver.setContentAreaFilled(true);
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose(); // Cierra la ventana actual del menú
+				frame.dispose();
 				PantallaInicioORegistro conexion = new PantallaInicioORegistro();
-				conexion.frame.setVisible(true); 
-              
+				conexion.frame.setVisible(true);
 			}
 		});
 		botonVolver.setBounds(60, 132, 50, 50);
@@ -105,32 +99,48 @@ public class Registro {
 		Image f3 = f2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		botonVolver.setIcon(new ImageIcon(f3));
 		panel.add(botonVolver);
-		
-        JLabel Titulo = new JLabel("Registro/Iniciar sesión"); // Titulo
+
+        JLabel Titulo = new JLabel("Registro / Inicio de Sesión");
         Titulo.setForeground(new Color(255, 255, 255));
         Titulo.setFont(new Font("Jost* Medium", Font.PLAIN, 35));
-        Titulo.setBounds(180, 11, 410, 73);
+        Titulo.setBounds(180, 11, 450, 73);
         panel_1.add(Titulo);
+        
+        JButton botonSuperior1 = new JButton("");
+        botonSuperior1.setBackground(new Color(0, 0, 0));
+        botonSuperior1.setBorderPainted(false);
+        botonSuperior1.setFocusPainted(false);
+        botonSuperior1.setContentAreaFilled(true);
+        botonSuperior1.setBounds(1098, 11, 56, 56);
         ImageIcon c1 = new ImageIcon(getClass().getResource("/images/usuario.png"));
         Image c2 = c1.getImage();
         Image c3 = c2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior1.setIcon(new ImageIcon(c3));
+        panel_1.add(botonSuperior1);
+
+        JButton botonSuperior2 = new JButton("");
+        botonSuperior2.setBackground(new Color(0, 0, 0));
+        botonSuperior2.setBorderPainted(false);
+        botonSuperior2.setFocusPainted(false);
+        botonSuperior2.setContentAreaFilled(true);
+        botonSuperior2.setBounds(1032, 11, 56, 56);
         ImageIcon e1 = new ImageIcon(getClass().getResource("/images/informacion.png"));
         Image e2 = e1.getImage();
         Image e3 = e2.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
+        botonSuperior2.setIcon(new ImageIcon(e3));
+        panel_1.add(botonSuperior2);
 
-        
         JPanel loginPanel = new JPanel();
-        loginPanel.setLayout(null); 
+        loginPanel.setLayout(null);
         loginPanel.setBackground(new Color(255, 255, 255));
-        loginPanel.setBounds(380, 205, 400, 420);
+        loginPanel.setBounds(380, 205, 400, 470);
 
-        // Etiqueta de "Iniciar Sesión" (dentro del nuevo panel)
-        JLabel loginTitle = new JLabel("Registro\r\n");
+        JLabel loginTitle = new JLabel("Registro");
         loginTitle.setFont(new Font("Dialog", Font.BOLD, 32));
-        loginTitle.setBounds(119, 10, 200, 40);
+        loginTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        loginTitle.setBounds(0, 10, 400, 40);
         loginPanel.add(loginTitle);
 
-        // Campo de Usuario
         JLabel userLabel = new JLabel("Usuario:");
         userLabel.setFont(new Font("Jost*", Font.PLAIN, 18));
         userLabel.setBounds(50, 80, 100, 30);
@@ -141,7 +151,6 @@ public class Registro {
         usernameField.setFont(new Font("Jost*", Font.PLAIN, 16));
         loginPanel.add(usernameField);
 
-        // Campo de Contraseña
         JLabel passwordLabel = new JLabel("Contraseña:");
         passwordLabel.setFont(new Font("Jost*", Font.PLAIN, 18));
         passwordLabel.setBounds(50, 160, 150, 30);
@@ -152,12 +161,21 @@ public class Registro {
         passwordField.setFont(new Font("Jost*", Font.PLAIN, 16));
         loginPanel.add(passwordField);
 
-        // Botón de Login (el que realmente enviará las credenciales)
+        JLabel confirmPasswordLabel = new JLabel("Confirmar contraseña:");
+        confirmPasswordLabel.setFont(new Font("Jost*", Font.PLAIN, 18));
+        confirmPasswordLabel.setBounds(50, 240, 200, 30);
+        loginPanel.add(confirmPasswordLabel);
+
+        confirmPasswordField = new JPasswordField();
+        confirmPasswordField.setBounds(50, 275, 300, 35);
+        confirmPasswordField.setFont(new Font("Jost*", Font.PLAIN, 16));
+        loginPanel.add(confirmPasswordField);
+
         JButton doLoginButton = new JButton("Ingresar");
         doLoginButton.setBackground(new Color(255, 214, 10));
         doLoginButton.setForeground(new Color(0, 0, 0));
         doLoginButton.setFont(new Font("Jost*", Font.BOLD, 20));
-        doLoginButton.setBounds(127, 348, 150, 45);
+        doLoginButton.setBounds(127, 360, 150, 45);
         doLoginButton.setFocusPainted(false);
         doLoginButton.setBorderPainted(false);
         doLoginButton.setContentAreaFilled(true);
@@ -168,31 +186,34 @@ public class Registro {
         });
         loginPanel.add(doLoginButton);
 
+        JButton doRegisterButton = new JButton("Registrarse");
+        doRegisterButton.setBackground(new Color(10, 150, 255));
+        doRegisterButton.setForeground(new Color(255, 255, 255));
+        doRegisterButton.setFont(new Font("Jost*", Font.BOLD, 20));
+        doRegisterButton.setBounds(127, 415, 150, 45);
+        doRegisterButton.setFocusPainted(false);
+        doRegisterButton.setBorderPainted(false);
+        doRegisterButton.setContentAreaFilled(true);
+        doRegisterButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                performRegistration();
+            }
+        });
+        loginPanel.add(doRegisterButton);
 
         messageLabel = new JLabel("");
-        messageLabel.setForeground(Color.RED); // Inicialmente en rojo para errores
+        messageLabel.setForeground(Color.RED);
         messageLabel.setFont(new Font("Jost*", Font.PLAIN, 14));
-        messageLabel.setBounds(50, 300, 300, 20);
+        messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        messageLabel.setBounds(0, 320, 400, 20);
         loginPanel.add(messageLabel);
 
         panel.add(loginPanel);
-        
-        passwordField_1 = new JPasswordField();
-        passwordField_1.setFont(new Font("Dialog", Font.PLAIN, 16));
-        passwordField_1.setBounds(50, 279, 300, 35);
-        loginPanel.add(passwordField_1);
-        
-        JLabel lblConfirmarContrasena = new JLabel("Confirmar contraseña:\r\n");
-        lblConfirmarContrasena.setFont(new Font("Dialog", Font.PLAIN, 18));
-        lblConfirmarContrasena.setBounds(50, 240, 269, 30);
-        loginPanel.add(lblConfirmarContrasena);
     }
-    
 
-    // --- Lógica del Login ---
     private void performLogin() {
         String username = usernameField.getText();
-        String password = new String(passwordField.getPassword()); // Obtiene la contraseña como String
+        String password = new String(passwordField.getPassword());
 
         if (username.isEmpty() || password.isEmpty()) {
             messageLabel.setForeground(Color.RED);
@@ -200,16 +221,15 @@ public class Registro {
             return;
         }
 
-
         Usuario authenticatedUser = usuarioDAO.login(username, password);
 
         if (authenticatedUser != null) {
-            messageLabel.setForeground(Color.GREEN);
+            messageLabel.setForeground(new Color(0, 150, 0));
             messageLabel.setText("¡Login exitoso!");
             JOptionPane.showMessageDialog(frame, "Bienvenido, " + authenticatedUser.getNombreUsuario() + "!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
 
-            frame.dispose(); // Cierra la ventana actual del login
-            Menu menuWindow = new Menu(); // Abre la ventana del menú principal
+            frame.dispose();
+            Menu menuWindow = new Menu();
             menuWindow.frame.setVisible(true);
 
         } else {
@@ -217,5 +237,49 @@ public class Registro {
             messageLabel.setText("Credenciales incorrectas. Intenta de nuevo.");
             JOptionPane.showMessageDialog(frame, "Credenciales incorrectas.", "Error de Login", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void performRegistration() {
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+        String confirmPassword = new String(confirmPasswordField.getPassword());
+
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            messageLabel.setForeground(Color.RED);
+            messageLabel.setText("Por favor, completa todos los campos para registrarte.");
+            return;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            messageLabel.setForeground(Color.RED);
+            messageLabel.setText("Las contraseñas no coinciden.");
+            return;
+        }
+
+        try {
+            boolean registrado = usuarioDAO.registrarUsuario(username, password);
+
+            if (registrado) {
+                messageLabel.setForeground(new Color(0, 150, 0));
+                messageLabel.setText("¡Registro exitoso! Ya puedes iniciar sesión.");
+                JOptionPane.showMessageDialog(frame, "Usuario " + username + " registrado exitosamente.", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+                usernameField.setText("");
+                passwordField.setText("");
+                confirmPasswordField.setText("");
+            } else {
+                messageLabel.setForeground(Color.RED);
+                messageLabel.setText("Error al registrar. El usuario podría ya existir.");
+                JOptionPane.showMessageDialog(frame, "No se pudo registrar el usuario. Intenta con otro nombre de usuario.", "Error de Registro", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            messageLabel.setForeground(Color.RED);
+            messageLabel.setText("Ocurrió un error al intentar registrar el usuario.");
+            JOptionPane.showMessageDialog(frame, "Error interno: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+
+    public void setVisible(boolean b) {
+        frame.setVisible(b);
     }
 }
